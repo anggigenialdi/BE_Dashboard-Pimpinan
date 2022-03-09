@@ -112,6 +112,15 @@ class AuthController extends Controller
         }
     }
 
+    public function users(Request $request)
+    {
+        return response()->json([
+            'success' => false,
+            'message' => 'Login Fail! Password Wrong',
+            'data' =>  AppUser::OrderBy('id', 'DESC')->paginate(2),
+        ],400);
+    }
+
 
 
 }
