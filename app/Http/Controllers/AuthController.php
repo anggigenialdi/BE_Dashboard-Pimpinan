@@ -25,10 +25,10 @@ class AuthController extends Controller
         *            @OA\Schema(
         *               type="object",
         *               required={"nama","email", "password", "password_confirmation"},
-        *               @OA\Property(property="nama", type="text"),
-        *               @OA\Property(property="email", type="text"),
-        *               @OA\Property(property="password", type="password"),
-        *               @OA\Property(property="password_confirmation", type="password")
+        *               @OA\Property(property="nama", type="string"),
+        *               @OA\Property(property="email", type="string"),
+        *               @OA\Property(property="password", type="string", format="password"),
+        *               @OA\Property(property="password_confirmation", type="string", format="password")
         *            ),
         *        ),
         *    ),
@@ -50,7 +50,7 @@ class AuthController extends Controller
         *      @OA\Response(response=400, description="Bad request"),
         *      @OA\Response(response=404, description="Resource Not Found"),
         * )
-        */
+    */
     public function register(Request $request)
     {
         //validate incoming request 
@@ -115,8 +115,8 @@ class AuthController extends Controller
         *            @OA\Schema(
         *               type="object",
         *               required={"email", "password"},
-        *               @OA\Property(property="email", type="email"),
-        *               @OA\Property(property="password", type="password")
+        *               @OA\Property(property="email", type="string"),
+        *               @OA\Property(property="password", type="string", format="password"),
         *            ),
         *        ),
         *    ),
@@ -138,8 +138,7 @@ class AuthController extends Controller
         *      @OA\Response(response=400, description="Bad request"),
         *      @OA\Response(response=404, description="Resource Not Found"),
         * )
-        */
-
+    */
     public function login(Request $request)
     {
         
@@ -153,13 +152,14 @@ class AuthController extends Controller
 
         $user = AppUser::where('email',$request->email)->first();
 
-        $data_user = [
-            'id' => $user->id, 
-            'nama' => $user->nama, 
-            'email' => $user->email, 
-        ];
-
         if($user){
+            
+            $data_user = [
+                'id' => $user->id, 
+                'nama' => $user->nama, 
+                'email' => $user->email, 
+            ];
+
             if (Hash::check($request->password, $user->password)) {
                 $token = base64_encode(Str::random(100));
 
@@ -191,6 +191,19 @@ class AuthController extends Controller
         }
     }
 
+    /**
+     * @OA\Get(
+        *     tags={"Users"},
+        *     summary="Returns a list of users",
+        *     description="Returns a object of users",
+        *     path="/api/v1/users",
+        *      @OA\Response(
+        *          response=200,
+        *          description="Get Data Successfully",
+        *          @OA\JsonContent()
+        *       ),
+        * )
+    */
     public function users(Request $request)
     {
         return response()->json([
