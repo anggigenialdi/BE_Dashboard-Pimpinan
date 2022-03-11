@@ -191,19 +191,6 @@ class AuthController extends Controller
         }
     }
 
-    /**
-     * @OA\Get(
-        *     tags={"Users"},
-        *     summary="Returns a list of users",
-        *     description="Returns a object of users",
-        *     path="/api/v1/users",
-        *      @OA\Response(
-        *          response=200,
-        *          description="Get Data Successfully",
-        *          @OA\JsonContent()
-        *       ),
-        * )
-    */
     public function users(Request $request)
     {
         return response()->json([

@@ -152,26 +152,6 @@
                     }
                 }
             }
-        },
-        "/api/v1/users": {
-            "get": {
-                "tags": [
-                    "Users"
-                ],
-                "summary": "Returns a list of users",
-                "description": "Returns a object of users",
-                "operationId": "b98a34ab1a971a1f69366aec66600c5b",
-                "responses": {
-                    "200": {
-                        "description": "Get Data Successfully",
-                        "content": {
-                            "application/json": {
-                                "schema": {}
-                            }
-                        }
-                    }
-                }
-            }
         }
     }
 }
