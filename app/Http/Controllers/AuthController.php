@@ -152,15 +152,13 @@ class AuthController extends Controller
 
         $user = AppUser::where('email',$request->email)->first();
 
-        $data_user = [
-            'id' => $user->id, 
-            'nama' => $user->nama, 
-            'email' => $user->email, 
-        ];
-
         if($user){
             
-            
+            $data_user = [
+                'id' => $user->id, 
+                'nama' => $user->nama, 
+                'email' => $user->email, 
+            ];
 
             if (Hash::check($request->password, $user->password)) {
                 $token = base64_encode(Str::random(100));
