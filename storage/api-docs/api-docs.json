@@ -1,7 +1,7 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "API DASHBOARD PIMPINAN",
+        "title": "API Dashboard Pimpinan",
         "description": "",
         "contact": {
             "name": "Developer",
@@ -13,7 +13,7 @@
         "/api/v1/register": {
             "post": {
                 "tags": [
-                    "Register"
+                    "Users"
                 ],
                 "summary": "User Register",
                 "description": "User Register here",
@@ -89,7 +89,7 @@
         "/api/v1/login": {
             "post": {
                 "tags": [
-                    "Login"
+                    "Users"
                 ],
                 "summary": "User Login",
                 "description": "Login User Here",

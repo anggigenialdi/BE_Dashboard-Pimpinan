@@ -15,7 +15,7 @@ class AuthController extends Controller
      * @OA\Post(
      * path="/api/v1/register",
      * operationId="Register",
-     * tags={"Register"},
+     * tags={"Users"},
      * summary="User Register",
      * description="User Register here",
      *     @OA\RequestBody(
@@ -101,7 +101,7 @@ class AuthController extends Controller
      * @OA\Post(
      * path="/api/v1/login",
      * operationId="authLogin",
-     * tags={"Login"},
+     * tags={"Users"},
      * summary="User Login",
      * description="Login User Here",
      *     @OA\RequestBody(
