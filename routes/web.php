@@ -12,6 +12,8 @@ use Illuminate\Support\Str;
 |
 */
 
+
+
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
