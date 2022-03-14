@@ -152,6 +152,286 @@
                     }
                 }
             }
+        },
+        "/api/v1/add-master-domain-spbe": {
+            "post": {
+                "tags": [
+                    "Master Indikator SPBE"
+                ],
+                "summary": "Master Domain Spbe",
+                "description": "Master Domain Spbe",
+                "operationId": "Master Domain Spbe",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "nama_domain_spbe",
+                                    "nomor_domain_spbe"
+                                ],
+                                "properties": {
+                                    "nama_domain_spbe": {
+                                        "type": "string"
+                                    },
+                                    "nomor_domain_spbe": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Input Data Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Input Data Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/v1/add-master-aspek-spbe": {
+            "post": {
+                "tags": [
+                    "Master Indikator SPBE"
+                ],
+                "summary": "Master Aspek Spbe",
+                "description": "Master Aspek Spbe",
+                "operationId": "Master Aspek Spbe",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "nama_aspek_spbe",
+                                    "nomor_aspek_spbe"
+                                ],
+                                "properties": {
+                                    "nama_aspek_spbe": {
+                                        "type": "string"
+                                    },
+                                    "nomor_aspek_spbe": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Input Data Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Input Data Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/v1/add-master-domain-aspek-spbe": {
+            "post": {
+                "tags": [
+                    "Master Indikator SPBE"
+                ],
+                "summary": "Master Domain Aspek Spbe",
+                "description": "Master Domain Aspek Spbe",
+                "operationId": "Master Domain Aspek Spbe",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "id_master_domain_spbe",
+                                    "id_master_aspek_spbe",
+                                    "deskripsi"
+                                ],
+                                "properties": {
+                                    "id_master_domain_spbe": {
+                                        "type": "integer"
+                                    },
+                                    "id_master_aspek_spbe": {
+                                        "type": "integer"
+                                    },
+                                    "deskripsi": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Input Data Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Input Data Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/v1/add-master-indikator-spbe": {
+            "post": {
+                "tags": [
+                    "Master Indikator SPBE"
+                ],
+                "summary": "Master Indikator Spbe",
+                "description": "Master Indikator Spbe",
+                "operationId": "Master Indikator Spbe",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "id_master_domain_spbe",
+                                    "id_master_aspek_spbe",
+                                    "id_master_domain_aspek_spbe",
+                                    "tahun",
+                                    "nilai"
+                                ],
+                                "properties": {
+                                    "id_master_domain_spbe": {
+                                        "type": "integer"
+                                    },
+                                    "id_master_aspek_spbe": {
+                                        "type": "integer"
+                                    },
+                                    "id_master_domain_aspek_spbe": {
+                                        "type": "integer"
+                                    },
+                                    "tahun": {
+                                        "type": "string"
+                                    },
+                                    "nilai": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Input Data Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Input Data Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
         }
     }
 }

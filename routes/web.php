@@ -29,6 +29,13 @@ $router->group(['prefix' => 'api/v1'], function () use ($router) {
 
     $router->get('users', 'AuthController@users');
 
-
+    //Indikator spbe
+    $router->post('add-master-domain-spbe', 'IndikatorSpbeController@addMasterDomainSpbe');
+    //Aspek spbe
+    $router->post('add-master-aspek-spbe', 'IndikatorSpbeController@addMasterAspekSpbe');
+    //Domain Aspek spbe
+    $router->post('add-master-domain-aspek-spbe', 'IndikatorSpbeController@addMasterDomainAspekSpbe');
+    //Indikator spbe
+    $router->post('add-master-indikator-spbe', 'IndikatorSpbeController@addMasterIndikatorSpbe');
 
 });
