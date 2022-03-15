@@ -170,6 +170,20 @@ class AuthController extends Controller
                         'token' => $token,
                     ]
                 ], 200);
+            }else if (md5($request->password, $user->password)) {
+                $token = base64_encode(Str::random(100));
+
+                $user->update([
+                    'token' => $token
+                ]);
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Success Login',
+                    'data' => [
+                        'data' => $data_user,
+                        'token' => $token,
+                    ]
+                ], 200);
             } else {
                 return response()->json([
                     'success' => false,
