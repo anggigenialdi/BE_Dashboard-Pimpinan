@@ -200,12 +200,34 @@ class AuthController extends Controller
         }
     }
 
+    /**
+     * @OA\Get(
+     *      path="/api/v1/users",
+     *      operationId="Users",
+     *      tags={"Users"},
+     *      summary="Get list",
+     *      description="Returns",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *     )
+     */
     public function users(Request $request)
     {
         return response()->json([
             'success' => true,
             'message' => 'Master Data Users',
             'data' =>  AppUser::OrderBy('id', 'DESC')->paginate(2),
-        ], 400);
+        ], 200);
     }
 }
