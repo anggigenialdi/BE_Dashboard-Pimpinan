@@ -227,7 +227,7 @@ class AuthController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Master Data Users',
-            'data' =>  AppUser::OrderBy('id', 'DESC')->paginate(2),
+            'data' =>  AppUser::OrderBy('id', 'DESC')->paginate(5),
         ], 200);
     }
 }

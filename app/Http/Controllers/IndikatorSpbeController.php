@@ -328,4 +328,89 @@ class IndikatorSpbeController extends Controller
             ], 409);
         }
     }
+
+    /**
+     * @OA\Get(
+     *      path="/api/v1/get-master-indikator-spbe/{idIndikator}/{idDomainAspek}",
+     *      operationId="Master Indikator SPBE",
+     *      tags={"Master Indikator SPBE"},
+     *      summary="Get list Indikator SPBE",
+     *      description="Returns",
+     *      @OA\Parameter(
+     *      name="idIndikator",
+     *       in="path",
+     *       required=true,
+     *       @OA\Schema(
+     *            type="integer"
+     *       )
+     *    ),
+     *      @OA\Parameter(
+     *      name="idDomainAspek",
+     *       in="path",
+     *       required=true,
+     *       @OA\Schema(
+     *            type="integer"
+     *       )
+     *    ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *     )
+     */
+    public function getMasterIndikatorSpbe(Request $request, $idIndikator, $idDomainAspek)
+    {
+        try {
+            $dataDomainAspek = MasterDomainAspekSpbe::where('id', $idDomainAspek)->get();
+            $dataIndikator = MasterIndikatorSpbe::where('id_master_domain_aspek_spbe', $idDomainAspek)->first();
+
+            if( !$dataIndikator ){
+                return response()->json(
+                    [
+                        'success' => false,
+                        'message' => 'gagal diambil',
+                        'data' => '',
+                    ],
+                    400
+                );
+            } else {
+                $data = [];
+                $data_da = [];
+                $no = 0;
+
+                foreach ( $dataDomainAspek as $as ){
+                    $no++;
+                    $data['Domain 1 Kebijakan Internal SPBE'] = $as->id_master_domain_spbe;
+                    $data['Aspek 1 Kebijakan Internal Tata Kelola SPBE'] = $as->id_master_aspek_spbe;
+                    $data['deskripsi'] = $as->deskripsi;
+                    $data['tahun'] = $dataIndikator->tahun;
+                    $data['nilai'] = $dataIndikator->nilai;
+                    array_push($data_da, $data);
+                }
+            }
+
+
+            return response()->json([
+                'success' => true,
+                'message' => 'List SPBE',
+                'data' =>  [
+                    'data' => $data_da
+                ],
+            ], 200);
+
+        } catch (\Throwable $th) {
+            return response()->json([
+                'success' => false,
+                'message' => $th
+            ], 409);        }
+    }
 }
