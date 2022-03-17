@@ -12,4 +12,8 @@ class MasterDomainSpbe extends Model
         'nama_domain_spbe',
         'nomor_domain_spbe',
     ];
+
+    public function materDomain(){
+        return $this->hasMany(MasterIndikatorSpbe::class, 'id_master_domain_spbe');
+    }
 }

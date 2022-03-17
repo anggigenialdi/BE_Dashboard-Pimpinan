@@ -37,6 +37,9 @@ $router->group(['prefix' => 'api/v1'], function () use ($router) {
     $router->post('add-master-domain-aspek-spbe', 'IndikatorSpbeController@addMasterDomainAspekSpbe');
     //Indikator spbe
     $router->post('add-master-indikator-spbe', 'IndikatorSpbeController@addMasterIndikatorSpbe');
+    $router->get('get-master-domain', 'IndikatorSpbeController@getAllMasterDomain');
+    $router->get('get-master-aspek', 'IndikatorSpbeController@getAllMasterAspek');
+    $router->get('get-master-indikator-spbe/{idIndikator}', 'IndikatorSpbeController@getMasterIndikatorSpbeById');
     $router->get('get-master-indikator-spbe/{idIndikator}/{idDomainAspek}', 'IndikatorSpbeController@getMasterIndikatorSpbe');
 
 });

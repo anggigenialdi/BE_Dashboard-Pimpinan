@@ -331,6 +331,127 @@ class IndikatorSpbeController extends Controller
 
     /**
      * @OA\Get(
+     *      path="/api/v1/get-master-domain",
+     *      operationId="Master Domain SPBE",
+     *      tags={"Master Indikator SPBE"},
+     *      summary="Get list",
+     *      description="Returns",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *     )
+     */
+    public function getAllMasterDomain(Request $request)
+    {
+        try {
+            return response()->json([
+                'success' => true,
+                'message' => 'Master Data Domain',
+                'data' =>  MasterDomainSpbe::OrderBy('id', 'ASC')->paginate(5),
+            ], 200);
+
+        } catch (\Throwable $th) {
+            return response()->json([
+                'success' => false,
+                'message' => $th
+            ], 409);        }
+    }
+    /**
+     * @OA\Get(
+     *      path="/api/v1/get-master-aspek",
+     *      operationId="Master Aspek SPBE",
+     *      tags={"Master Indikator SPBE"},
+     *      summary="Get list",
+     *      description="Returns",
+     *      @OA\Parameter(
+     *      name="page",
+     *       in="path",
+     *       required=false,
+     *       @OA\Schema(
+     *            type="integer"
+     *       )
+     *    ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *     )
+     */
+    public function getAllMasterAspek(Request $request)
+    {
+        try {
+            return response()->json([
+                'success' => true,
+                'message' => 'Master Data Aspek',
+                'data' =>  MasterAspekSpbe::OrderBy('id', 'ASC')->paginate(5),
+            ], 200);
+
+        } catch (\Throwable $th) {
+            return response()->json([
+                'success' => false,
+                'message' => $th
+            ], 409);        }
+    }
+
+    
+    public function getMasterIndikatorSpbeById(Request $request, $idIndikator)
+    {
+        try {
+            $dataIndikator = MasterIndikatorSpbe::where('id', $idIndikator)->get();
+            
+            $resultData = [];
+            $no = 0;
+
+            foreach ($dataIndikator as $key) {
+                $no ++;
+                $resultData['Kode Domain'] = $key->id_master_domain_spbe;
+                $resultData['tahun'] = $key->tahun;
+                $resultData['nilai'] = $key->nilai;
+                array_push($resultData);
+            }
+
+            var_dump($resultData);die();
+
+
+            // $findIdDomain = MasterIndikatorSpbe::where('id_master_domain_spbe')->get();
+            // var_dump($findIdDomain);die();
+
+
+            return response()->json([
+                'success' => true,
+                'message' => 'List SPBE',
+                'data' =>  [
+                    'data' => $resultData
+                ],
+            ], 200);
+
+        } catch (\Throwable $th) {
+            return response()->json([
+                'success' => false,
+                'message' => $th
+            ], 409);        }
+    }
+    /**
+     * @OA\Get(
      *      path="/api/v1/get-master-indikator-spbe/{idIndikator}/{idDomainAspek}",
      *      operationId="Master Indikator SPBE",
      *      tags={"Master Indikator SPBE"},
