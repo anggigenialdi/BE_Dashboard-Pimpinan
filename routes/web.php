@@ -42,4 +42,11 @@ $router->group(['prefix' => 'api/v1'], function () use ($router) {
     $router->get('get-master-indikator-spbe/{idIndikator}', 'IndikatorSpbeController@getMasterIndikatorSpbeById');
     $router->get('get-master-indikator-spbe/{idIndikator}/{idDomainAspek}', 'IndikatorSpbeController@getMasterIndikatorSpbe');
 
+    //Masger Data CCTV
+    $router->post('add-master-data-cctv', 'MasterDataCctvController@addMasterDataCctv');
+    $router->get('get-master-data-cctv', 'MasterDataCctvController@getAllMasterDataCctv');
+    $router->get('get-master-data-cctv/{idCctv}', 'MasterDataCctvController@getMasterDataCctvById');
+
+
+
 });

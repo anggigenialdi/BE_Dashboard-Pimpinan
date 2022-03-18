@@ -564,6 +564,150 @@
                     }
                 }
             }
+        },
+        "/api/v1/add-master-cctv": {
+            "post": {
+                "tags": [
+                    "Master Data CCTV"
+                ],
+                "summary": "Master Data Cctv",
+                "description": "Master Data Cctv",
+                "operationId": "Master Data CCTV",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "lokasi",
+                                    "latitude",
+                                    "longitude",
+                                    "status",
+                                    "vendor",
+                                    "dinas"
+                                ],
+                                "properties": {
+                                    "lokasi": {
+                                        "type": "string"
+                                    },
+                                    "latitude": {
+                                        "type": "string"
+                                    },
+                                    "longitude": {
+                                        "type": "string"
+                                    },
+                                    "status": {
+                                        "type": "string"
+                                    },
+                                    "vendor": {
+                                        "type": "string"
+                                    },
+                                    "dinas": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Input Data Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Input Data Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/v1/get-master-data-cctv": {
+            "get": {
+                "tags": [
+                    "Master Data CCTV"
+                ],
+                "summary": "Get list GET ALL",
+                "description": "Returns",
+                "operationId": "Master Data CCTV Get",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/v1/get-master-data-cctv/{idCctv}": {
+            "get": {
+                "tags": [
+                    "Master Data CCTV"
+                ],
+                "summary": "Get Data BY Id",
+                "description": "Returns",
+                "operationId": "Master Data CCTV By Id",
+                "parameters": [
+                    {
+                        "name": "idCctv",
+                        "in": "path",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
         }
     }
 }
