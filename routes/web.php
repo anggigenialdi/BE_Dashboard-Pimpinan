@@ -46,6 +46,9 @@ $router->group(['prefix' => 'api/v1'], function () use ($router) {
     $router->post('add-master-data-cctv', 'MasterDataCctvController@addMasterDataCctv');
     $router->get('get-master-data-cctv', 'MasterDataCctvController@getAllMasterDataCctv');
     $router->get('get-master-data-cctv/{idCctv}', 'MasterDataCctvController@getMasterDataCctvById');
+    $router->put('update-master-data-cctv/{idCctv}', 'MasterDataCctvController@updateMasterDataCctvById');
+    $router->delete('delete-master-data-cctv/{idCctv}', 'MasterDataCctvController@deleteMasterDataCctvById');
+
 
 
 

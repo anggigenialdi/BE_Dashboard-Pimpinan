@@ -10,7 +10,7 @@ class MasterDataCctvController extends Controller
 {
     /**
      * @OA\Post(
-     * path="/api/v1/add-master-cctv",
+     * path="/api/v1/add-master-data-cctv",
      * operationId="Master Data CCTV",
      * tags={"Master Data CCTV"},
      * summary="Master Data Cctv",
@@ -199,5 +199,69 @@ class MasterDataCctvController extends Controller
                 'success' => false,
                 'message' => $th
             ], 409);        }
+    }
+
+    public function updateMasterDataCctvById(Request $request, $idCctv)
+    {
+        try {
+            dd($request->all());
+
+            $updateDataCctv = MasterDataCctv::find($idCctv);
+            $updateDataCctv->lokasi = $request->lokasi;
+            $updateDataCctv->latitude = $request->latitude;
+            $updateDataCctv->longitude = $request->longitude;
+            $updateDataCctv->status = $request->status;
+            $updateDataCctv->vendor = $request->vendor;
+            $updateDataCctv->dinas = $request->dinas;
+
+
+            if (!$updateDataCctv){
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Data tidak ada',
+                ], 404);
+            } else {
+                // $updateDataCctv->save();
+
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Update Sukses',
+                    'data' =>  $updateDataCctv
+                ], 201);
+            }
+
+        } catch (\Throwable $th) {
+            return response()->json([
+                'success' => false,
+                'message' => $th
+            ], 409);       
+        }
+    }
+
+    public function deleteMasterDataCctvById(Request $request, $idCctv){
+
+        try {
+            $deleteDataCctv = MasterDataCctv::where('id', $idCctv)->first();    
+            
+            if (!$deleteDataCctv){
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Data tidak ada',
+                ], 404);
+            } else {
+                $deleteDataCctv->delete();
+
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Data terhapus',
+                ], 200);
+            }
+        } catch (\Throwable $th) {
+            return response()->json([
+                'success' => false,
+                'message' => $th
+            ], 409);        
+        }
+
     }
 }

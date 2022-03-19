@@ -565,7 +565,7 @@
                 }
             }
         },
-        "/api/v1/add-master-cctv": {
+        "/api/v1/add-master-data-cctv": {
             "post": {
                 "tags": [
                     "Master Data CCTV"
