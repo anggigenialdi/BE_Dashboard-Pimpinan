@@ -459,7 +459,7 @@
                 }
             }
         },
-        "/api/v1/get-master-domain": {
+        "/api/v1/get-master-domain?page=": {
             "get": {
                 "tags": [
                     "Master Indikator SPBE"
@@ -467,6 +467,16 @@
                 "summary": "Get list",
                 "description": "Returns",
                 "operationId": "Master Domain SPBE",
+                "parameters": [
+                    {
+                        "name": "?page=",
+                        "in": "path",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful operation",

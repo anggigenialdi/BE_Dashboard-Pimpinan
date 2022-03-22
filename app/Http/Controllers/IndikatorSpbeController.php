@@ -331,11 +331,19 @@ class IndikatorSpbeController extends Controller
 
     /**
      * @OA\Get(
-     *      path="/api/v1/get-master-domain",
+     *      path="/api/v1/get-master-domain?page=",
      *      operationId="Master Domain SPBE",
      *      tags={"Master Indikator SPBE"},
      *      summary="Get list",
      *      description="Returns",
+     *      @OA\Parameter(
+     *      name="?page=",
+     *       in="path",
+     *       required=false,
+     *       @OA\Schema(
+     *            type="integer"
+     *       )
+     *    ),
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
