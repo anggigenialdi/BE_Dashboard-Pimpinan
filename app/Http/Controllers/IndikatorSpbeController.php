@@ -290,7 +290,7 @@ class IndikatorSpbeController extends Controller
             'id_master_aspek_spbe' => 'required|integer',
             'id_master_domain_aspek_spbe' => 'required|integer',
             'tahun' => 'required|string',
-            'nilai' => 'required|string',
+            'skala_nilai' => 'required|string',
         ]);
 
         try {
@@ -300,7 +300,7 @@ class IndikatorSpbeController extends Controller
             $indikatorSpbe->id_master_aspek_spbe = $request->input('id_master_aspek_spbe');
             $indikatorSpbe->id_master_domain_aspek_spbe = $request->input('id_master_domain_aspek_spbe');
             $indikatorSpbe->tahun = $request->input('tahun');
-            $indikatorSpbe->nilai = $request->input('nilai');
+            $indikatorSpbe->skala_nilai = $request->input('skala_nilai');
 
             //Cek Duplicate data
             $duplicate = $indikatorSpbe->where('tahun', $indikatorSpbe->tahun)->first();

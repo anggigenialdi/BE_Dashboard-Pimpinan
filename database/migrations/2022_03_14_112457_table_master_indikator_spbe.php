@@ -18,8 +18,13 @@ class TableMasterIndikatorSpbe extends Migration
             $table->unsignedBigInteger('id_master_domain_spbe');
             $table->unsignedBigInteger('id_master_aspek_spbe');
             $table->unsignedBigInteger('id_master_domain_aspek_spbe');
-            $table->string('tahun');
-            $table->string('nilai');
+            $table->integer('tahun');
+            $table->integer('skala_nilai');
+            $table->float('bobot');
+            $table->float('index');
+            $table->float('total_index');
+            $table->float('nilai_index');
+            $table->integer('total_bobot');
             $table->timestamps();
         });
 
@@ -51,8 +56,5 @@ class TableMasterIndikatorSpbe extends Migration
     public function down()
     {
         Schema::dropIfExists('master_indikator_spbe');
-        Schema::dropIfExists('master_domain_spbe');
-        Schema::dropIfExists('master_aspek_spbe');
-        Schema::dropIfExists('master_domain_aspek_spbe');
     }
 }
