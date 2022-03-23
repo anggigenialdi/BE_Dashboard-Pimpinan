@@ -9,15 +9,14 @@ class MasterIndikatorSpbe extends Model
     protected $table = "master_indikator_spbe";
 
     protected $fillable = [
-        'id_master_domain_spbe',
-        'id_master_aspek_spbe',
-        'id_master_domain_aspek_spbe',
+        'nama_indikator',
         'skala_nilai',
         'bobot',
         'index',
         'total_index',
         'nilai_index',
         'total_bobot',
+        'tahun',
     ];
 
     public function idDomain()

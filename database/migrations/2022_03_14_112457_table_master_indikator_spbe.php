@@ -15,35 +15,15 @@ class TableMasterIndikatorSpbe extends Migration
     {
         Schema::create('master_indikator_spbe', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('id_master_domain_spbe');
-            $table->unsignedBigInteger('id_master_aspek_spbe');
-            $table->unsignedBigInteger('id_master_domain_aspek_spbe');
-            $table->integer('tahun');
+            $table->string('nama_indikator');
             $table->integer('skala_nilai');
             $table->float('bobot');
-            $table->float('index');
-            $table->float('total_index');
-            $table->float('nilai_index');
-            $table->integer('total_bobot');
+            $table->float('index')->nullable();
+            $table->float('total_index')->nullable();
+            $table->float('nilai_index')->nullable();
+            $table->float('total_bobot')->nullable();
+            $table->integer('tahun');
             $table->timestamps();
-        });
-
-        Schema::table('master_indikator_spbe', function(Blueprint $kolom){
-            $kolom->foreign('id_master_domain_spbe')
-            ->references('id')
-            ->on('master_domain_spbe');
-        });
-        
-        Schema::table('master_indikator_spbe', function(Blueprint $kolom){
-            $kolom->foreign('id_master_aspek_spbe')
-            ->references('id')
-            ->on('master_aspek_spbe');
-        });
-
-        Schema::table('master_indikator_spbe', function(Blueprint $kolom){
-            $kolom->foreign('id_master_domain_aspek_spbe')
-            ->references('id')
-            ->on('master_domain_aspek_spbe');
         });
     }
 

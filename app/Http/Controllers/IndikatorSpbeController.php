@@ -14,234 +14,6 @@ class IndikatorSpbeController extends Controller
 
     /**
      * @OA\Post(
-     * path="/api/v1/add-master-domain-spbe",
-     * operationId="Master Domain Spbe",
-     * tags={"Master Indikator SPBE"},
-     * summary="Master Domain Spbe",
-     * description="Master Domain Spbe",
-     *     @OA\RequestBody(
-     *         @OA\JsonContent(),
-     *         @OA\MediaType(
-     *            mediaType="multipart/form-data",
-     *            @OA\Schema(
-     *               type="object",
-     *               required={"nama_domain_spbe","nomor_domain_spbe",},
-     *               @OA\Property(property="nama_domain_spbe", type="string"),
-     *               @OA\Property(property="nomor_domain_spbe", type="integer"),
-     *            ),
-     *        ),
-     *    ),
-     *      @OA\Response(
-     *          response=201,
-     *          description="Input Data Successfully",
-     *          @OA\JsonContent()
-     *       ),
-     *      @OA\Response(
-     *          response=200,
-     *          description="Input Data Successfully",
-     *          @OA\JsonContent()
-     *       ),
-     *      @OA\Response(
-     *          response=422,
-     *          description="Unprocessable Entity",
-     *          @OA\JsonContent()
-     *       ),
-     *      @OA\Response(response=400, description="Bad request"),
-     *      @OA\Response(response=404, description="Resource Not Found"),
-     * )
-     */
-
-    public function addMasterDomainSpbe(Request $request)
-    {
-        //validate incoming request 
-        $this->validate($request, [
-            'nama_domain_spbe'  => 'required|string',
-            'nomor_domain_spbe' => 'required|integer',
-        ]);
-
-        try {
-
-            $domain = new MasterDomainSpbe;
-            $domain->nama_domain_spbe = $request->input('nama_domain_spbe');
-            $domain->nomor_domain_spbe = $request->input('nomor_domain_spbe');
-            $domain->save();
-
-            return response()->json([
-                'success' => true,
-                'message' => 'Input Data Berhasil',
-                'data'    => $domain,
-            ], 201);
-        } catch (\Exception $e) {
-            //return error message
-            return response()->json([
-                'success' => false,
-                'message' => $e
-            ], 409);
-        }
-    }
-
-    /**
-     * @OA\Post(
-     * path="/api/v1/add-master-aspek-spbe",
-     * operationId="Master Aspek Spbe",
-     * tags={"Master Indikator SPBE"},
-     * summary="Master Aspek Spbe",
-     * description="Master Aspek Spbe",
-     *     @OA\RequestBody(
-     *         @OA\JsonContent(),
-     *         @OA\MediaType(
-     *            mediaType="multipart/form-data",
-     *            @OA\Schema(
-     *               type="object",
-     *               required={"nama_aspek_spbe","nomor_aspek_spbe",},
-     *               @OA\Property(property="nama_aspek_spbe", type="string"),
-     *               @OA\Property(property="nomor_aspek_spbe", type="integer"),
-     *            ),
-     *        ),
-     *    ),
-     *      @OA\Response(
-     *          response=201,
-     *          description="Input Data Successfully",
-     *          @OA\JsonContent()
-     *       ),
-     *      @OA\Response(
-     *          response=200,
-     *          description="Input Data Successfully",
-     *          @OA\JsonContent()
-     *       ),
-     *      @OA\Response(
-     *          response=422,
-     *          description="Unprocessable Entity",
-     *          @OA\JsonContent()
-     *       ),
-     *      @OA\Response(response=400, description="Bad request"),
-     *      @OA\Response(response=404, description="Resource Not Found"),
-     * )
-     */
-
-    public function addMasterAspekSpbe(Request $request)
-    {
-        //validate incoming request 
-        $this->validate($request, [
-            'nama_aspek_spbe'  => 'required|string',
-            'nomor_aspek_spbe' => 'required|integer',
-        ]);
-
-        try {
-
-            $aspek = new MasterAspekSpbe;
-            $aspek->nama_aspek_spbe = $request->input('nama_aspek_spbe');
-            $aspek->nomor_aspek_spbe = $request->input('nomor_aspek_spbe');
-
-            //Cek Duplicate data
-            $duplicate = $aspek->where('nomor_aspek_spbe', $aspek->nomor_aspek_spbe)->first();
-
-            if ($duplicate) {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Data Duplikat',
-                    'data' => $aspek,
-                ], 425);
-            } else {
-                $aspek->save();
-            }
-            return response()->json([
-                'success' => true,
-                'message' => 'Input Data Berhasil',
-                'data' => $aspek,
-            ], 201);
-        } catch (\Exception $e) {
-            //return error message
-            return response()->json([
-                'success' => false,
-                'message' => $e
-            ], 409);
-        }
-    }
-    /**
-     * @OA\Post(
-     * path="/api/v1/add-master-domain-aspek-spbe",
-     * operationId="Master Domain Aspek Spbe",
-     * tags={"Master Indikator SPBE"},
-     * summary="Master Domain Aspek Spbe",
-     * description="Master Domain Aspek Spbe",
-     *     @OA\RequestBody(
-     *         @OA\JsonContent(),
-     *         @OA\MediaType(
-     *            mediaType="multipart/form-data",
-     *            @OA\Schema(
-     *               type="object",
-     *               required={"id_master_domain_spbe","id_master_aspek_spbe", "deskripsi"},
-     *               @OA\Property(property="id_master_domain_spbe", type="integer"),
-     *               @OA\Property(property="id_master_aspek_spbe", type="integer"),
-     *               @OA\Property(property="deskripsi", type="string"),
-     *            ),
-     *        ),
-     *    ),
-     *      @OA\Response(
-     *          response=201,
-     *          description="Input Data Successfully",
-     *          @OA\JsonContent()
-     *       ),
-     *      @OA\Response(
-     *          response=200,
-     *          description="Input Data Successfully",
-     *          @OA\JsonContent()
-     *       ),
-     *      @OA\Response(
-     *          response=422,
-     *          description="Unprocessable Entity",
-     *          @OA\JsonContent()
-     *       ),
-     *      @OA\Response(response=400, description="Bad request"),
-     *      @OA\Response(response=404, description="Resource Not Found"),
-     * )
-     */
-
-    public function addMasterDomainAspekSpbe(Request $request)
-    {
-        //validate incoming request 
-        $this->validate($request, [
-            'id_master_domain_spbe'  => 'required|integer',
-            'id_master_aspek_spbe' => 'required|integer',
-            'deskripsi' => 'required|string',
-        ]);
-
-        try {
-
-            $domainAspek = new MasterDomainAspekSpbe;
-            $domainAspek->id_master_domain_spbe = $request->input('id_master_domain_spbe');
-            $domainAspek->id_master_aspek_spbe = $request->input('id_master_aspek_spbe');
-            $domainAspek->deskripsi = $request->input('deskripsi');
-
-            //Cek Duplicate data
-            $duplicate = $domainAspek->where('deskripsi', $domainAspek->deskripsi)->first();
-
-            if ($duplicate) {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Data Duplikat',
-                    'data' => $domainAspek,
-                ], 425);
-            } else {
-                $domainAspek->save();
-                return response()->json([
-                    'success' => true,
-                    'message' => 'Input Data Berhasil',
-                    'data' => $domainAspek,
-                ], 201);
-            }
-        
-        } catch (\Exception $e) {
-            //return error message
-            return response()->json([
-                'success' => false,
-                'message' => $e
-            ], 409);
-        }
-    }
-    /**
-     * @OA\Post(
      * path="/api/v1/add-master-indikator-spbe",
      * operationId="Master Indikator Spbe",
      * tags={"Master Indikator SPBE"},
@@ -253,12 +25,11 @@ class IndikatorSpbeController extends Controller
      *            mediaType="multipart/form-data",
      *            @OA\Schema(
      *               type="object",
-     *               required={"id_master_domain_spbe","id_master_aspek_spbe", "id_master_domain_aspek_spbe", "tahun", "nilai"},
-     *               @OA\Property(property="id_master_domain_spbe", type="integer"),
-     *               @OA\Property(property="id_master_aspek_spbe", type="integer"),
-     *               @OA\Property(property="id_master_domain_aspek_spbe", type="integer"),
-     *               @OA\Property(property="tahun", type="string"),
-     *               @OA\Property(property="nilai", type="string"),
+     *               required={"nama_indikator", "bobot", "skala_nilai", "tahun"},
+     *               @OA\Property(property="nama_indikator", type="string"),
+     *               @OA\Property(property="bobot", type="float"),
+     *               @OA\Property(property="skala_nilai", type="integer"),
+     *               @OA\Property(property="tahun", type="integer"),
      *            ),
      *        ),
      *    ),
@@ -286,24 +57,23 @@ class IndikatorSpbeController extends Controller
     {
         //validate incoming request 
         $this->validate($request, [
-            'id_master_domain_spbe'  => 'required|integer',
-            'id_master_aspek_spbe' => 'required|integer',
-            'id_master_domain_aspek_spbe' => 'required|integer',
+            'nama_indikator'  => 'required|string',
+            'bobot' => 'required|regex:/^\d{1,13}(\.\d{1,4})?$/',
+            'skala_nilai' => 'required|integer',
             'tahun' => 'required|string',
-            'skala_nilai' => 'required|string',
         ]);
 
         try {
 
             $indikatorSpbe = new MasterIndikatorSpbe;
-            $indikatorSpbe->id_master_domain_spbe = $request->input('id_master_domain_spbe');
-            $indikatorSpbe->id_master_aspek_spbe = $request->input('id_master_aspek_spbe');
-            $indikatorSpbe->id_master_domain_aspek_spbe = $request->input('id_master_domain_aspek_spbe');
-            $indikatorSpbe->tahun = $request->input('tahun');
+            $indikatorSpbe->nama_indikator = $request->input('nama_indikator');
+            $indikatorSpbe->bobot = $request->input('bobot');
             $indikatorSpbe->skala_nilai = $request->input('skala_nilai');
+            $indikatorSpbe->tahun = $request->input('tahun');
+
 
             //Cek Duplicate data
-            $duplicate = $indikatorSpbe->where('tahun', $indikatorSpbe->tahun)->first();
+            $duplicate = $indikatorSpbe->where('id', $indikatorSpbe->id)->first();
 
             if ($duplicate) {
                 return response()->json([
@@ -313,13 +83,27 @@ class IndikatorSpbeController extends Controller
                 ], 425);
             } else {
                 $indikatorSpbe->save();
+
+                $dataIndikator = $indikatorSpbe::where('id', $indikatorSpbe->id)->first();
+                $dataIndex = ( ($dataIndikator->skala_nilai / 5) * $dataIndikator->bobot );
+                $totalBobot = $indikatorSpbe::where('bobot', $indikatorSpbe->bobot )->sum("bobot");
+                $totalIndex = $indikatorSpbe::where('index', $indikatorSpbe->index)->sum("index");
+                $nilaiIndex = ( ($totalIndex / $totalBobot) * 5 );
+
+                $dataIndikator->update([
+                    'index' => $dataIndex,
+                    'total_bobot' => $totalBobot,
+                    'total_index' => $totalIndex,
+                    'nilai_index' => $nilaiIndex,
+                ]);
+
                 return response()->json([
                     'success' => true,
                     'message' => 'Input Data Berhasil',
-                    'data' => $indikatorSpbe,
+                    'data' => [$dataIndikator],
                 ], 201);
             }
-        
+
         } catch (\Exception $e) {
             //return error message
             return response()->json([
@@ -367,12 +151,12 @@ class IndikatorSpbeController extends Controller
                 'message' => 'Master Data Domain',
                 'data' =>  MasterDomainSpbe::OrderBy('id', 'ASC')->paginate(5),
             ], 200);
-
         } catch (\Throwable $th) {
             return response()->json([
                 'success' => false,
                 'message' => $th
-            ], 409);        }
+            ], 409);
+        }
     }
     /**
      * @OA\Get(
@@ -412,32 +196,33 @@ class IndikatorSpbeController extends Controller
                 'message' => 'Master Data Aspek',
                 'data' =>  MasterAspekSpbe::OrderBy('id', 'ASC')->paginate(5),
             ], 200);
-
         } catch (\Throwable $th) {
             return response()->json([
                 'success' => false,
                 'message' => $th
-            ], 409);        }
+            ], 409);
+        }
     }
 
-    
+
     public function getMasterIndikatorSpbeById(Request $request, $idIndikator)
     {
         try {
             $dataIndikator = MasterIndikatorSpbe::where('id', $idIndikator)->get();
-            
+
             $resultData = [];
             $no = 0;
 
             foreach ($dataIndikator as $key) {
-                $no ++;
+                $no++;
                 $resultData['Kode Domain'] = $key->id_master_domain_spbe;
                 $resultData['tahun'] = $key->tahun;
                 $resultData['nilai'] = $key->nilai;
                 array_push($resultData);
             }
 
-            var_dump($resultData);die();
+            var_dump($resultData);
+            die();
 
 
             // $findIdDomain = MasterIndikatorSpbe::where('id_master_domain_spbe')->get();
@@ -451,12 +236,12 @@ class IndikatorSpbeController extends Controller
                     'data' => $resultData
                 ],
             ], 200);
-
         } catch (\Throwable $th) {
             return response()->json([
                 'success' => false,
                 'message' => $th
-            ], 409);        }
+            ], 409);
+        }
     }
     /**
      * @OA\Get(
@@ -502,7 +287,7 @@ class IndikatorSpbeController extends Controller
             $dataDomainAspek = MasterDomainAspekSpbe::where('id', $idDomainAspek)->get();
             $dataIndikator = MasterIndikatorSpbe::where('id_master_domain_aspek_spbe', $idDomainAspek)->first();
 
-            if( !$dataIndikator ){
+            if (!$dataIndikator) {
                 return response()->json(
                     [
                         'success' => false,
@@ -516,7 +301,7 @@ class IndikatorSpbeController extends Controller
                 $data_da = [];
                 $no = 0;
 
-                foreach ( $dataDomainAspek as $as ){
+                foreach ($dataDomainAspek as $as) {
                     $no++;
                     $data['Domain 1 Kebijakan Internal SPBE'] = $as->id_master_domain_spbe;
                     $data['Aspek 1 Kebijakan Internal Tata Kelola SPBE'] = $as->id_master_aspek_spbe;
@@ -535,11 +320,11 @@ class IndikatorSpbeController extends Controller
                     'data' => $data_da
                 ],
             ], 200);
-
         } catch (\Throwable $th) {
             return response()->json([
                 'success' => false,
                 'message' => $th
-            ], 409);        }
+            ], 409);
+        }
     }
 }
