@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class TableMasterAspekSpbe extends Migration
+class TableIndexSpbePertahun extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class TableMasterAspekSpbe extends Migration
      */
     public function up()
     {
-        Schema::create('master_aspek_spbe', function (Blueprint $table) {
+        Schema::create('index_spbe_pertahun', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nama_aspek_spbe');
-            $table->integer('nomor_aspek_spbe');
+            $table->integer('tahun')->nullable();
+            $table->float('hasil_index');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class TableMasterAspekSpbe extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('master_aspek_spbe');
+        Schema::dropIfExists('index_spbe_pertahun');
     }
 }

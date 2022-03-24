@@ -28,13 +28,18 @@ $router->group(['prefix' => 'api/v1'], function () use ($router) {
     $router->post('login', 'AuthController@login');
 
     $router->get('users', 'AuthController@users');
-    
+
     //Indikator spbe
     $router->post('add-master-indikator-spbe', 'IndikatorSpbeController@addMasterIndikatorSpbe');
-    $router->get('get-master-domain', 'IndikatorSpbeController@getAllMasterDomain');
-    $router->get('get-master-aspek', 'IndikatorSpbeController@getAllMasterAspek');
-    $router->get('get-master-indikator-spbe/{idIndikator}', 'IndikatorSpbeController@getMasterIndikatorSpbeById');
-    $router->get('get-master-indikator-spbe/{idIndikator}/{idDomainAspek}', 'IndikatorSpbeController@getMasterIndikatorSpbe');
+    $router->get('get-master-indikator-spbe', 'IndikatorSpbeController@getAllMasterIndikatorSpbe');
+
+    $router->post('add-index-spbe', 'IndikatorSpbeController@addIndexSpbe');
+    $router->get('get-index-spbe/{idIndikator}', 'IndikatorSpbeController@getDataIndikator');
+
+    $router->get('get-nilai-index/{tahun}', 'IndikatorSpbeController@getNilaiIndex');
+
+    //end
+
 
     //Masger Data CCTV
     $router->post('add-master-data-cctv', 'MasterDataCctvController@addMasterDataCctv');

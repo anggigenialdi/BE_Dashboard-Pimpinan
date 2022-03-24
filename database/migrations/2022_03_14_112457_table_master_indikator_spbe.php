@@ -16,13 +16,7 @@ class TableMasterIndikatorSpbe extends Migration
         Schema::create('master_indikator_spbe', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nama_indikator');
-            $table->integer('skala_nilai');
             $table->float('bobot');
-            $table->float('index')->nullable();
-            $table->float('total_index')->nullable();
-            $table->float('nilai_index')->nullable();
-            $table->float('total_bobot')->nullable();
-            $table->integer('tahun');
             $table->timestamps();
         });
     }

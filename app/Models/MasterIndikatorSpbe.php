@@ -10,17 +10,10 @@ class MasterIndikatorSpbe extends Model
 
     protected $fillable = [
         'nama_indikator',
-        'skala_nilai',
         'bobot',
-        'index',
-        'total_index',
-        'nilai_index',
-        'total_bobot',
-        'tahun',
     ];
 
-    public function idDomain()
-    {
-        return $this->belongsTo(MasterDomainSpbe::class);
+    public function indexSpbe(){
+        return $this->hasMany(IndexSpbe::class, 'id_indikator');
     }
 }

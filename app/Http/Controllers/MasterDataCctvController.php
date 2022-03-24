@@ -8,49 +8,6 @@ use Illuminate\Http\Request;
 
 class MasterDataCctvController extends Controller
 {
-    /**
-     * @OA\Post(
-     * path="/api/v1/add-master-data-cctv",
-     * operationId="Master Data CCTV",
-     * tags={"Master Data CCTV"},
-     * summary="Master Data Cctv",
-     * description="Master Data Cctv",
-     *     @OA\RequestBody(
-     *         @OA\JsonContent(),
-     *         @OA\MediaType(
-     *            mediaType="multipart/form-data",
-     *            @OA\Schema(
-     *               type="object",
-     *               required={"lokasi","latitude", "longitude", "status", "vendor", "dinas"},
-     *               @OA\Property(property="lokasi", type="string"),
-     *               @OA\Property(property="latitude", type="string"),
-     *               @OA\Property(property="longitude", type="string"),
-     *               @OA\Property(property="status", type="string"),
-     *               @OA\Property(property="vendor", type="string"),
-     *               @OA\Property(property="dinas", type="string"),
-     *            ),
-     *        ),
-     *    ),
-     *      @OA\Response(
-     *          response=201,
-     *          description="Input Data Successfully",
-     *          @OA\JsonContent()
-     *       ),
-     *      @OA\Response(
-     *          response=200,
-     *          description="Input Data Successfully",
-     *          @OA\JsonContent()
-     *       ),
-     *      @OA\Response(
-     *          response=422,
-     *          description="Unprocessable Entity",
-     *          @OA\JsonContent()
-     *       ),
-     *      @OA\Response(response=400, description="Bad request"),
-     *      @OA\Response(response=404, description="Resource Not Found"),
-     * )
-     */
-
     public function addMasterDataCctv(Request $request)
     {
         //validate incoming request 
@@ -108,28 +65,6 @@ class MasterDataCctvController extends Controller
         }
     }
 
-    /**
-     * @OA\Get(
-     *      path="/api/v1/get-master-data-cctv",
-     *      operationId="Master Data CCTV Get",
-     *      tags={"Master Data CCTV"},
-     *      summary="Get list GET ALL",
-     *      description="Returns",
-     *      @OA\Response(
-     *          response=200,
-     *          description="Successful operation",
-     *          @OA\JsonContent()
-     *       ),
-     *      @OA\Response(
-     *          response=401,
-     *          description="Unauthenticated",
-     *      ),
-     *      @OA\Response(
-     *          response=403,
-     *          description="Forbidden"
-     *      )
-     *     )
-     */
     public function getAllMasterDataCctv(Request $request)
     {
         try {
@@ -146,36 +81,6 @@ class MasterDataCctvController extends Controller
             ], 409);        }
     }
 
-    /**
-     * @OA\Get(
-     *      path="/api/v1/get-master-data-cctv/{idCctv}",
-     *      operationId="Master Data CCTV By Id",
-     *      tags={"Master Data CCTV"},
-     *      summary="Get Data BY Id",
-     *      description="Returns",
-     *      @OA\Parameter(
-     *      name="idCctv",
-     *       in="path",
-     *       required=false,
-     *       @OA\Schema(
-     *            type="integer"
-     *       )
-     *    ),
-     *      @OA\Response(
-     *          response=200,
-     *          description="Successful operation",
-     *          @OA\JsonContent()
-     *       ),
-     *      @OA\Response(
-     *          response=401,
-     *          description="Unauthenticated",
-     *      ),
-     *      @OA\Response(
-     *          response=403,
-     *          description="Forbidden"
-     *      )
-     *     )
-     */
     public function getMasterDataCctvById(Request $request, $idCctv)
     {
         try {

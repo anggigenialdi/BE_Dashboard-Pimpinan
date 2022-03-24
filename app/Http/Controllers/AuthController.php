@@ -11,46 +11,6 @@ use Illuminate\Support\Str;
 
 class AuthController extends Controller
 {
-    /**
-     * @OA\Post(
-     * path="/api/v1/register",
-     * operationId="Register",
-     * tags={"Users"},
-     * summary="User Register",
-     * description="User Register here",
-     *     @OA\RequestBody(
-     *         @OA\JsonContent(),
-     *         @OA\MediaType(
-     *            mediaType="multipart/form-data",
-     *            @OA\Schema(
-     *               type="object",
-     *               required={"nama","email", "password", "password_confirmation"},
-     *               @OA\Property(property="nama", type="string"),
-     *               @OA\Property(property="email", type="string"),
-     *               @OA\Property(property="password", type="string", format="password"),
-     *               @OA\Property(property="password_confirmation", type="string", format="password")
-     *            ),
-     *        ),
-     *    ),
-     *      @OA\Response(
-     *          response=201,
-     *          description="Register Successfully",
-     *          @OA\JsonContent()
-     *       ),
-     *      @OA\Response(
-     *          response=200,
-     *          description="Register Successfully",
-     *          @OA\JsonContent()
-     *       ),
-     *      @OA\Response(
-     *          response=422,
-     *          description="Unprocessable Entity",
-     *          @OA\JsonContent()
-     *       ),
-     *      @OA\Response(response=400, description="Bad request"),
-     *      @OA\Response(response=404, description="Resource Not Found"),
-     * )
-     */
     public function register(Request $request)
     {
         //validate incoming request 
@@ -97,44 +57,6 @@ class AuthController extends Controller
         }
     }
 
-    /**
-     * @OA\Post(
-     * path="/api/v1/login",
-     * operationId="authLogin",
-     * tags={"Users"},
-     * summary="User Login",
-     * description="Login User Here",
-     *     @OA\RequestBody(
-     *         @OA\JsonContent(),
-     *         @OA\MediaType(
-     *            mediaType="multipart/form-data",
-     *            @OA\Schema(
-     *               type="object",
-     *               required={"email", "password"},
-     *               @OA\Property(property="email", type="string"),
-     *               @OA\Property(property="password", type="string", format="password"),
-     *            ),
-     *        ),
-     *    ),
-     *      @OA\Response(
-     *          response=201,
-     *          description="Login Successfully",
-     *          @OA\JsonContent()
-     *       ),
-     *      @OA\Response(
-     *          response=200,
-     *          description="Login Successfully",
-     *          @OA\JsonContent()
-     *       ),
-     *      @OA\Response(
-     *          response=422,
-     *          description="Unprocessable Entity",
-     *          @OA\JsonContent()
-     *       ),
-     *      @OA\Response(response=400, description="Bad request"),
-     *      @OA\Response(response=404, description="Resource Not Found"),
-     * )
-     */
     public function login(Request $request)
     {
 
@@ -200,28 +122,6 @@ class AuthController extends Controller
         }
     }
 
-    /**
-     * @OA\Get(
-     *      path="/api/v1/users",
-     *      operationId="Users",
-     *      tags={"Users"},
-     *      summary="Get list",
-     *      description="Returns",
-     *      @OA\Response(
-     *          response=200,
-     *          description="Successful operation",
-     *          @OA\JsonContent()
-     *       ),
-     *      @OA\Response(
-     *          response=401,
-     *          description="Unauthenticated",
-     *      ),
-     *      @OA\Response(
-     *          response=403,
-     *          description="Forbidden"
-     *      )
-     *     )
-     */
     public function users(Request $request)
     {
         return response()->json([
