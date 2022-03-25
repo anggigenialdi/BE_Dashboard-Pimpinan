@@ -97,7 +97,7 @@ class IndikatorSpbeController extends Controller
                 ], 425);
             } else {
 
-                // $indikatorSpbe->save();
+                $indikatorSpbe->save();
 
                 $getData = MasterIndikatorSpbe::where('id', $indikatorSpbe->id_indikator)->get();
                 $bobot = [];
@@ -113,42 +113,66 @@ class IndikatorSpbeController extends Controller
                 $indikatorSpbe->update([
                     'index_nilai' => $dataIndex,
                 ]);
+                $newArr = [];
+                $saveData = [];
+                $no = 0;
+                foreach ($getData as $key) {
+                    $no++;
+                    $newArr['nama_indikator'] = $key->nama_indikator;
+                    $newArr['bobot'] = $key->bobot;
+    
+                    foreach ($key->indexSpbe as $spbe) {
+                        $newArr['id_indikator'] = $spbe->id_indikator;
+                        $newArr['tahun'] = $spbe->tahun;
+                        $newArr['skala_nilai'] = $spbe->skala_nilai;
+                        $newArr['index_nilai'] = $spbe->index_nilai;
+                    }
+                    array_push($saveData, $newArr);
+                };
+                // dd($saveData);
 
-                $getDataIn = $indikatorSpbe;
-                dd($getDataIn);
-                
+                $newData = IndexSpbe::where('tahun', $spbe->tahun)->get();
 
-                //total index
                 $totalIndex = 0;
-                foreach ($indikatorSpbe as $key) {
+                foreach ($newData as $key) {
                     $totalIndex = ($totalIndex + $key->index_nilai);
                 }
+                // dd($totalIndex);
+
+                $dataBaru = [];
+                $getIdIndikator = [];
+    
+                foreach ($newData as $key) {
+                    $dataBaru['id_indikator'] = $key->id_indikator;
+                    array_push($getIdIndikator, $dataBaru);
+                };
+
+                $masterIndex = MasterIndikatorSpbe::whereIn('id', $getIdIndikator)->get();
 
                 $totalBobot = 0;
-                foreach ($getData as $nilai) {
+                foreach ($masterIndex as $nilai) {
                     $totalBobot = ($totalBobot + $nilai->bobot);
                 };
-
-                $getTahun = [];
-                foreach ($indikatorSpbe as $key) {
-                    $getTahun['tahun'] = $key->tahun;
-                    array_push($getTahun);
-                };
+                // dd($totalBobot);
 
                 $hasilIndex = (($totalIndex / $totalBobot) * 5);
+                
+                $saveIndexPertahun = IndexSpbePertahun::where('tahun', request('tahun'))->first();
 
-                $nilaiTahun = IndexSpbe::where('tahun', $getTahun)->get();
-
-                $nilaiTahun->update([
-                    'tahun' => $getTahun,
-                    'hasil_index' => $hasilIndex
-                ]);
+                if ($saveIndexPertahun !== null) {
+                    $saveIndexPertahun->update(['hasil_index' => $hasilIndex]);
+                } else {
+                    $saveIndexPertahun = IndexSpbePertahun::create([
+                        'tahun' => request('tahun'),
+                        'hasil_index' => $hasilIndex,
+                    ]);
+                }
 
                 return response()->json([
                     'success' => true,
                     'message' => 'Input Data Berhasil',
                     'data' => [$indikatorSpbe],
-                    'index' => $nilaiTahun,
+                    'data_pertahun' => $saveIndexPertahun,
                 ], 201);
             }
         } catch (\Throwable $th) {

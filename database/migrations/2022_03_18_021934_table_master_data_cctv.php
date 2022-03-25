@@ -18,7 +18,7 @@ class TableMasterDataCctv extends Migration
             $table->string('lokasi')->nullable();
             $table->string('latitude')->nullable();
             $table->string('longitude')->nullable();
-            $table->string('status')->nullable();
+            $table->boolean('status')->default(0);
             $table->string('vendor')->nullable();
             $table->string('dinas')->nullable();
             $table->timestamps();
