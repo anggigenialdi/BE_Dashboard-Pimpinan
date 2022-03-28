@@ -274,8 +274,8 @@
                 "tags": [
                     "Master Indikator SPBE"
                 ],
-                "summary": "Index SPBE",
-                "description": "Data Index SPBE",
+                "summary": "Tambah Data Index SPBE Skala",
+                "description": "Tambah Data Index SPBE Skala",
                 "operationId": "Add Index SPBE",
                 "requestBody": {
                     "content": {
@@ -339,6 +339,112 @@
                 }
             }
         },
+        "/api/v1/get-nilai-index/{tahun}": {
+            "get": {
+                "tags": [
+                    "Master Indikator SPBE"
+                ],
+                "summary": "Get Nilai Index Pertahun",
+                "description": "Returns",
+                "operationId": "Get Nilai Index Pertahun",
+                "parameters": [
+                    {
+                        "name": "tahun",
+                        "in": "path",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/v1/update-master-indikator-spbe/{id}": {
+            "put": {
+                "tags": [
+                    "Master Indikator SPBE"
+                ],
+                "summary": "Index SPBE",
+                "description": "Edit Master Data Index SPBE",
+                "operationId": "Add Index SPBE",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "nama_indikator": {
+                                        "type": "string"
+                                    },
+                                    "bobot": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Input Data Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Input Data Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
         "/api/v1/add-master-data-cctv": {
             "post": {
                 "tags": [
@@ -355,9 +461,7 @@
                                     "lokasi",
                                     "latitude",
                                     "longitude",
-                                    "status",
-                                    "vendor",
-                                    "dinas"
+                                    "status"
                                 ],
                                 "properties": {
                                     "lokasi": {
@@ -561,42 +665,6 @@
                     },
                     "404": {
                         "description": "Resource Not Found"
-                    }
-                }
-            }
-        },
-        "/api/v1/get-nilai-index/{tahun}": {
-            "get": {
-                "tags": [
-                    "Master Indikator SPBE"
-                ],
-                "summary": "Get Nilai Index Pertahun",
-                "description": "Returns",
-                "operationId": "Get Nilai Index Pertahun",
-                "parameters": [
-                    {
-                        "name": "tahun",
-                        "in": "path",
-                        "required": false,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {}
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
                     }
                 }
             }

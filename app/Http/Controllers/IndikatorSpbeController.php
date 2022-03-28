@@ -226,20 +226,10 @@ class IndikatorSpbeController extends Controller
         try {
             $updateData = MasterIndikatorSpbe::find($id)->get();
 
-            $dataMaster = [];
-            foreach ($updateData as $key) {
-                $dataMaster['nama_indikator'] = $key->nama_indikator;
-                $dataMaster['bobot'] = $key->bobot;
-                array_push($dataMaster);
-            };
-
-            if ($request->input() !== null) {
-                $updateData->update([
-                    'nama_indikator' => request('nama_indikator'),
-                    'bobot' => request('bobot')
-                ]);
-            } 
-            dd($updateData);
+            $updateData->update([
+                'nama_indikator' => request('nama_indikator'),
+                'bobot' => request('bobot')
+            ]);
 
             if (!$updateData) {
                 return response()->json([

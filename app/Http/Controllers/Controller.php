@@ -200,8 +200,8 @@ class Controller extends BaseController
      * path="/api/v1/add-index-spbe",
      * operationId="Add Index SPBE",
      * tags={"Master Indikator SPBE"},
-     * summary="Index SPBE",
-     * description="Data Index SPBE",
+     * summary="Tambah Data Index SPBE Skala",
+     * description="Tambah Data Index SPBE Skala",
      *     @OA\RequestBody(
      *         @OA\JsonContent(),
      *         @OA\MediaType(
@@ -235,10 +235,88 @@ class Controller extends BaseController
      * )
      */
 
+    
+    /**
+     * @OA\Get(
+     *      path="/api/v1/get-nilai-index/{tahun}",
+     *      operationId="Get Nilai Index Pertahun",
+     *      tags={"Master Indikator SPBE"},
+     *      summary="Get Nilai Index Pertahun",
+     *      description="Returns",
+     *      @OA\Parameter(
+     *      name="tahun",
+     *       in="path",
+     *       required=false,
+     *       @OA\Schema(
+     *            type="integer"
+     *       )
+     *    ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *     )
+     */
+
+    /**
+     * @OA\Put(
+     *      path="/api/v1/update-master-indikator-spbe/{id}",
+     *      operationId="Add Index SPBE",
+     *      tags={"Master Indikator SPBE"},
+     *      summary="Index SPBE",
+     *      description="Edit Master Data Index SPBE",
+     *      @OA\Parameter(
+     *      name="id",
+     *       in="path",
+     *       required=false,
+     *       @OA\Schema(
+     *            type="integer"
+     *       )
+     *    ),
+     *   @OA\RequestBody(
+     *     required=true,
+     *     @OA\MediaType(
+     *       mediaType="application/json",
+     *       @OA\Schema(
+     *           @OA\Property(property="nama_indikator", type="string"),
+     *           @OA\Property(property="bobot", type="string"),
+     *       ),
+     *     ),
+     *   ),
+     *      @OA\Response(
+     *          response=201,
+     *          description="Input Data Successfully",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Input Data Successfully",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=422,
+     *          description="Unprocessable Entity",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(response=400, description="Bad request"),
+     *      @OA\Response(response=404, description="Resource Not Found"),
+     * )
+     */
+
 
     //END MASTER DATA INDEX SPBE
 
     // MASTER DATA CCTV
+
     /**
      * @OA\Post(
      * path="/api/v1/add-master-data-cctv",
@@ -252,7 +330,7 @@ class Controller extends BaseController
      *            mediaType="multipart/form-data",
      *            @OA\Schema(
      *               type="object",
-     *               required={"lokasi","latitude", "longitude", "status", "vendor", "dinas"},
+     *               required={"lokasi","latitude", "longitude", "status",},
      *               @OA\Property(property="lokasi", type="string"),
      *               @OA\Property(property="latitude", type="string"),
      *               @OA\Property(property="longitude", type="string"),
@@ -339,7 +417,6 @@ class Controller extends BaseController
      */
 
     /**
-     * 
      * @OA\Put(
      *      path="/api/v1/update-master-data-cctv/{idCctv}",
      *      operationId="Update Master Data CCTV By Id",
@@ -387,37 +464,8 @@ class Controller extends BaseController
      *      @OA\Response(response=404, description="Resource Not Found"),
      * )
      */
+
     //END MASTER DATA CCTV
 
 
-    /**
-     * @OA\Get(
-     *      path="/api/v1/get-nilai-index/{tahun}",
-     *      operationId="Get Nilai Index Pertahun",
-     *      tags={"Master Indikator SPBE"},
-     *      summary="Get Nilai Index Pertahun",
-     *      description="Returns",
-     *      @OA\Parameter(
-     *      name="tahun",
-     *       in="path",
-     *       required=false,
-     *       @OA\Schema(
-     *            type="integer"
-     *       )
-     *    ),
-     *      @OA\Response(
-     *          response=200,
-     *          description="Successful operation",
-     *          @OA\JsonContent()
-     *       ),
-     *      @OA\Response(
-     *          response=401,
-     *          description="Unauthenticated",
-     *      ),
-     *      @OA\Response(
-     *          response=403,
-     *          description="Forbidden"
-     *      )
-     *     )
-     */
 }
