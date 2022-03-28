@@ -339,32 +339,6 @@
                 }
             }
         },
-        "/api/v1/get-index-spbe": {
-            "get": {
-                "tags": [
-                    "Master Indikator SPBE"
-                ],
-                "summary": "Get All Data Index",
-                "description": "Returns",
-                "operationId": "Get Data Index",
-                "responses": {
-                    "200": {
-                        "description": "Successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {}
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    }
-                }
-            }
-        },
         "/api/v1/add-master-data-cctv": {
             "post": {
                 "tags": [
@@ -396,7 +370,7 @@
                                         "type": "string"
                                     },
                                     "status": {
-                                        "type": "string"
+                                        "type": "integer"
                                     },
                                     "vendor": {
                                         "type": "string"
@@ -452,7 +426,7 @@
                 "tags": [
                     "Master Data CCTV"
                 ],
-                "summary": "Get list GET ALL",
+                "summary": "Get Data CCTV",
                 "description": "Returns",
                 "operationId": "Master Data CCTV Get",
                 "responses": {
@@ -509,89 +483,99 @@
                 }
             }
         },
+        "/api/v1/update-master-data-cctv/{idCctv}": {
+            "put": {
+                "tags": [
+                    "Master Data CCTV"
+                ],
+                "summary": "Update Data CCTV BY Id",
+                "description": "Returns",
+                "operationId": "Update Master Data CCTV By Id",
+                "parameters": [
+                    {
+                        "name": "idCctv",
+                        "in": "path",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "lokasi": {
+                                        "type": "string"
+                                    },
+                                    "latitude": {
+                                        "type": "string"
+                                    },
+                                    "longitude": {
+                                        "type": "string"
+                                    },
+                                    "status": {
+                                        "type": "boolean"
+                                    },
+                                    "vendor": {
+                                        "type": "string"
+                                    },
+                                    "dinas": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Input Data Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Input Data Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
         "/api/v1/get-nilai-index/{tahun}": {
             "get": {
                 "tags": [
                     "Master Indikator SPBE"
                 ],
-                "summary": "Get Data  Nilai Index",
+                "summary": "Get Nilai Index Pertahun",
                 "description": "Returns",
-                "operationId": "Get Nilai Index",
+                "operationId": "Get Nilai Index Pertahun",
                 "parameters": [
                     {
                         "name": "tahun",
-                        "in": "path",
-                        "required": false,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {}
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    }
-                }
-            }
-        },
-        "/api/v1/get-master-domain?page=": {
-            "get": {
-                "tags": [
-                    "Master Indikator SPBE"
-                ],
-                "summary": "Get list",
-                "description": "Returns",
-                "operationId": "Master Domain SPBE",
-                "parameters": [
-                    {
-                        "name": "?page=",
-                        "in": "path",
-                        "required": false,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {}
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    }
-                }
-            }
-        },
-        "/api/v1/get-master-aspek": {
-            "get": {
-                "tags": [
-                    "Master Indikator SPBE"
-                ],
-                "summary": "Get list",
-                "description": "Returns",
-                "operationId": "Master Aspek SPBE",
-                "parameters": [
-                    {
-                        "name": "page",
                         "in": "path",
                         "required": false,
                         "schema": {

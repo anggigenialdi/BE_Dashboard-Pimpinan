@@ -15,7 +15,6 @@ class MasterDataCctvController extends Controller
             'lokasi'  => 'required|string',
             'latitude' => 'required|string',
             'longitude' => 'required|string',
-            // 'status' => 'required|string',
             // 'vendor' => 'required|string',
             // 'dinas' => 'required|string',
         ]);
@@ -32,15 +31,8 @@ class MasterDataCctvController extends Controller
 
             //Cek Duplicate data
             $duplicate = $dataCctv->where('latitude', $dataCctv->latitude)->first();
-            $duplicateLongitude = $dataCctv->where('longitude', $dataCctv->longitude)->first();
 
-            if ($duplicate || $duplicateLongitude) {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Data Duplikat',
-                    'data' => $dataCctv,
-                ], 425);
-            } else if ($duplicate && $duplicateLongitude) {
+            if ($duplicate) {
                 return response()->json([
                     'success' => false,
                     'message' => 'Data Duplikat',
@@ -55,7 +47,6 @@ class MasterDataCctvController extends Controller
                     'data'    => $dataCctv,
                 ], 201);
             }
-            
         } catch (\Exception $e) {
             //return error message
             return response()->json([
@@ -71,14 +62,14 @@ class MasterDataCctvController extends Controller
             return response()->json([
                 'success' => true,
                 'message' => 'Master Data CCTV',
-                'data' =>  MasterDataCctv::OrderBy('id', 'ASC')->paginate(5),
+                'data' =>  MasterDataCctv::OrderBy('id', 'DESC')->paginate(5),
             ], 200);
-
         } catch (\Throwable $th) {
             return response()->json([
                 'success' => false,
                 'message' => $th
-            ], 409);        }
+            ], 409);
+        }
     }
 
     public function getMasterDataCctvById(Request $request, $idCctv)
@@ -86,7 +77,7 @@ class MasterDataCctvController extends Controller
         try {
             $dataCctv = MasterDataCctv::where('id', $idCctv)->first();
 
-            if (!$dataCctv){
+            if (!$dataCctv) {
                 return response()->json([
                     'success' => false,
                     'message' => 'Data tidak ada',
@@ -98,57 +89,48 @@ class MasterDataCctvController extends Controller
                     'data' =>  $dataCctv
                 ], 200);
             }
-
         } catch (\Throwable $th) {
             return response()->json([
                 'success' => false,
                 'message' => $th
-            ], 409);        }
+            ], 409);
+        }
     }
 
     public function updateMasterDataCctvById(Request $request, $idCctv)
     {
         try {
-            dd($request->all());
+            $updateDataCctv = MasterDataCctv::where('id',$idCctv);
+        
+                $updateDataCctv->update([
+                    'lokasi' => request('lokasi'),
+                    'latitude' => request('latitude'),
+                    'longitude' => request('longitude'),
+                    'status' => request('status'),
+                    'vendor' => request('vendor'),
+                    'dinas' => request('dinas'),
+                ]);
+            
 
-            $updateDataCctv = MasterDataCctv::find($idCctv);
-            $updateDataCctv->lokasi = $request->lokasi;
-            $updateDataCctv->latitude = $request->latitude;
-            $updateDataCctv->longitude = $request->longitude;
-            $updateDataCctv->status = $request->status;
-            $updateDataCctv->vendor = $request->vendor;
-            $updateDataCctv->dinas = $request->dinas;
-
-
-            if (!$updateDataCctv){
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Data tidak ada',
-                ], 404);
-            } else {
-                // $updateDataCctv->save();
-
-                return response()->json([
-                    'success' => true,
-                    'message' => 'Update Sukses',
-                    'data' =>  $updateDataCctv
-                ], 201);
-            }
-
+            return response()->json([
+                'success' => true,
+                'message' => 'Input Data Berhasil',
+            ], 201);
         } catch (\Throwable $th) {
             return response()->json([
                 'success' => false,
                 'message' => $th
-            ], 409);       
+            ], 409);
         }
     }
 
-    public function deleteMasterDataCctvById(Request $request, $idCctv){
+    public function deleteMasterDataCctvById(Request $request, $idCctv)
+    {
 
         try {
-            $deleteDataCctv = MasterDataCctv::where('id', $idCctv)->first();    
-            
-            if (!$deleteDataCctv){
+            $deleteDataCctv = MasterDataCctv::where('id', $idCctv)->first();
+
+            if (!$deleteDataCctv) {
                 return response()->json([
                     'success' => false,
                     'message' => 'Data tidak ada',
@@ -165,8 +147,7 @@ class MasterDataCctvController extends Controller
             return response()->json([
                 'success' => false,
                 'message' => $th
-            ], 409);        
+            ], 409);
         }
-
     }
 }

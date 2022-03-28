@@ -63,7 +63,7 @@ class Controller extends BaseController
      * )
      */
 
-    
+
     /**
      * @OA\Post(
      * path="/api/v1/login",
@@ -103,7 +103,7 @@ class Controller extends BaseController
      * )
      */
 
-    
+
     /**
      * @OA\Get(
      *      path="/api/v1/users",
@@ -127,7 +127,7 @@ class Controller extends BaseController
      *     )
      */
     //END USER
-    
+
 
     //MASTER INDEX SPBE
 
@@ -170,7 +170,7 @@ class Controller extends BaseController
      * )
      */
 
-    
+
     /**
      * @OA\Get(
      *      path="/api/v1/get-master-indikator-spbe",
@@ -194,7 +194,7 @@ class Controller extends BaseController
      *     )
      */
 
-    
+
     /**
      * @OA\Post(
      * path="/api/v1/add-index-spbe",
@@ -236,29 +236,6 @@ class Controller extends BaseController
      */
 
 
-    /**
-     * @OA\Get(
-     *      path="/api/v1/get-index-spbe",
-     *      operationId="Get Data Index",
-     *      tags={"Master Indikator SPBE"},
-     *      summary="Get All Data Index",
-     *      description="Returns",
-     *      @OA\Response(
-     *          response=200,
-     *          description="Successful operation",
-     *          @OA\JsonContent()
-     *       ),
-     *      @OA\Response(
-     *          response=401,
-     *          description="Unauthenticated",
-     *      ),
-     *      @OA\Response(
-     *          response=403,
-     *          description="Forbidden"
-     *      )
-     *     )
-     */
-
     //END MASTER DATA INDEX SPBE
 
     // MASTER DATA CCTV
@@ -279,7 +256,7 @@ class Controller extends BaseController
      *               @OA\Property(property="lokasi", type="string"),
      *               @OA\Property(property="latitude", type="string"),
      *               @OA\Property(property="longitude", type="string"),
-     *               @OA\Property(property="status", type="string"),
+     *               @OA\Property(property="status", type="integer"),
      *               @OA\Property(property="vendor", type="string"),
      *               @OA\Property(property="dinas", type="string"),
      *            ),
@@ -305,13 +282,13 @@ class Controller extends BaseController
      * )
      */
 
-    
+
     /**
      * @OA\Get(
      *      path="/api/v1/get-master-data-cctv",
      *      operationId="Master Data CCTV Get",
      *      tags={"Master Data CCTV"},
-     *      summary="Get list GET ALL",
+     *      summary="Get Data CCTV",
      *      description="Returns",
      *      @OA\Response(
      *          response=200,
@@ -329,7 +306,7 @@ class Controller extends BaseController
      *     )
      */
 
-    
+
     /**
      * @OA\Get(
      *      path="/api/v1/get-master-data-cctv/{idCctv}",
@@ -361,82 +338,67 @@ class Controller extends BaseController
      *     )
      */
 
+    /**
+     * 
+     * @OA\Put(
+     *      path="/api/v1/update-master-data-cctv/{idCctv}",
+     *      operationId="Update Master Data CCTV By Id",
+     *      tags={"Master Data CCTV"},
+     *      summary="Update Data CCTV BY Id",
+     *      description="Returns",
+     *      @OA\Parameter(
+     *      name="idCctv",
+     *       in="path",
+     *       required=false,
+     *       @OA\Schema(
+     *            type="integer"
+     *       )
+     *    ),
+     *   @OA\RequestBody(
+     *     required=true,
+     *     @OA\MediaType(
+     *       mediaType="application/json",
+     *       @OA\Schema(
+     *          @OA\Property(property="lokasi", type="string"),
+     *               @OA\Property(property="latitude", type="string"),
+     *               @OA\Property(property="longitude", type="string"),
+     *               @OA\Property(property="status", type="boolean"),
+     *               @OA\Property(property="vendor", type="string"),
+     *               @OA\Property(property="dinas", type="string"),
+     *       ),
+     *     ),
+     *   ),
+     *      @OA\Response(
+     *          response=201,
+     *          description="Input Data Successfully",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Input Data Successfully",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=422,
+     *          description="Unprocessable Entity",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(response=400, description="Bad request"),
+     *      @OA\Response(response=404, description="Resource Not Found"),
+     * )
+     */
     //END MASTER DATA CCTV
 
 
     /**
      * @OA\Get(
      *      path="/api/v1/get-nilai-index/{tahun}",
-     *      operationId="Get Nilai Index",
+     *      operationId="Get Nilai Index Pertahun",
      *      tags={"Master Indikator SPBE"},
-     *      summary="Get Data  Nilai Index",
+     *      summary="Get Nilai Index Pertahun",
      *      description="Returns",
      *      @OA\Parameter(
      *      name="tahun",
-     *       in="path",
-     *       required=false,
-     *       @OA\Schema(
-     *            type="integer"
-     *       )
-     *    ),
-     *      @OA\Response(
-     *          response=200,
-     *          description="Successful operation",
-     *          @OA\JsonContent()
-     *       ),
-     *      @OA\Response(
-     *          response=401,
-     *          description="Unauthenticated",
-     *      ),
-     *      @OA\Response(
-     *          response=403,
-     *          description="Forbidden"
-     *      )
-     *     )
-     */
-
-    
-    /**
-     * @OA\Get(
-     *      path="/api/v1/get-master-domain?page=",
-     *      operationId="Master Domain SPBE",
-     *      tags={"Master Indikator SPBE"},
-     *      summary="Get list",
-     *      description="Returns",
-     *      @OA\Parameter(
-     *      name="?page=",
-     *       in="path",
-     *       required=false,
-     *       @OA\Schema(
-     *            type="integer"
-     *       )
-     *    ),
-     *      @OA\Response(
-     *          response=200,
-     *          description="Successful operation",
-     *          @OA\JsonContent()
-     *       ),
-     *      @OA\Response(
-     *          response=401,
-     *          description="Unauthenticated",
-     *      ),
-     *      @OA\Response(
-     *          response=403,
-     *          description="Forbidden"
-     *      )
-     *     )
-     */
-
-    
-    /**
-     * @OA\Get(
-     *      path="/api/v1/get-master-aspek",
-     *      operationId="Master Aspek SPBE",
-     *      tags={"Master Indikator SPBE"},
-     *      summary="Get list",
-     *      description="Returns",
-     *      @OA\Parameter(
-     *      name="page",
      *       in="path",
      *       required=false,
      *       @OA\Schema(
