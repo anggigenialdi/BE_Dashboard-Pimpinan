@@ -187,7 +187,7 @@ class IndikatorSpbeController extends Controller
 
             return response()->json([
                 'success' => true,
-                'message' => 'Master Data Domain',
+                'message' => 'Master Data Index Spbe Pertahun',
                 'data' =>  $dataNilai,
             ], 200);
         } catch (\Throwable $th) {
@@ -271,7 +271,7 @@ class IndikatorSpbeController extends Controller
 
             return response()->json([
                 'success' => true,
-                'message' => 'Master Data Domain',
+                'message' => 'Master Data Indikator Spbe',
                 'data' => $dataMaster,
             ], 200);
         } catch (\Throwable $th) {
