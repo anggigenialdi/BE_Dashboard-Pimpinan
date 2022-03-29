@@ -237,11 +237,11 @@ class Controller extends BaseController
 
     /**
      * @OA\Get(
-     *      path="/api/v1/get-index-spbe-skala",
-     *      operationId="Get All Skala Nilai",
+     *      path="/api/v1/get-index-spbe",
+     *      operationId="Get All  Index Spbe",
      *      tags={"Master Indikator SPBE"},
-     *      summary="Get Data Skala Nilai",
-     *      description="Data Skala Nilai",
+     *      summary="Get Data Nilai",
+     *      description="Data Nilai",
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
@@ -318,9 +318,9 @@ class Controller extends BaseController
     /**
      * @OA\Put(
      *      path="/api/v1/update-master-indikator-spbe/{id}",
-     *      operationId="Add Index SPBE",
+     *      operationId="Master Index SPBE",
      *      tags={"Master Indikator SPBE"},
-     *      summary="Index SPBE",
+     *      summary="Master Index SPBE",
      *      description="Edit Master Data Index SPBE",
      *      @OA\Parameter(
      *      name="id",

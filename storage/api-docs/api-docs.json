@@ -339,14 +339,14 @@
                 }
             }
         },
-        "/api/v1/get-index-spbe-skala": {
+        "/api/v1/get-index-spbe": {
             "get": {
                 "tags": [
                     "Master Indikator SPBE"
                 ],
-                "summary": "Get Data Skala Nilai",
-                "description": "Data Skala Nilai",
-                "operationId": "Get All Skala Nilai",
+                "summary": "Get Data Nilai",
+                "description": "Data Nilai",
+                "operationId": "Get All  Index Spbe",
                 "responses": {
                     "200": {
                         "description": "Successful operation",
@@ -432,9 +432,9 @@
                 "tags": [
                     "Master Indikator SPBE"
                 ],
-                "summary": "Index SPBE",
+                "summary": "Master Index SPBE",
                 "description": "Edit Master Data Index SPBE",
-                "operationId": "Add Index SPBE",
+                "operationId": "Master Index SPBE",
                 "parameters": [
                     {
                         "name": "id",

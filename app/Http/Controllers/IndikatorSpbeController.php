@@ -180,7 +180,7 @@ class IndikatorSpbeController extends Controller
         }
     }
 
-    public function getAllNilaiIndex(Request $request)
+    public function getAllNilaiIndexPertahun(Request $request)
     {
         try {
             $dataNilai = IndexSpbePertahun::OrderBy('id', 'DESC')->get();
@@ -223,19 +223,19 @@ class IndikatorSpbeController extends Controller
         }
     }
     
-    public function getSkalaNilai(Request $request)
+    public function getIndexSpbe(Request $request)
     {
         try {
-            $dataSkala = IndexSpbe::OrderBy('id')->get();
+            $indexSpbe = IndexSpbe::OrderBy('id', 'ASC')->get();
 
-            $saveData = [];
-            $newData = [];
+            $newIndex = [];
+            $newDatas = [];
 
-            foreach ($dataSkala as $key) {
-                $saveData['id_indikator'] = $key->id_indikator;
-                array_push($newData, $saveData);
+            foreach ($indexSpbe as $key) {
+                $newIndex['id_indikator'] = $key->id_indikator;
+                array_push($newDatas, $newIndex);
             };
-            $getData = MasterIndikatorSpbe::whereIn('id', $newData)->get();
+            $getData = MasterIndikatorSpbe::whereIn('id', $newDatas)->get();
 
             $newArr = [];
             $new = [];
@@ -268,7 +268,7 @@ class IndikatorSpbeController extends Controller
     {
         try {
             $dataMaster=  MasterIndikatorSpbe::OrderBy('id', 'ASC')->get();
-            
+
             return response()->json([
                 'success' => true,
                 'message' => 'Master Data Domain',
