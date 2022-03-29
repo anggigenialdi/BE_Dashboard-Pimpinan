@@ -344,7 +344,7 @@
                 "tags": [
                     "Master Indikator SPBE"
                 ],
-                "summary": "Get Data Nilai",
+                "summary": "Get Data Index Spbe",
                 "description": "Data Nilai",
                 "operationId": "Get All  Index Spbe",
                 "responses": {
