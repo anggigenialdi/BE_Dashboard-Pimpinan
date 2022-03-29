@@ -180,6 +180,22 @@ class IndikatorSpbeController extends Controller
         }
     }
 
+    public function getAllNilaiIndex(Request $request)
+    {
+        try {
+            return response()->json([
+                'success' => true,
+                'message' => 'Master Data Domain',
+                'data' =>  IndexSpbePertahun::OrderBy('id', 'DESC')->paginate(5),
+            ], 200);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'success' => false,
+                'message' => $th
+            ], 409);
+        }
+    }
+
     public function getNilaiIndex(Request $request, $tahun)
     {
         try {

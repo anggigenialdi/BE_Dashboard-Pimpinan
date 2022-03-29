@@ -365,12 +365,38 @@
                 }
             }
         },
+        "/api/v1/get-nilai-index": {
+            "get": {
+                "tags": [
+                    "Master Indikator SPBE"
+                ],
+                "summary": "Get Data Index Pertahun",
+                "description": "Get ALL Nilai Index Pertahun",
+                "operationId": "Get Data Index Pertahun",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
         "/api/v1/get-nilai-index/{tahun}": {
             "get": {
                 "tags": [
                     "Master Indikator SPBE"
                 ],
-                "summary": "Get Nilai Index Pertahun",
+                "summary": "Get Nilai Index Pertahun By Tahun",
                 "description": "Returns",
                 "operationId": "Get Nilai Index Pertahun",
                 "parameters": [

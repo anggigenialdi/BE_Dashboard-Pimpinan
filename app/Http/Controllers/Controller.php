@@ -258,12 +258,38 @@ class Controller extends BaseController
      *     )
      */
     
+    
+    /**
+     * @OA\Get(
+     *      path="/api/v1/get-nilai-index",
+     *      operationId="Get Data Index Pertahun",
+     *      tags={"Master Indikator SPBE"},
+     *      summary="Get Data Index Pertahun",
+     *      description="Get ALL Nilai Index Pertahun",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *     )
+     */
+
+
+    
     /**
      * @OA\Get(
      *      path="/api/v1/get-nilai-index/{tahun}",
      *      operationId="Get Nilai Index Pertahun",
      *      tags={"Master Indikator SPBE"},
-     *      summary="Get Nilai Index Pertahun",
+     *      summary="Get Nilai Index Pertahun By Tahun",
      *      description="Returns",
      *      @OA\Parameter(
      *      name="tahun",
