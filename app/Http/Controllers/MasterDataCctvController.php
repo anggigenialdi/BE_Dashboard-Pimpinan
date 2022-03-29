@@ -63,7 +63,7 @@ class MasterDataCctvController extends Controller
             return response()->json([
                 'success' => true,
                 'message' => 'Master Data CCTV',
-                'data' =>  $dataCctv,
+                'data' =>  [$dataCctv],
             ], 200);
         } catch (\Throwable $th) {
             return response()->json([
