@@ -183,10 +183,12 @@ class IndikatorSpbeController extends Controller
     public function getAllNilaiIndex(Request $request)
     {
         try {
+            $dataNilai = IndexSpbePertahun::OrderBy('id', 'DESC')->get();
+
             return response()->json([
                 'success' => true,
                 'message' => 'Master Data Domain',
-                'data' =>  IndexSpbePertahun::OrderBy('id', 'DESC')->paginate(5),
+                'data' =>  $dataNilai,
             ], 200);
         } catch (\Throwable $th) {
             return response()->json([
@@ -265,10 +267,12 @@ class IndikatorSpbeController extends Controller
     public function getAllMasterDomain(Request $request)
     {
         try {
+            $dataMaster=  MasterIndikatorSpbe::OrderBy('id', 'ASC')->get();
+            
             return response()->json([
                 'success' => true,
                 'message' => 'Master Data Domain',
-                'data' =>  MasterIndikatorSpbe::OrderBy('id', 'ASC')->paginate(5),
+                'data' => $dataMaster,
             ], 200);
         } catch (\Throwable $th) {
             return response()->json([
@@ -311,10 +315,12 @@ class IndikatorSpbeController extends Controller
     public function getAllMasterAspek(Request $request)
     {
         try {
+            $dataIndikator = MasterIndikatorSpbe::OrderBy('id', 'ASC')->get();
+
             return response()->json([
                 'success' => true,
                 'message' => 'Master Data Aspek',
-                'data' =>  MasterIndikatorSpbe::OrderBy('id', 'ASC')->paginate(5),
+                'data' =>  $dataIndikator,
             ], 200);
         } catch (\Throwable $th) {
             return response()->json([
