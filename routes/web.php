@@ -37,6 +37,8 @@ $router->group(['prefix' => 'api/v1'], function () use ($router) {
 
     $router->post('add-index-spbe', 'IndikatorSpbeController@addIndexSpbe');
     $router->get('get-index-spbe', 'IndikatorSpbeController@getIndexSpbe');
+    $router->get('get-index-spbe/{tahun}', 'IndikatorSpbeController@getIndexSpbeTahun');
+
     $router->get('get-index-spbe-skala', 'IndikatorSpbeController@getSkalaNilai');
     $router->get('get-nilai-index', 'IndikatorSpbeController@getAllNilaiIndexPertahun');
     $router->get('get-nilai-index/{tahun}', 'IndikatorSpbeController@getNilaiIndex');

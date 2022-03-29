@@ -180,6 +180,32 @@ class IndikatorSpbeController extends Controller
         }
     }
 
+
+    public function getIndexSpbeTahun(Request $request, $tahun)
+    {
+        try {
+            $indexSpbe = IndexSpbe::where('tahun', $tahun)->get();
+
+            if (!$indexSpbe) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Data tidak ada',
+                ], 404);
+            } else {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Nilai Index SPBE',
+                    'data' =>  $indexSpbe
+                ], 200);
+            }
+        } catch (\Throwable $th) {
+            return response()->json([
+                'success' => false,
+                'message' => $th
+            ], 409);
+        }
+    }
+
     public function getAllNilaiIndexPertahun(Request $request)
     {
         try {
