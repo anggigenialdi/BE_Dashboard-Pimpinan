@@ -262,10 +262,10 @@ class Controller extends BaseController
     /**
      * @OA\Get(
      *      path="/api/v1/get-nilai-index",
-     *      operationId="Get Data Index Pertahun",
+     *      operationId="Get All Data Index Pertahun",
      *      tags={"Master Indikator SPBE"},
-     *      summary="Get Data Index Pertahun",
-     *      description="Get ALL Nilai Index Pertahun",
+     *      summary="Get All Data Index Pertahun",
+     *      description="Get ALL Data Nilai Index Pertahun",
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
