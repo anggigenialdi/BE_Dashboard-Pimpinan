@@ -62,7 +62,7 @@ class MasterDataCctvController extends Controller
             return response()->json([
                 'success' => true,
                 'message' => 'Master Data CCTV',
-                'data' =>  MasterDataCctv::OrderBy('id', 'DESC')->paginate(5),
+                'data' =>  MasterDataCctv::OrderBy('id', 'DESC'),
             ], 200);
         } catch (\Throwable $th) {
             return response()->json([
