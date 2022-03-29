@@ -194,7 +194,7 @@ class IndikatorSpbeController extends Controller
             } else {
                 return response()->json([
                     'success' => true,
-                    'message' => 'Nilai Index SPBE',
+                    'message' => 'Index SPBE',
                     'data' =>  $indexSpbe
                 ], 200);
             }
