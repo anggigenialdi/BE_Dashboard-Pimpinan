@@ -253,7 +253,7 @@ class IndikatorSpbeController extends Controller
 
             return response()->json([
                 'success' => true,
-                'message' => 'Skala Nilai',
+                'message' => 'Data Index Spbe',
                 'data' => $new,
             ], 200);
         } catch (\Throwable $th) {
