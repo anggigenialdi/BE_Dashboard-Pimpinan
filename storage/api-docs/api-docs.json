@@ -370,9 +370,9 @@
                 "tags": [
                     "Master Indikator SPBE"
                 ],
-                "summary": "Get Data Index Pertahun",
-                "description": "Get ALL Nilai Index Pertahun",
-                "operationId": "Get Data Index Pertahun",
+                "summary": "Get All Data Index Pertahun",
+                "description": "Get ALL Data Nilai Index Pertahun",
+                "operationId": "Get All Data Index Pertahun",
                 "responses": {
                     "200": {
                         "description": "Successful operation",
