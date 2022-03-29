@@ -59,7 +59,7 @@ class MasterDataCctvController extends Controller
     public function getAllMasterDataCctv(Request $request)
     {
         try {
-            $dataCctv = MasterDataCctv::get()->OrderBy('id', 'DESC');
+            $dataCctv = MasterDataCctv::all();
             return response()->json([
                 'success' => true,
                 'message' => 'Master Data CCTV',
