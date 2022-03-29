@@ -204,6 +204,47 @@ class IndikatorSpbeController extends Controller
             ], 409);
         }
     }
+    
+    public function getSkalaNilai(Request $request)
+    {
+        try {
+            $dataSkala = IndexSpbe::OrderBy('id')->get();
+
+            $saveData = [];
+            $newData = [];
+
+            foreach ($dataSkala as $key) {
+                $saveData['id_indikator'] = $key->id_indikator;
+                array_push($newData, $saveData);
+            };
+            $getData = MasterIndikatorSpbe::whereIn('id', $newData)->get();
+
+            $newArr = [];
+            $new = [];
+            foreach ($getData as $data) {
+                $newArr['nama_indikator'] = $data->nama_indikator;
+                $newArr['bobot'] = $data->bobot;
+                foreach ($data->indexSpbe as $spbe) {
+                    $newArr['id_indikator'] = $spbe->id_indikator;
+                    $newArr['tahun'] = $spbe->tahun;
+                    $newArr['skala_nilai'] = $spbe->skala_nilai;
+                    $newArr['index_nilai'] = $spbe->index_nilai;
+                }
+                array_push($new, $newArr);
+            };
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Skala Nilai',
+                'data' => $new,
+            ], 200);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'success' => false,
+                'message' => $th
+            ], 409);
+        }
+    }
 
     public function getAllMasterDomain(Request $request)
     {

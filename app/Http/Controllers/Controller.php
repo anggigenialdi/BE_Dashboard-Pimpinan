@@ -235,6 +235,28 @@ class Controller extends BaseController
      * )
      */
 
+    /**
+     * @OA\Get(
+     *      path="/api/v1/get-index-spbe-skala",
+     *      operationId="Get All Skala Nilai",
+     *      tags={"Master Indikator SPBE"},
+     *      summary="Get Data Skala Nilai",
+     *      description="Data Skala Nilai",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *     )
+     */
     
     /**
      * @OA\Get(
