@@ -240,7 +240,7 @@ class Controller extends BaseController
      *      path="/api/v1/get-index-spbe",
      *      operationId="Get All  Index Spbe",
      *      tags={"Master Indikator SPBE"},
-     *      summary="Get Data Nilai",
+     *      summary="Get Data Index Spbe",
      *      description="Data Nilai",
      *      @OA\Response(
      *          response=200,
