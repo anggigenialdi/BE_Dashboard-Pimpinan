@@ -46,13 +46,21 @@ $router->group(['prefix' => 'api/v1'], function () use ($router) {
     //end
 
 
-    //Masger Data CCTV
+    //Master Data CCTV
     $router->post('add-master-data-cctv', 'MasterDataCctvController@addMasterDataCctv');
     $router->get('get-master-data-cctv', 'MasterDataCctvController@getAllMasterDataCctv');
     $router->get('get-master-data-cctv/{idCctv}', 'MasterDataCctvController@getMasterDataCctvById');
     $router->put('update-master-data-cctv/{idCctv}', 'MasterDataCctvController@updateMasterDataCctvById');
     $router->delete('delete-master-data-cctv/{idCctv}', 'MasterDataCctvController@deleteMasterDataCctvById');
     $router->get('master-data-cctv/', 'MasterDataCctvController@cariMasterDataCctv');
+
+    //Master Data Wifi
+    $router->post('add-master-data-wifi', 'MasterDataWifiController@addMasterDataWifi');
+    $router->get('get-master-data-wifi', 'MasterDataWifiController@getAllMasterDataWifi');
+    $router->get('get-master-data-wifi/{idWifi}', 'MasterDataWifiController@getMasterDataWifiById');
+    $router->put('update-master-data-wifi/{idWifi}', 'MasterDataWifiController@updateMasterDataWifiById');
+    $router->delete('delete-master-data-wifi/{idWifi}', 'MasterDataWifiController@deleteMasterDataWifiById');
+    $router->get('master-data-wifi/', 'MasterDataWifiController@cariMasterDataWifi');
 
 
 

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class TableMasterDataCctv extends Migration
+class TableMasterDataWifi extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class TableMasterDataCctv extends Migration
      */
     public function up()
     {
-        Schema::create('master_data_cctv', function (Blueprint $table) {
+        Schema::create('master_data_wifi', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('lokasi')->nullable();
             $table->string('latitude')->nullable();
@@ -21,7 +21,6 @@ class TableMasterDataCctv extends Migration
             $table->boolean('status')->default(true);
             $table->string('vendor')->nullable();
             $table->string('dinas')->nullable();
-            $table->string('link_stream')->nullable();
             $table->timestamps();
         });
     }
@@ -33,6 +32,6 @@ class TableMasterDataCctv extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('master_data_cctv');
+        Schema::dropIfExists('master_data_wifi');
     }
 }

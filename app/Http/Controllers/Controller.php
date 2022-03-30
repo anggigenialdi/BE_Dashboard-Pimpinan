@@ -416,6 +416,7 @@ class Controller extends BaseController
      *               @OA\Property(property="status", type="integer"),
      *               @OA\Property(property="vendor", type="string"),
      *               @OA\Property(property="dinas", type="string"),
+     *               @OA\Property(property="link_stream", type="string"),
      *            ),
      *        ),
      *    ),
@@ -521,6 +522,7 @@ class Controller extends BaseController
      *               @OA\Property(property="status", type="boolean"),
      *               @OA\Property(property="vendor", type="string"),
      *               @OA\Property(property="dinas", type="string"),
+     *               @OA\Property(property="link_stream", type="string"),
      *       ),
      *     ),
      *   ),
@@ -576,6 +578,190 @@ class Controller extends BaseController
      */
 
     //END MASTER DATA CCTV
+
+    //MASTER DATA WIFI
+
+
+    /**
+     * @OA\Post(
+     * path="/api/v1/add-master-data-wifi",
+     * operationId="Master Data Wifi",
+     * tags={"Master Data Wifi"},
+     * summary="Master Data Wifi",
+     * description="Master Data Wifi",
+     *     @OA\RequestBody(
+     *         @OA\JsonContent(),
+     *         @OA\MediaType(
+     *            mediaType="multipart/form-data",
+     *            @OA\Schema(
+     *               type="object",
+     *               required={"lokasi","latitude", "longitude", "status",},
+     *               @OA\Property(property="lokasi", type="string"),
+     *               @OA\Property(property="latitude", type="string"),
+     *               @OA\Property(property="longitude", type="string"),
+     *               @OA\Property(property="status", type="integer"),
+     *               @OA\Property(property="vendor", type="string"),
+     *               @OA\Property(property="dinas", type="string"),
+     *            ),
+     *        ),
+     *    ),
+     *      @OA\Response(
+     *          response=201,
+     *          description="Input Data Successfully",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Input Data Successfully",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=422,
+     *          description="Unprocessable Entity",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(response=400, description="Bad request"),
+     *      @OA\Response(response=404, description="Resource Not Found"),
+     * )
+     */
+
+
+    /**
+     * @OA\Get(
+     *      path="/api/v1/get-master-data-wifi",
+     *      operationId="Master Data Wifi Get",
+     *      tags={"Master Data Wifi"},
+     *      summary="Get Data Wifi",
+     *      description="Get All data ",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *     )
+     */
+
+
+    /**
+     * @OA\Get(
+     *      path="/api/v1/get-master-data-wifi/{idWifi}",
+     *      operationId="Master Data Wifi By Id",
+     *      tags={"Master Data Wifi"},
+     *      summary="Get Data BY Id",
+     *      description="Get data by id wifi",
+     *      @OA\Parameter(
+     *      name="idWifi",
+     *       in="path",
+     *       required=false,
+     *       @OA\Schema(
+     *            type="integer"
+     *       )
+     *    ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *     )
+     */
+
+    /**
+     * @OA\Put(
+     *      path="/api/v1/update-master-data-cctv/{idWifi}",
+     *      operationId="Update Master Data Wifi By Id",
+     *      tags={"Master Data Wifi"},
+     *      summary="Update Data Wifi BY Id",
+     *      description="Returns",
+     *      @OA\Parameter(
+     *      name="idWifi",
+     *       in="path",
+     *       required=false,
+     *       @OA\Schema(
+     *            type="integer"
+     *       )
+     *    ),
+     *   @OA\RequestBody(
+     *     required=true,
+     *     @OA\MediaType(
+     *       mediaType="application/json",
+     *       @OA\Schema(
+     *          @OA\Property(property="lokasi", type="string"),
+     *               @OA\Property(property="latitude", type="string"),
+     *               @OA\Property(property="longitude", type="string"),
+     *               @OA\Property(property="status", type="boolean"),
+     *               @OA\Property(property="vendor", type="string"),
+     *               @OA\Property(property="dinas", type="string"),
+     *       ),
+     *     ),
+     *   ),
+     *      @OA\Response(
+     *          response=201,
+     *          description="Input Data Successfully",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Input Data Successfully",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=422,
+     *          description="Unprocessable Entity",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(response=400, description="Bad request"),
+     *      @OA\Response(response=404, description="Resource Not Found"),
+     * )
+     */
+
+    /**
+     * @OA\Get(
+     *      path="/api/v1/master-data-wifi/",
+     *      operationId="Cari Master Data Wifi",
+     *      tags={"Master Data Wifi"},
+     *      summary="Cari Master Data Wifi",
+     *      description="Cari data wifi",
+     *      @OA\Parameter(
+     *      name="cari",
+     *       in="query",
+     *       required=false,
+     *       @OA\Schema(
+     *            type="string"
+     *       )
+     *    ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *     )
+     */
+
+    //END MASTER DATA WIFI
 
 
 }

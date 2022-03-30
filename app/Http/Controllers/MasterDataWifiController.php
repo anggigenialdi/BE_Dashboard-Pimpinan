@@ -3,68 +3,64 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\MasterDataCctv;
+use App\Models\MasterDataWifi;
 use Illuminate\Http\Request;
 
-class MasterDataCctvController extends Controller
+class MasterDataWifiController extends Controller
 {
-    public function addMasterDataCctv(Request $request)
+    public function addMasterDataWifi(Request $request)
     {
         //validate incoming request 
         $this->validate($request, [
             'lokasi'  => 'required|string',
             'latitude' => 'required|string',
             'longitude' => 'required|string',
-            // 'vendor' => 'required|string',
-            // 'dinas' => 'required|string',
         ]);
-
         try {
-
-            $dataCctv = new MasterDataCctv;
-            $dataCctv->lokasi = $request->input('lokasi');
-            $dataCctv->latitude = $request->input('latitude');
-            $dataCctv->longitude = $request->input('longitude');
-            $dataCctv->status = $request->input('status');
-            $dataCctv->vendor = $request->input('vendor');
-            $dataCctv->dinas = $request->input('dinas');
-            $dataCctv->link_stream = $request->input('link_stream');
+            //code...
+            $dataWifi = new MasterDataWifi;
+            $dataWifi->lokasi = $request->input('lokasi');
+            $dataWifi->latitude = $request->input('latitude');
+            $dataWifi->longitude = $request->input('longitude');
+            $dataWifi->status = $request->input('status');
+            $dataWifi->vendor = $request->input('vendor');
+            $dataWifi->dinas = $request->input('dinas');
 
             //Cek Duplicate data
-            $duplicate = $dataCctv->where('latitude', $dataCctv->latitude)->first();
+            $duplicate = $dataWifi->where('latitude', $dataWifi->latitude)->first();
 
             if ($duplicate) {
                 return response()->json([
                     'success' => false,
                     'message' => 'Data Duplikat',
-                    'data' => $dataCctv,
+                    'data' => $dataWifi,
                 ], 425);
             } else {
-                $dataCctv->save();
+                $dataWifi->save();
 
                 return response()->json([
                     'success' => true,
                     'message' => 'Input Data Berhasil',
-                    'data'    => $dataCctv,
+                    'data'    => $dataWifi,
                 ], 201);
             }
-        } catch (\Exception $e) {
+        } catch (\Throwable $th) {
             //return error message
             return response()->json([
                 'success' => false,
-                'message' => $e
+                'message' => $th
             ], 409);
         }
     }
 
-    public function getAllMasterDataCctv(Request $request)
+    public function getAllMasterDataWifi(Request $request)
     {
         try {
-            $dataCctv = MasterDataCctv::orderBy('id', 'DESC')->get();
+            $dataCctv = MasterDataWifi::orderBy('id', 'DESC')->get();
 
             return response()->json([
                 'success' => true,
-                'message' => 'Master Data CCTV',
+                'message' => 'Master Data Wifi',
                 'data' =>  $dataCctv,
             ], 200);
         } catch (\Throwable $th) {
@@ -75,10 +71,10 @@ class MasterDataCctvController extends Controller
         }
     }
 
-    public function getMasterDataCctvById(Request $request, $idCctv)
+    public function getMasterDataWifiById(Request $request, $idWifi)
     {
         try {
-            $dataCctv = MasterDataCctv::where('id', $idCctv)->first();
+            $dataCctv = MasterDataWifi::where('id', $idWifi)->first();
 
             if (!$dataCctv) {
                 return response()->json([
@@ -88,7 +84,7 @@ class MasterDataCctvController extends Controller
             } else {
                 return response()->json([
                     'success' => true,
-                    'message' => 'Master Data CCTV',
+                    'message' => 'Master Data Wifi',
                     'data' =>  $dataCctv
                 ], 200);
             }
@@ -100,19 +96,18 @@ class MasterDataCctvController extends Controller
         }
     }
 
-    public function updateMasterDataCctvById(Request $request, $idCctv)
+    public function updateMasterDataWifiById(Request $request, $idWifi)
     {
         try {
-            $updateDataCctv = MasterDataCctv::where('id', $idCctv);
+            $updateData = MasterDataWifi::where('id', $idWifi);
 
-            $updateDataCctv->update([
+            $updateData->update([
                 'lokasi' => request('lokasi'),
                 'latitude' => request('latitude'),
                 'longitude' => request('longitude'),
                 'status' => request('status'),
                 'vendor' => request('vendor'),
                 'dinas' => request('dinas'),
-                'link_stream' => request('link_stream'),
             ]);
 
 
@@ -128,19 +123,20 @@ class MasterDataCctvController extends Controller
         }
     }
 
-    public function deleteMasterDataCctvById(Request $request, $idCctv)
+
+    public function deleteMasterDataWifiById(Request $request, $idWifi)
     {
 
         try {
-            $deleteDataCctv = MasterDataCctv::where('id', $idCctv)->first();
+            $deleteData = MasterDataWifi::where('id', $idWifi)->first();
 
-            if (!$deleteDataCctv) {
+            if (!$deleteData) {
                 return response()->json([
                     'success' => false,
                     'message' => 'Data tidak ada',
                 ], 404);
             } else {
-                $deleteDataCctv->delete();
+                $deleteData->delete();
 
                 return response()->json([
                     'success' => true,
@@ -155,13 +151,14 @@ class MasterDataCctvController extends Controller
         }
     }
 
-    public function cariMasterDataCctv(Request $request)
+
+    public function cariMasterDataWifi(Request $request)
     {
         try {
 
             $cari = $request->cari;
 
-            $getData = MasterDataCctv::where('lokasi', 'like', "%" . $cari . "%")->orWhere('vendor', 'like', "%" . $cari . "%")->orderBy("id", "DESC")->get();
+            $getData = MasterDataWifi::where('lokasi', 'like', "%" . $cari . "%")->orWhere('vendor', 'like', "%" . $cari . "%")->orderBy("id", "DESC")->get();
 
             return response()->json([
                 'success' => true,
@@ -175,4 +172,5 @@ class MasterDataCctvController extends Controller
             ], 409);
         }
     }
+
 }
