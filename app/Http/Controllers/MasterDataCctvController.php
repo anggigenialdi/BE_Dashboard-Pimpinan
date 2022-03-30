@@ -159,7 +159,7 @@ class MasterDataCctvController extends Controller
 
             $cari = $request->cari;
 
-            $getData = MasterDataCctv::where('lokasi','like',"%".$cari."%")->orWhere('vendor','like',"%".$cari."%")->get();
+            $getData = MasterDataCctv::where('lokasi','like',"%".$cari."%")->orWhere('vendor','like',"%".$cari."%")->orderBy("id", "DESC")->get();
 
             return response()->json([
                 'success' => true,
