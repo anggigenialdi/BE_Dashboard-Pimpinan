@@ -544,6 +544,37 @@ class Controller extends BaseController
      * )
      */
 
+    /**
+     * @OA\Get(
+     *      path="/api/v1/master-data-cctv/",
+     *      operationId="Cari Master Data CCTV",
+     *      tags={"Master Data CCTV"},
+     *      summary="Cari Master Data CCTV",
+     *      description="Cari data cctv",
+     *      @OA\Parameter(
+     *      name="cari",
+     *       in="query",
+     *       required=false,
+     *       @OA\Schema(
+     *            type="string"
+     *       )
+     *    ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *     )
+     */
+
     //END MASTER DATA CCTV
 
 

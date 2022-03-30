@@ -116,7 +116,7 @@ class MasterDataCctvController extends Controller
 
             return response()->json([
                 'success' => true,
-                'message' => 'Input Data Berhasil',
+                'message' => 'Updata Data Berhasil',
             ], 201);
         } catch (\Throwable $th) {
             return response()->json([
@@ -145,6 +145,27 @@ class MasterDataCctvController extends Controller
                     'message' => 'Data terhapus',
                 ], 200);
             }
+        } catch (\Throwable $th) {
+            return response()->json([
+                'success' => false,
+                'message' => $th
+            ], 409);
+        }
+    }
+
+    public function cariMasterDataCctv(Request $request)
+    {
+        try {
+
+            $cari = $request->cari;
+
+            $getData = MasterDataCctv::where('lokasi','like',"%".$cari."%")->orWhere('vendor','like',"%".$cari."%")->get();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Hasil Cari',
+                'data' =>  $getData,
+            ], 200);
         } catch (\Throwable $th) {
             return response()->json([
                 'success' => false,
