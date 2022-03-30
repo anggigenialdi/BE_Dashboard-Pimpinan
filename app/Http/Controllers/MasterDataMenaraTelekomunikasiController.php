@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\MasterDataWifi;
+use App\Models\MasterDataMenaraTelekomunikasi;
 use Illuminate\Http\Request;
 
-class MasterDataWifiController extends Controller
+class MasterDataMenaraTelekomunikasiController extends Controller
 {
-    public function addMasterDataWifi(Request $request)
+    public function addMasterDataMenara(Request $request)
     {
         //validate incoming request 
         $this->validate($request, [
@@ -18,30 +18,30 @@ class MasterDataWifiController extends Controller
         ]);
         try {
             //code...
-            $dataWifi = new MasterDataWifi;
-            $dataWifi->lokasi = $request->input('lokasi');
-            $dataWifi->latitude = $request->input('latitude');
-            $dataWifi->longitude = $request->input('longitude');
-            $dataWifi->status = $request->input('status');
-            $dataWifi->vendor = $request->input('vendor');
-            $dataWifi->dinas = $request->input('dinas');
+            $dataMenara = new MasterDataMenaraTelekomunikasi;
+            $dataMenara->lokasi = $request->input('lokasi');
+            $dataMenara->latitude = $request->input('latitude');
+            $dataMenara->longitude = $request->input('longitude');
+            $dataMenara->status = $request->input('status');
+            $dataMenara->vendor = $request->input('vendor');
+            $dataMenara->dinas = $request->input('dinas');
 
             //Cek Duplicate data
-            $duplicate = $dataWifi->where('latitude', $dataWifi->latitude)->first();
+            $duplicate = $dataMenara->where('latitude', $dataMenara->latitude)->first();
 
             if ($duplicate) {
                 return response()->json([
                     'success' => false,
                     'message' => 'Data Duplikat',
-                    'data' => $dataWifi,
+                    'data' => $dataMenara,
                 ], 425);
             } else {
-                $dataWifi->save();
+                $dataMenara->save();
 
                 return response()->json([
                     'success' => true,
                     'message' => 'Input Data Berhasil',
-                    'data'    => $dataWifi,
+                    'data'    => $dataMenara,
                 ], 201);
             }
         } catch (\Throwable $th) {
@@ -53,15 +53,15 @@ class MasterDataWifiController extends Controller
         }
     }
 
-    public function getAllMasterDataWifi(Request $request)
+    public function getAllMasterDataMenara(Request $request)
     {
         try {
-            $dataWifi = MasterDataWifi::orderBy('id', 'DESC')->get();
+            $dataMenara = MasterDataMenaraTelekomunikasi::orderBy('id', 'DESC')->get();
 
             return response()->json([
                 'success' => true,
                 'message' => 'Master Data Wifi',
-                'data' =>  $dataWifi,
+                'data' =>  $dataMenara,
             ], 200);
         } catch (\Throwable $th) {
             return response()->json([
@@ -71,12 +71,13 @@ class MasterDataWifiController extends Controller
         }
     }
 
-    public function getMasterDataWifiById(Request $request, $idWifi)
+
+    public function getMasterDataMenaraById(Request $request, $idMenara)
     {
         try {
-            $dataWifi = MasterDataWifi::where('id', $idWifi)->first();
+            $dataMenara = MasterDataMenaraTelekomunikasi::where('id', $idMenara)->first();
 
-            if (!$dataWifi) {
+            if (!$dataMenara) {
                 return response()->json([
                     'success' => false,
                     'message' => 'Data tidak ada',
@@ -84,8 +85,8 @@ class MasterDataWifiController extends Controller
             } else {
                 return response()->json([
                     'success' => true,
-                    'message' => 'Master Data Wifi',
-                    'data' =>  $dataWifi
+                    'message' => 'Master Data Menara Telekomunikasi',
+                    'data' =>  $dataMenara
                 ], 200);
             }
         } catch (\Throwable $th) {
@@ -96,10 +97,10 @@ class MasterDataWifiController extends Controller
         }
     }
 
-    public function updateMasterDataWifiById(Request $request, $idWifi)
+    public function updateMasterDataMenaraById(Request $request, $idMenara)
     {
         try {
-            $updateData = MasterDataWifi::where('id', $idWifi);
+            $updateData = MasterDataMenaraTelekomunikasi::where('id', $idMenara);
 
             $updateData->update([
                 'lokasi' => request('lokasi'),
@@ -123,12 +124,11 @@ class MasterDataWifiController extends Controller
         }
     }
 
-
-    public function deleteMasterDataWifiById(Request $request, $idWifi)
+    public function deleteMasterDataMenaraById(Request $request, $idMenara)
     {
 
         try {
-            $deleteData = MasterDataWifi::where('id', $idWifi)->first();
+            $deleteData = MasterDataMenaraTelekomunikasi::where('id', $idMenara)->first();
 
             if (!$deleteData) {
                 return response()->json([
@@ -152,13 +152,13 @@ class MasterDataWifiController extends Controller
     }
 
 
-    public function cariMasterDataWifi(Request $request)
+    public function cariMasterDataMenara(Request $request)
     {
         try {
 
             $cari = $request->cari;
 
-            $getData = MasterDataWifi::where('lokasi', 'like', "%" . $cari . "%")->orWhere('vendor', 'like', "%" . $cari . "%")->orderBy("id", "DESC")->get();
+            $getData = MasterDataMenaraTelekomunikasi::where('lokasi', 'like', "%" . $cari . "%")->orWhere('vendor', 'like', "%" . $cari . "%")->orderBy("id", "DESC")->get();
 
             return response()->json([
                 'success' => true,
@@ -172,5 +172,4 @@ class MasterDataWifiController extends Controller
             ], 409);
         }
     }
-
 }

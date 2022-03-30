@@ -288,8 +288,8 @@ class Controller extends BaseController
      *      )
      *     )
      */
-    
-    
+
+
     /**
      * @OA\Get(
      *      path="/api/v1/get-nilai-index",
@@ -314,7 +314,7 @@ class Controller extends BaseController
      */
 
 
-    
+
     /**
      * @OA\Get(
      *      path="/api/v1/get-nilai-index/{tahun}",
@@ -581,7 +581,6 @@ class Controller extends BaseController
 
     //MASTER DATA WIFI
 
-
     /**
      * @OA\Post(
      * path="/api/v1/add-master-data-wifi",
@@ -762,6 +761,190 @@ class Controller extends BaseController
      */
 
     //END MASTER DATA WIFI
+
+    //MASTER DATA MENARA
+    
+    /**
+     * @OA\Post(
+     * path="/api/v1/add-master-data-menara-telekomunikasi",
+     * operationId="Master Data Menara Telekomunikasi",
+     * tags={"Master Data Menara Telekomunikasi"},
+     * summary="Master Data Menara Telekomunikasi",
+     * description="Master Data Menara Telekomunikasi",
+     *     @OA\RequestBody(
+     *         @OA\JsonContent(),
+     *         @OA\MediaType(
+     *            mediaType="multipart/form-data",
+     *            @OA\Schema(
+     *               type="object",
+     *               required={"lokasi","latitude", "longitude", "status",},
+     *               @OA\Property(property="lokasi", type="string"),
+     *               @OA\Property(property="latitude", type="string"),
+     *               @OA\Property(property="longitude", type="string"),
+     *               @OA\Property(property="status", type="integer"),
+     *               @OA\Property(property="vendor", type="string"),
+     *               @OA\Property(property="dinas", type="string"),
+     *            ),
+     *        ),
+     *    ),
+     *      @OA\Response(
+     *          response=201,
+     *          description="Input Data Successfully",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Input Data Successfully",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=422,
+     *          description="Unprocessable Entity",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(response=400, description="Bad request"),
+     *      @OA\Response(response=404, description="Resource Not Found"),
+     * )
+     */
+
+
+    /**
+     * @OA\Get(
+     *      path="/api/v1/get-master-data-menara-telekomunikasi",
+     *      operationId="Master Data Menara Telekomunikasi Get",
+     *      tags={"Master Data Menara Telekomunikasi"},
+     *      summary="Get Data Menara Telekomunikasi",
+     *      description="Get All data ",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *     )
+     */
+
+
+    /**
+     * @OA\Get(
+     *      path="/api/v1/get-master-data-menara-telekomunikasi/{idMenara}",
+     *      operationId="Master Data Menara Telekomunikasi By Id",
+     *      tags={"Master Data Menara Telekomunikasi"},
+     *      summary="Get Data BY Id",
+     *      description="Get data by id Menara Telekomunikasi",
+     *      @OA\Parameter(
+     *      name="idMenara",
+     *       in="path",
+     *       required=false,
+     *       @OA\Schema(
+     *            type="integer"
+     *       )
+     *    ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *     )
+     */
+
+    /**
+     * @OA\Put(
+     *      path="/api/v1/update-master-data-menara-telekomunikasi/{idMenara}",
+     *      operationId="Update Master Data Menara Telekomunikasi By Id",
+     *      tags={"Master Data Menara Telekomunikasi"},
+     *      summary="Update Data Menara Telekomunikasi BY Id",
+     *      description="Returns",
+     *      @OA\Parameter(
+     *      name="idMenara",
+     *       in="path",
+     *       required=false,
+     *       @OA\Schema(
+     *            type="integer"
+     *       )
+     *    ),
+     *   @OA\RequestBody(
+     *     required=true,
+     *     @OA\MediaType(
+     *       mediaType="application/json",
+     *       @OA\Schema(
+     *          @OA\Property(property="lokasi", type="string"),
+     *               @OA\Property(property="latitude", type="string"),
+     *               @OA\Property(property="longitude", type="string"),
+     *               @OA\Property(property="status", type="boolean"),
+     *               @OA\Property(property="vendor", type="string"),
+     *               @OA\Property(property="dinas", type="string"),
+     *       ),
+     *     ),
+     *   ),
+     *      @OA\Response(
+     *          response=201,
+     *          description="Input Data Successfully",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Input Data Successfully",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=422,
+     *          description="Unprocessable Entity",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(response=400, description="Bad request"),
+     *      @OA\Response(response=404, description="Resource Not Found"),
+     * )
+     */
+
+    /**
+     * @OA\Get(
+     *      path="/api/v1/master-data-menara-telekomunikasi/",
+     *      operationId="Cari Master Data Menara telekomunikasi",
+     *      tags={"Master Data Menara Telekomunikasi"},
+     *      summary="Cari Master Data Menara telekomunikasi",
+     *      description="Cari data Menara telekomunikasi",
+     *      @OA\Parameter(
+     *      name="cari",
+     *       in="query",
+     *       required=false,
+     *       @OA\Schema(
+     *            type="string"
+     *       )
+     *    ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *     )
+     */
+
+    //END MASTER DATA MENARA
+
 
 
 }

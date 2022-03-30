@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Support\Str;
 
 /*
@@ -18,7 +19,7 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->get('/key',function(){
+$router->get('/key', function () {
     return Str::random(32);
 });
 
@@ -61,6 +62,17 @@ $router->group(['prefix' => 'api/v1'], function () use ($router) {
     $router->put('update-master-data-wifi/{idWifi}', 'MasterDataWifiController@updateMasterDataWifiById');
     $router->delete('delete-master-data-wifi/{idWifi}', 'MasterDataWifiController@deleteMasterDataWifiById');
     $router->get('master-data-wifi/', 'MasterDataWifiController@cariMasterDataWifi');
+
+    //Master Data Menara
+    $router->post('add-master-data-menara-telekomunikasi', 'MasterDataMenaraTelekomunikasiController@addMasterDataMenara');
+    $router->get('get-master-data-menara-telekomunikasi', 'MasterDataMenaraTelekomunikasiController@getAllMasterDataMenara');
+    $router->get('get-master-data-menara-telekomunikasi/{idMenara}', 'MasterDataMenaraTelekomunikasiController@getMasterDataMenaraById');
+    $router->put('update-master-data-menara-telekomunikasi/{idMenara}', 'MasterDataMenaraTelekomunikasiController@updateMasterDataMenaraById');
+    $router->delete('delete-master-data-menara-telekomunikasi/{idMenara}', 'MasterDataMenaraTelekomunikasiController@deleteMasterDataMenaraById');
+    $router->get('master-data-menara-telekomunikasi/', 'MasterDataMenaraTelekomunikasiController@cariMasterDataMenara');
+
+
+
 
 
 
