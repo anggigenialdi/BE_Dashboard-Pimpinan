@@ -70,7 +70,7 @@ class IndikatorSpbeController extends Controller
         }
     }
 
-    public function addIndexSpbe(Request $request)
+    public function addSkalaNilaiSpbe(Request $request)
     {
         try {
             //validate incoming request 

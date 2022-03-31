@@ -28,7 +28,7 @@ class Controller extends BaseController
      * operationId="Register",
      * tags={"Users"},
      * summary="User Register",
-     * description="User Register here",
+     * description="/api/v1/register",
      *     @OA\RequestBody(
      *         @OA\JsonContent(),
      *         @OA\MediaType(
@@ -70,7 +70,7 @@ class Controller extends BaseController
      * operationId="authLogin",
      * tags={"Users"},
      * summary="User Login",
-     * description="Login User Here",
+     * description="/api/v1/login",
      *     @OA\RequestBody(
      *         @OA\JsonContent(),
      *         @OA\MediaType(
@@ -110,7 +110,7 @@ class Controller extends BaseController
      *      operationId="Users",
      *      tags={"Users"},
      *      summary="Get list",
-     *      description="Returns",
+     *      description="/api/v1/users",
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
@@ -137,7 +137,7 @@ class Controller extends BaseController
      * operationId="Master Indikator Spbe",
      * tags={"Master Indikator SPBE"},
      * summary="Add Master Indikator Spbe",
-     * description="Master Indikator Spbe",
+     * description="api/v1/add-master-indikator-spbe",
      *     @OA\RequestBody(
      *         @OA\JsonContent(),
      *         @OA\MediaType(
@@ -177,7 +177,7 @@ class Controller extends BaseController
      *      operationId="Get All Data",
      *      tags={"Master Indikator SPBE"},
      *      summary="Get All Master Data Indikator SPBE",
-     *      description="Returns",
+     *      description="/api/v1/get-master-indikator-spbe",
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
@@ -197,11 +197,11 @@ class Controller extends BaseController
 
     /**
      * @OA\Post(
-     * path="/api/v1/add-index-spbe",
-     * operationId="Add Index SPBE",
+     * path="/api/v1/add-skala-nilai-spbe",
+     * operationId="Add Skala Nilai SPBE",
      * tags={"Master Indikator SPBE"},
-     * summary="Tambah Data Index SPBE Skala",
-     * description="Tambah Data Index SPBE Skala",
+     * summary="Tambah Data Skala Nilai SPBE",
+     * description="/api/v1/add-skala-nilai-spbe",
      *     @OA\RequestBody(
      *         @OA\JsonContent(),
      *         @OA\MediaType(
@@ -241,7 +241,7 @@ class Controller extends BaseController
      *      operationId="Get All  Index Spbe",
      *      tags={"Master Indikator SPBE"},
      *      summary="Get Data Index Spbe",
-     *      description="Data Nilai",
+     *      description="/api/v1/get-index-spbe",
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
@@ -264,7 +264,7 @@ class Controller extends BaseController
      *      operationId="Get Index Pertahun",
      *      tags={"Master Indikator SPBE"},
      *      summary="Get Index Spbe",
-     *      description="Get Data Index Spbe",
+     *      description="/api/v1/get-index-spbe/{tahun}",
      *      @OA\Parameter(
      *      name="tahun",
      *       in="path",
@@ -296,7 +296,7 @@ class Controller extends BaseController
      *      operationId="Get All Data Index Pertahun",
      *      tags={"Master Indikator SPBE"},
      *      summary="Get All Data Index Pertahun",
-     *      description="Get ALL Data Nilai Index Pertahun",
+     *      description="/api/v1/get-nilai-index",
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
@@ -321,7 +321,7 @@ class Controller extends BaseController
      *      operationId="Get Nilai Index Pertahun",
      *      tags={"Master Indikator SPBE"},
      *      summary="Get Nilai Index Pertahun By Tahun",
-     *      description="Returns",
+     *      description="/api/v1/get-nilai-index/{tahun}",
      *      @OA\Parameter(
      *      name="tahun",
      *       in="path",
@@ -352,7 +352,7 @@ class Controller extends BaseController
      *      operationId="Master Index SPBE",
      *      tags={"Master Indikator SPBE"},
      *      summary="Master Index SPBE",
-     *      description="Edit Master Data Index SPBE",
+     *      description="/api/v1/update-master-indikator-spbe/{id}",
      *      @OA\Parameter(
      *      name="id",
      *       in="path",
@@ -402,7 +402,7 @@ class Controller extends BaseController
      * operationId="Master Data CCTV",
      * tags={"Master Data CCTV"},
      * summary="Master Data Cctv",
-     * description="Master Data Cctv",
+     * description="/api/v1/add-master-data-cctv",
      *     @OA\RequestBody(
      *         @OA\JsonContent(),
      *         @OA\MediaType(
@@ -447,7 +447,7 @@ class Controller extends BaseController
      *      operationId="Master Data CCTV Get",
      *      tags={"Master Data CCTV"},
      *      summary="Get Data CCTV",
-     *      description="Returns",
+     *      description="/api/v1/get-master-data-cctv",
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
@@ -471,7 +471,7 @@ class Controller extends BaseController
      *      operationId="Master Data CCTV By Id",
      *      tags={"Master Data CCTV"},
      *      summary="Get Data BY Id",
-     *      description="Returns",
+     *      description="/api/v1/get-master-data-cctv/{idCctv}",
      *      @OA\Parameter(
      *      name="idCctv",
      *       in="path",
@@ -502,7 +502,7 @@ class Controller extends BaseController
      *      operationId="Update Master Data CCTV By Id",
      *      tags={"Master Data CCTV"},
      *      summary="Update Data CCTV BY Id",
-     *      description="Returns",
+     *      description="/api/v1/update-master-data-cctv/{idCctv}",
      *      @OA\Parameter(
      *      name="idCctv",
      *       in="path",
@@ -552,7 +552,7 @@ class Controller extends BaseController
      *      operationId="Cari Master Data CCTV",
      *      tags={"Master Data CCTV"},
      *      summary="Cari Master Data CCTV",
-     *      description="Cari data cctv",
+     *      description="/api/v1/master-data-cctv/",
      *      @OA\Parameter(
      *      name="cari",
      *       in="query",
@@ -587,7 +587,7 @@ class Controller extends BaseController
      * operationId="Master Data Wifi",
      * tags={"Master Data Wifi"},
      * summary="Master Data Wifi",
-     * description="Master Data Wifi",
+     * description="/api/v1/add-master-data-wifi",
      *     @OA\RequestBody(
      *         @OA\JsonContent(),
      *         @OA\MediaType(
@@ -631,7 +631,7 @@ class Controller extends BaseController
      *      operationId="Master Data Wifi Get",
      *      tags={"Master Data Wifi"},
      *      summary="Get Data Wifi",
-     *      description="Get All data ",
+     *      description="/api/v1/get-master-data-wifi",
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
@@ -655,7 +655,7 @@ class Controller extends BaseController
      *      operationId="Master Data Wifi By Id",
      *      tags={"Master Data Wifi"},
      *      summary="Get Data BY Id",
-     *      description="Get data by id wifi",
+     *      description="/api/v1/get-master-data-wifi/{idWifi}",
      *      @OA\Parameter(
      *      name="idWifi",
      *       in="path",
@@ -686,7 +686,7 @@ class Controller extends BaseController
      *      operationId="Update Master Data Wifi By Id",
      *      tags={"Master Data Wifi"},
      *      summary="Update Data Wifi BY Id",
-     *      description="Returns",
+     *      description="/api/v1/update-master-data-cctv/{idWifi}",
      *      @OA\Parameter(
      *      name="idWifi",
      *       in="path",
@@ -735,7 +735,7 @@ class Controller extends BaseController
      *      operationId="Cari Master Data Wifi",
      *      tags={"Master Data Wifi"},
      *      summary="Cari Master Data Wifi",
-     *      description="Cari data wifi",
+     *      description="/api/v1/master-data-wifi/",
      *      @OA\Parameter(
      *      name="cari",
      *       in="query",
@@ -770,7 +770,7 @@ class Controller extends BaseController
      * operationId="Master Data Menara Telekomunikasi",
      * tags={"Master Data Menara Telekomunikasi"},
      * summary="Master Data Menara Telekomunikasi",
-     * description="Master Data Menara Telekomunikasi",
+     * description="/api/v1/add-master-data-menara-telekomunikasi",
      *     @OA\RequestBody(
      *         @OA\JsonContent(),
      *         @OA\MediaType(
@@ -814,7 +814,7 @@ class Controller extends BaseController
      *      operationId="Master Data Menara Telekomunikasi Get",
      *      tags={"Master Data Menara Telekomunikasi"},
      *      summary="Get Data Menara Telekomunikasi",
-     *      description="Get All data ",
+     *      description="/api/v1/get-master-data-menara-telekomunikasi",
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
@@ -838,7 +838,7 @@ class Controller extends BaseController
      *      operationId="Master Data Menara Telekomunikasi By Id",
      *      tags={"Master Data Menara Telekomunikasi"},
      *      summary="Get Data BY Id",
-     *      description="Get data by id Menara Telekomunikasi",
+     *      description="/api/v1/get-master-data-menara-telekomunikasi/{idMenara}",
      *      @OA\Parameter(
      *      name="idMenara",
      *       in="path",
@@ -869,7 +869,7 @@ class Controller extends BaseController
      *      operationId="Update Master Data Menara Telekomunikasi By Id",
      *      tags={"Master Data Menara Telekomunikasi"},
      *      summary="Update Data Menara Telekomunikasi BY Id",
-     *      description="Returns",
+     *      description="/api/v1/update-master-data-menara-telekomunikasi/{idMenara}",
      *      @OA\Parameter(
      *      name="idMenara",
      *       in="path",
@@ -918,7 +918,7 @@ class Controller extends BaseController
      *      operationId="Cari Master Data Menara telekomunikasi",
      *      tags={"Master Data Menara Telekomunikasi"},
      *      summary="Cari Master Data Menara telekomunikasi",
-     *      description="Cari data Menara telekomunikasi",
+     *      description="/api/v1/master-data-menara-telekomunikasi/",
      *      @OA\Parameter(
      *      name="cari",
      *       in="query",

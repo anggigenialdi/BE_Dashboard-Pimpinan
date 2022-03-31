@@ -16,7 +16,7 @@
                     "Users"
                 ],
                 "summary": "User Register",
-                "description": "User Register here",
+                "description": "/api/v1/register",
                 "operationId": "Register",
                 "requestBody": {
                     "content": {
@@ -92,7 +92,7 @@
                     "Users"
                 ],
                 "summary": "User Login",
-                "description": "Login User Here",
+                "description": "/api/v1/login",
                 "operationId": "authLogin",
                 "requestBody": {
                     "content": {
@@ -159,7 +159,7 @@
                     "Users"
                 ],
                 "summary": "Get list",
-                "description": "Returns",
+                "description": "/api/v1/users",
                 "operationId": "Users",
                 "responses": {
                     "200": {
@@ -185,7 +185,7 @@
                     "Master Indikator SPBE"
                 ],
                 "summary": "Add Master Indikator Spbe",
-                "description": "Master Indikator Spbe",
+                "description": "api/v1/add-master-indikator-spbe",
                 "operationId": "Master Indikator Spbe",
                 "requestBody": {
                     "content": {
@@ -249,7 +249,7 @@
                     "Master Indikator SPBE"
                 ],
                 "summary": "Get All Master Data Indikator SPBE",
-                "description": "Returns",
+                "description": "/api/v1/get-master-indikator-spbe",
                 "operationId": "Get All Data",
                 "responses": {
                     "200": {
@@ -269,14 +269,14 @@
                 }
             }
         },
-        "/api/v1/add-index-spbe": {
+        "/api/v1/add-skala-nilai-spbe": {
             "post": {
                 "tags": [
                     "Master Indikator SPBE"
                 ],
-                "summary": "Tambah Data Index SPBE Skala",
-                "description": "Tambah Data Index SPBE Skala",
-                "operationId": "Add Index SPBE",
+                "summary": "Tambah Data Skala Nilai SPBE",
+                "description": "/api/v1/add-skala-nilai-spbe",
+                "operationId": "Add Skala Nilai SPBE",
                 "requestBody": {
                     "content": {
                         "multipart/form-data": {
@@ -345,7 +345,7 @@
                     "Master Indikator SPBE"
                 ],
                 "summary": "Get Data Index Spbe",
-                "description": "Data Nilai",
+                "description": "/api/v1/get-index-spbe",
                 "operationId": "Get All  Index Spbe",
                 "responses": {
                     "200": {
@@ -371,7 +371,7 @@
                     "Master Indikator SPBE"
                 ],
                 "summary": "Get Index Spbe",
-                "description": "Get Data Index Spbe",
+                "description": "/api/v1/get-index-spbe/{tahun}",
                 "operationId": "Get Index Pertahun",
                 "parameters": [
                     {
@@ -407,7 +407,7 @@
                     "Master Indikator SPBE"
                 ],
                 "summary": "Get All Data Index Pertahun",
-                "description": "Get ALL Data Nilai Index Pertahun",
+                "description": "/api/v1/get-nilai-index",
                 "operationId": "Get All Data Index Pertahun",
                 "responses": {
                     "200": {
@@ -433,7 +433,7 @@
                     "Master Indikator SPBE"
                 ],
                 "summary": "Get Nilai Index Pertahun By Tahun",
-                "description": "Returns",
+                "description": "/api/v1/get-nilai-index/{tahun}",
                 "operationId": "Get Nilai Index Pertahun",
                 "parameters": [
                     {
@@ -469,7 +469,7 @@
                     "Master Indikator SPBE"
                 ],
                 "summary": "Master Index SPBE",
-                "description": "Edit Master Data Index SPBE",
+                "description": "/api/v1/update-master-indikator-spbe/{id}",
                 "operationId": "Master Index SPBE",
                 "parameters": [
                     {
@@ -539,7 +539,7 @@
                     "Master Data CCTV"
                 ],
                 "summary": "Master Data Cctv",
-                "description": "Master Data Cctv",
+                "description": "/api/v1/add-master-data-cctv",
                 "operationId": "Master Data CCTV",
                 "requestBody": {
                     "content": {
@@ -622,7 +622,7 @@
                     "Master Data CCTV"
                 ],
                 "summary": "Get Data CCTV",
-                "description": "Returns",
+                "description": "/api/v1/get-master-data-cctv",
                 "operationId": "Master Data CCTV Get",
                 "responses": {
                     "200": {
@@ -648,7 +648,7 @@
                     "Master Data CCTV"
                 ],
                 "summary": "Get Data BY Id",
-                "description": "Returns",
+                "description": "/api/v1/get-master-data-cctv/{idCctv}",
                 "operationId": "Master Data CCTV By Id",
                 "parameters": [
                     {
@@ -684,7 +684,7 @@
                     "Master Data CCTV"
                 ],
                 "summary": "Update Data CCTV BY Id",
-                "description": "Returns",
+                "description": "/api/v1/update-master-data-cctv/{idCctv}",
                 "operationId": "Update Master Data CCTV By Id",
                 "parameters": [
                     {
@@ -769,7 +769,7 @@
                     "Master Data CCTV"
                 ],
                 "summary": "Cari Master Data CCTV",
-                "description": "Cari data cctv",
+                "description": "/api/v1/master-data-cctv/",
                 "operationId": "Cari Master Data CCTV",
                 "parameters": [
                     {
@@ -805,7 +805,7 @@
                     "Master Data Wifi"
                 ],
                 "summary": "Master Data Wifi",
-                "description": "Master Data Wifi",
+                "description": "/api/v1/add-master-data-wifi",
                 "operationId": "Master Data Wifi",
                 "requestBody": {
                     "content": {
@@ -885,7 +885,7 @@
                     "Master Data Wifi"
                 ],
                 "summary": "Get Data Wifi",
-                "description": "Get All data ",
+                "description": "/api/v1/get-master-data-wifi",
                 "operationId": "Master Data Wifi Get",
                 "responses": {
                     "200": {
@@ -911,7 +911,7 @@
                     "Master Data Wifi"
                 ],
                 "summary": "Get Data BY Id",
-                "description": "Get data by id wifi",
+                "description": "/api/v1/get-master-data-wifi/{idWifi}",
                 "operationId": "Master Data Wifi By Id",
                 "parameters": [
                     {
@@ -947,7 +947,7 @@
                     "Master Data Wifi"
                 ],
                 "summary": "Update Data Wifi BY Id",
-                "description": "Returns",
+                "description": "/api/v1/update-master-data-cctv/{idWifi}",
                 "operationId": "Update Master Data Wifi By Id",
                 "parameters": [
                     {
@@ -1029,7 +1029,7 @@
                     "Master Data Wifi"
                 ],
                 "summary": "Cari Master Data Wifi",
-                "description": "Cari data wifi",
+                "description": "/api/v1/master-data-wifi/",
                 "operationId": "Cari Master Data Wifi",
                 "parameters": [
                     {
@@ -1065,7 +1065,7 @@
                     "Master Data Menara Telekomunikasi"
                 ],
                 "summary": "Master Data Menara Telekomunikasi",
-                "description": "Master Data Menara Telekomunikasi",
+                "description": "/api/v1/add-master-data-menara-telekomunikasi",
                 "operationId": "Master Data Menara Telekomunikasi",
                 "requestBody": {
                     "content": {
@@ -1145,7 +1145,7 @@
                     "Master Data Menara Telekomunikasi"
                 ],
                 "summary": "Get Data Menara Telekomunikasi",
-                "description": "Get All data ",
+                "description": "/api/v1/get-master-data-menara-telekomunikasi",
                 "operationId": "Master Data Menara Telekomunikasi Get",
                 "responses": {
                     "200": {
@@ -1171,7 +1171,7 @@
                     "Master Data Menara Telekomunikasi"
                 ],
                 "summary": "Get Data BY Id",
-                "description": "Get data by id Menara Telekomunikasi",
+                "description": "/api/v1/get-master-data-menara-telekomunikasi/{idMenara}",
                 "operationId": "Master Data Menara Telekomunikasi By Id",
                 "parameters": [
                     {
@@ -1207,7 +1207,7 @@
                     "Master Data Menara Telekomunikasi"
                 ],
                 "summary": "Update Data Menara Telekomunikasi BY Id",
-                "description": "Returns",
+                "description": "/api/v1/update-master-data-menara-telekomunikasi/{idMenara}",
                 "operationId": "Update Master Data Menara Telekomunikasi By Id",
                 "parameters": [
                     {
@@ -1289,7 +1289,7 @@
                     "Master Data Menara Telekomunikasi"
                 ],
                 "summary": "Cari Master Data Menara telekomunikasi",
-                "description": "Cari data Menara telekomunikasi",
+                "description": "/api/v1/master-data-menara-telekomunikasi/",
                 "operationId": "Cari Master Data Menara telekomunikasi",
                 "parameters": [
                     {
