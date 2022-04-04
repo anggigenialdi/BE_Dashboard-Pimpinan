@@ -33,12 +33,13 @@ $router->group(['prefix' => 'api/v1'], function () use ($router) {
     //Indikator spbe nama dan bobot
     $router->post('add-master-indikator-spbe', 'IndikatorSpbeController@addMasterIndikatorSpbe');
     $router->get('get-master-indikator-spbe', 'IndikatorSpbeController@getAllMasterIndikatorSpbe');
-    $router->put('update-master-indikator-spbe/{id}', 'IndikatorSpbeController@updateMasterDataIndikatorSpbeById');
+    $router->put('update-master-indikator-spbe/{idMaster}', 'IndikatorSpbeController@updateMasterDataIndikatorSpbeById');
 
     //tambah Skala Nilai
     $router->post('add-skala-nilai-spbe', 'IndikatorSpbeController@addSkalaNilaiSpbe');
     $router->get('get-index-spbe', 'IndikatorSpbeController@getIndexSpbe');
     $router->get('get-index-spbe/{tahun}', 'IndikatorSpbeController@getIndexSpbeTahun');
+    $router->put('update-index-spbe/{id}', 'IndikatorSpbeController@getUpdataSkalaNilai');
 
     //Index SPBE
     $router->get('get-nilai-index', 'IndikatorSpbeController@getAllNilaiIndexPertahun');

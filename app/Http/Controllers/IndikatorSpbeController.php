@@ -316,10 +316,11 @@ class IndikatorSpbeController extends Controller
         }
     }
 
-    public function updateMasterDataIndikatorSpbeById(Request $request, $id)
+    public function updateMasterDataIndikatorSpbeById(Request $request, $idMaster)
     {
+
         try {
-            $updateData = MasterIndikatorSpbe::find($id)->get();
+            $updateData = MasterIndikatorSpbe::where('id', $idMaster);
 
             $updateData->update([
                 'nama_indikator' => request('nama_indikator'),
@@ -335,7 +336,7 @@ class IndikatorSpbeController extends Controller
                 return response()->json([
                     'success' => true,
                     'message' => 'Update Sukses',
-                    'data' =>  $updateData
+                    'data' =>  $request->all(),
                 ], 201);
             }
         } catch (\Throwable $th) {
@@ -362,5 +363,116 @@ class IndikatorSpbeController extends Controller
                 'message' => $th
             ], 409);
         }
+    }
+
+    public function getUpdataSkalaNilai(Request $request, $id)
+    {
+        // try {
+            $getOldData = IndexSpbe::where('id', $id)->get();
+
+            $newArr = [];
+            $saveData = [];
+            $no = 0;
+            foreach ($getOldData as $key) {
+                $no++;
+                    $newArr['id'] = $key->id;
+                    $newArr['id_indikator'] = $key->id_indikator;
+                    $newArr['tahun'] = $key->tahun;
+                array_push($saveData, $newArr);
+            };     
+            $updateData = IndexSpbe::where('id', $key->id);
+
+            $updateData->update([
+                'skala_nilai' => request('skala_nilai'),
+            ]);
+
+            $getData = MasterIndikatorSpbe::where('id',   $key->id_indikator)->get();
+            $bobot = [];
+
+            foreach ($getData as $key) {
+                $bobot['bobot'] = $key->bobot;
+                array_push($bobot);
+            };
+
+            //rumus: ( (skala_nilai/5) * bobot)
+            $dataIndex = (( request('skala_nilai') / 5) * $key->bobot);
+
+            $updateData->update([
+                'index_nilai' => $dataIndex,
+            ]);
+            
+            //CUT
+
+            //get tahun
+            $newArr = [];
+            $saveData = [];
+            $no = 0;
+            foreach ($getData as $key) {
+                $no++;
+                $newArr['nama_indikator'] = $key->nama_indikator;
+                $newArr['bobot'] = $key->bobot;
+
+                foreach ($key->indexSpbe as $spbe) {
+                    $newArr['id_indikator'] = $spbe->id_indikator;
+                    $newArr['tahun'] = $spbe->tahun;
+                }
+                array_push($saveData, $newArr);
+            };
+
+            $newData = IndexSpbe::where('tahun', $spbe->tahun)->get();
+
+            $totalIndex = 0;
+            foreach ($newData as $key) {
+                $totalIndex = ($totalIndex + $key->index_nilai);
+            }
+
+            $dataBaru = [];
+            $getIdIndikator = [];
+
+            foreach ($newData as $key) {
+                $dataBaru['id_indikator'] = $key->id_indikator;
+                array_push($getIdIndikator, $dataBaru);
+            };
+
+            $masterIndex = MasterIndikatorSpbe::whereIn('id', $getIdIndikator)->get();
+
+            $totalBobot = 0;
+            foreach ($masterIndex as $nilai) {
+                $totalBobot = ($totalBobot + $nilai->bobot);
+            };
+
+            $hasilIndex = (($totalIndex / $totalBobot) * 5);
+
+            $saveIndexPertahun = IndexSpbePertahun::where('tahun',  $key->tahun)->first();
+
+            if ($saveIndexPertahun !== null) {
+                $saveIndexPertahun->update(['hasil_index' => $hasilIndex]);
+            } else {
+                $saveIndexPertahun = IndexSpbePertahun::create([
+                    'tahun' => request('tahun'),
+                    'hasil_index' => $hasilIndex,
+                ]);
+            }
+
+
+
+            if (!$updateData) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Data tidak ada',
+                ], 404);
+            } else {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Update Sukses',
+                    'data' =>  $request->all(),
+                ], 201);
+            }
+        // } catch (\Throwable $th) {
+        //     return response()->json([
+        //         'success' => false,
+        //         'message' => $th
+        //     ], 409);
+        // }
     }
 }
