@@ -258,6 +258,51 @@ class Controller extends BaseController
      *     )
      */
 
+    
+    /**
+     * @OA\Put(
+     *      path="/api/v1/update-index-spbe/{id}",
+     *      operationId="Update Skala Nilai",
+     *      tags={"Master Indikator SPBE"},
+     *      summary="Update Skala Nilai",
+     *      description="/api/v1/update-index-spbe/{id}",
+     *      @OA\Parameter(
+     *      name="id",
+     *       in="path",
+     *       required=false,
+     *       @OA\Schema(
+     *            type="integer"
+     *       )
+     *    ),
+     *   @OA\RequestBody(
+     *     required=true,
+     *     @OA\MediaType(
+     *       mediaType="application/json",
+     *       @OA\Schema(
+     *          @OA\Property(property="skala_nilai", type="integer"),
+     *       ),
+     *     ),
+     *   ),
+     *      @OA\Response(
+     *          response=201,
+     *          description="Input Data Successfully",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Input Data Successfully",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=422,
+     *          description="Unprocessable Entity",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(response=400, description="Bad request"),
+     *      @OA\Response(response=404, description="Resource Not Found"),
+     * )
+     */
+
     /**
      * @OA\Get(
      *      path="/api/v1/get-index-spbe/{tahun}",
@@ -348,13 +393,13 @@ class Controller extends BaseController
 
     /**
      * @OA\Put(
-     *      path="/api/v1/update-master-indikator-spbe/{id}",
+     *      path="/api/v1/update-master-indikator-spbe/{idMaster}",
      *      operationId="Master Index SPBE",
      *      tags={"Master Indikator SPBE"},
      *      summary="Master Index SPBE",
-     *      description="/api/v1/update-master-indikator-spbe/{id}",
+     *      description="/api/v1/update-master-indikator-spbe/{idMaster}",
      *      @OA\Parameter(
-     *      name="id",
+     *      name="idMaster",
      *       in="path",
      *       required=false,
      *       @OA\Schema(

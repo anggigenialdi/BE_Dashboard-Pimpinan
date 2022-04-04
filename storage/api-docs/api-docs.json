@@ -365,6 +365,73 @@
                 }
             }
         },
+        "/api/v1/update-index-spbe/{id}": {
+            "put": {
+                "tags": [
+                    "Master Indikator SPBE"
+                ],
+                "summary": "Update Skala Nilai",
+                "description": "/api/v1/update-index-spbe/{id}",
+                "operationId": "Update Skala Nilai",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "skala_nilai": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Input Data Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Input Data Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
         "/api/v1/get-index-spbe/{tahun}": {
             "get": {
                 "tags": [
@@ -463,17 +530,17 @@
                 }
             }
         },
-        "/api/v1/update-master-indikator-spbe/{id}": {
+        "/api/v1/update-master-indikator-spbe/{idMaster}": {
             "put": {
                 "tags": [
                     "Master Indikator SPBE"
                 ],
                 "summary": "Master Index SPBE",
-                "description": "/api/v1/update-master-indikator-spbe/{id}",
+                "description": "/api/v1/update-master-indikator-spbe/{idMaster}",
                 "operationId": "Master Index SPBE",
                 "parameters": [
                     {
-                        "name": "id",
+                        "name": "idMaster",
                         "in": "path",
                         "required": false,
                         "schema": {

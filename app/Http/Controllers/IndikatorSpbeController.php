@@ -367,7 +367,7 @@ class IndikatorSpbeController extends Controller
 
     public function getUpdataSkalaNilai(Request $request, $id)
     {
-        // try {
+        try {
             $getOldData = IndexSpbe::where('id', $id)->get();
 
             $newArr = [];
@@ -401,8 +401,6 @@ class IndikatorSpbeController extends Controller
                 'index_nilai' => $dataIndex,
             ]);
             
-            //CUT
-
             //get tahun
             $newArr = [];
             $saveData = [];
@@ -454,8 +452,6 @@ class IndikatorSpbeController extends Controller
                 ]);
             }
 
-
-
             if (!$updateData) {
                 return response()->json([
                     'success' => false,
@@ -468,11 +464,11 @@ class IndikatorSpbeController extends Controller
                     'data' =>  $request->all(),
                 ], 201);
             }
-        // } catch (\Throwable $th) {
-        //     return response()->json([
-        //         'success' => false,
-        //         'message' => $th
-        //     ], 409);
-        // }
+        } catch (\Throwable $th) {
+            return response()->json([
+                'success' => false,
+                'message' => $th
+            ], 409);
+        }
     }
 }
