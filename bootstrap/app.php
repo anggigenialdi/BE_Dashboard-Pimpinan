@@ -95,7 +95,7 @@ $app->routeMiddleware([
 |
 */
 
-$app->register(App\Providers\CatchAllOptionsRequestsProvider::class);
+// $app->register(App\Providers\CatchAllOptionsRequestsProvider::class);
 
 $app->register(\SwaggerLume\ServiceProvider::class);
 
