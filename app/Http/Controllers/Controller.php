@@ -306,9 +306,9 @@ class Controller extends BaseController
     /**
      * @OA\Get(
      *      path="/api/v1/get-index-spbe/{tahun}",
-     *      operationId="Get Index Pertahun",
+     *      operationId="Get Index Spbe Pilih Tahun",
      *      tags={"Master Indikator SPBE"},
-     *      summary="Get Index Spbe",
+     *      summary="Get Index Spbe Pilih Tahun",
      *      description="/api/v1/get-index-spbe/{tahun}",
      *      @OA\Parameter(
      *      name="tahun",
@@ -340,7 +340,7 @@ class Controller extends BaseController
      *      path="/api/v1/get-nilai-index",
      *      operationId="Get All Data Index Pertahun",
      *      tags={"Master Indikator SPBE"},
-     *      summary="Get All Data Index Pertahun",
+     *      summary="Get All Data Nilai Index Pertahun",
      *      description="/api/v1/get-nilai-index",
      *      @OA\Response(
      *          response=200,
