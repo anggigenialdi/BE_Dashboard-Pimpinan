@@ -94,6 +94,9 @@ $app->routeMiddleware([
 | totally optional, so you are not required to uncomment this line.
 |
 */
+
+$app->register(App\Providers\CatchAllOptionsRequestsProvider::class);
+
 $app->register(\SwaggerLume\ServiceProvider::class);
 
 
