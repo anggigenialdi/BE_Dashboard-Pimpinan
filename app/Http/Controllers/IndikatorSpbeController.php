@@ -184,14 +184,7 @@ class IndikatorSpbeController extends Controller
     public function getIndexSpbeTahun(Request $request, $tahun)
     {
         try {
-            $indexSpbe = IndexSpbe::where('tahun', $tahun)->get();
-            // $MasterIndikator= MasterIndikatorSpbe::all();
-
-            // $datas = [];
-            // for ($i = 0; $i < count($MasterIndikator); $i++){
-            //     array_push($datas, $MasterIndikator[$i].['nilai']);
-            // };
-            // dd($datas);
+            $indexSpbe = IndexSpbe::where('tahun', $tahun)->OrderBy('id', 'ASC')->get();
             
 
             if (!$indexSpbe) {
@@ -221,7 +214,7 @@ class IndikatorSpbeController extends Controller
 
             return response()->json([
                 'success' => true,
-                'message' => 'Master Data Index Spbe Pertahun',
+                'message' => 'Master Data Nilai Index Spbe Pertahun',
                 'data' =>  $dataNilai,
             ], 200);
         } catch (\Throwable $th) {
