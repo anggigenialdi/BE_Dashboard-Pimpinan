@@ -365,13 +365,13 @@
                 }
             }
         },
-        "/api/v1/get-index-spbe/all": {
+        "/api/v1/get-index-spbe-all": {
             "get": {
                 "tags": [
                     "Master Indikator SPBE"
                 ],
                 "summary": "Get Data All Index Spbe",
-                "description": "/api/v1/get-index-spbe/all",
+                "description": "/api/v1/get-index-spbe-all",
                 "operationId": "Get Data All  Index Spbe",
                 "responses": {
                     "200": {
