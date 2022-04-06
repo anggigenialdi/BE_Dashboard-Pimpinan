@@ -114,6 +114,7 @@ class MasterDataWifiController extends Controller
             return response()->json([
                 'success' => true,
                 'message' => 'Updata Data Berhasil',
+                'data' =>  $request->all(),
             ], 201);
         } catch (\Throwable $th) {
             return response()->json([

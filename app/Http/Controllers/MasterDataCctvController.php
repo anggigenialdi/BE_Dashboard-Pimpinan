@@ -31,7 +31,7 @@ class MasterDataCctvController extends Controller
             $dataCctv->link_stream = $request->input('link_stream');
 
             //Cek Duplicate data
-            $duplicate = $dataCctv->where('latitude', $dataCctv->latitude)->first();
+            $duplicate = $dataCctv->where('longitude', $dataCctv->longitude)->first();
 
             if ($duplicate) {
                 return response()->json([
@@ -119,6 +119,7 @@ class MasterDataCctvController extends Controller
             return response()->json([
                 'success' => true,
                 'message' => 'Updata Data Berhasil',
+                'data' =>  $request->all(),
             ], 201);
         } catch (\Throwable $th) {
             return response()->json([
