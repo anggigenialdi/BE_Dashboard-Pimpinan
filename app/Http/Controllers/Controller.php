@@ -258,6 +258,29 @@ class Controller extends BaseController
      *     )
      */
 
+    /**
+     * @OA\Get(
+     *      path="/api/v1/get-index-spbe/all",
+     *      operationId="Get Data All  Index Spbe",
+     *      tags={"Master Indikator SPBE"},
+     *      summary="Get Data All Index Spbe",
+     *      description="/api/v1/get-index-spbe/all",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *     )
+     */
+
     
     /**
      * @OA\Put(

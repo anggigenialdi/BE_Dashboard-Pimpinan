@@ -255,7 +255,6 @@ class IndikatorSpbeController extends Controller
         try {
             $indexSpbe = IndexSpbe::OrderBy('id', 'ASC')->get();
 
-            $newIndex = [];
             $newDatas = [];
 
             foreach ($indexSpbe as $key) {
@@ -457,6 +456,25 @@ class IndikatorSpbeController extends Controller
                     'data' =>  $request->all(),
                 ], 201);
             }
+        } catch (\Throwable $th) {
+            return response()->json([
+                'success' => false,
+                'message' => $th
+            ], 409);
+        }
+    }
+
+    public function getIndexSpbeAll(Request $request)
+    {
+        try {
+            $indexSpbe = IndexSpbe::OrderBy('id', 'ASC')->get();
+                    
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Data Index Spbe',
+                'data' => $indexSpbe,
+            ], 200);
         } catch (\Throwable $th) {
             return response()->json([
                 'success' => false,
