@@ -467,13 +467,13 @@ class IndikatorSpbeController extends Controller
     public function getIndexSpbeAll(Request $request)
     {
         try {
-            $indexSpbe = IndexSpbe::OrderBy('id', 'ASC')->get();
+            $allDataIndex = IndexSpbe::OrderBy('id', 'ASC')->get();
                     
 
             return response()->json([
                 'success' => true,
                 'message' => 'Data Index Spbe',
-                'data' => $indexSpbe,
+                'data' => $allDataIndex,
             ], 200);
         } catch (\Throwable $th) {
             return response()->json([
