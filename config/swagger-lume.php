@@ -65,7 +65,7 @@ return [
         | File name of the generated json documentation file
         |--------------------------------------------------------------------------
         */
-        'docs_json' => 'api-docs 2.json',
+        'docs_json' => 'api-docs.json',
 
         /*
         |--------------------------------------------------------------------------
