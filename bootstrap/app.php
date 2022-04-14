@@ -23,6 +23,7 @@ $app = new Laravel\Lumen\Application(
     dirname(__DIR__)
 );
 
+class_alias('Maatwebsite\Excel\Facades\Excel', 'Excel');
 $app->withFacades();
 
 $app->withEloquent();
@@ -98,7 +99,7 @@ $app->routeMiddleware([
 // $app->register(App\Providers\CatchAllOptionsRequestsProvider::class);
 
 $app->register(\SwaggerLume\ServiceProvider::class);
-
+$app->register(Maatwebsite\Excel\ExcelServiceProvider::class);
 
 // $app->register(App\Providers\AppServiceProvider::class);
 $app->register(App\Providers\AuthServiceProvider::class);

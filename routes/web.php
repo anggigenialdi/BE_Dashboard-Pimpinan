@@ -48,6 +48,10 @@ $router->group(['prefix' => 'api/v1'], function () use ($router) {
     $router->get('get-nilai-index', 'IndikatorSpbeController@getAllNilaiIndexPertahun');
     $router->get('get-nilai-index/{tahun}', 'IndikatorSpbeController@getNilaiIndex');
 
+
+    $router->post('import', 'IndikatorSpbeController@import');
+
+
     //end
 
 

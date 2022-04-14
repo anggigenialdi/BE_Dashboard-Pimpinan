@@ -1,0 +1,48 @@
+﻿Nomor Indikator;Nama Indikator;Bobot (%);SKALA NILAI;INDEX;TAHUN
+1;Tingkat Kematangan Kebijakan Internal Arsitektur SPBE Instansi Pusat/Pemerintah Daerah;1,3;2;0,52;2020
+2;Tingkat Kematangan Kebijakan Internal Peta Rencana SPBE Instansi Pusat/Pemerintah Daerah;1,3;2;0,52;2020
+3;Tingkat Kematangan Kebijakan Internal Manajemen Data;1,3;4;1,04;2020
+4;Tingkat Kematangan Kebijakan Internal Pembangunan Aplikasi SPBE;1,3;1;0,26;2020
+5;Tingkat Kematangan Kebijakan Internal Layanan Pusat Data;1,3;1;0,26;2020
+6;Tingkat Kematangan Kebijakan Internal Layanan Jaringan Intra Instansi Pusat/Pemerintah Daerah;1,3;3;0,78;2020
+7;Tingkat Kematangan Kebijakan Internal Penggunaan Sistem Penghubung Layanan Instansi Pusat/Pemerintah Daerah;1,3;3;0,78;2020
+8;Tingkat Kematangan Kebijakan Internal Manajemen Keamanan Informasi;1,3;3;0,78;2020
+9;Tingkat Kematangan Kebijakan Internal Audit TIK;1,3;3;0,78;2020
+10;Tingkat Kematangan Kebijakan Internal Tim Koordinasi SPBE Instansi Pusat/Pemerintah Daerah;1,3;5;1,3;2020
+11;Tingkat Kematangan Arsitektur SPBE Instansi Pusat/Pemerintah Daerah;2,5;2;1;2020
+12;Tingkat Kematangan Peta Rencana SPBE Instansi Pusat/Pemerintah Daerah;2,5;3;1,5;2020
+13;Tingkat Kematangan Keterpaduan Rencana dan Anggaran SPBE;2,5;3;1,5;2020
+14;Tingkat Kematangan Inovasi Proses Bisnis SPBE;2,5;3;1,5;2020
+15;Tingkat Kematangan Pembangunan Aplikasi SPBE;2,5;3;1,5;2020
+16;Tingkat Kematangan Layanan Pusat Data;2,5;3;1,5;2020
+17;Tingkat Kematangan Layanan Jaringan Intra Instansi Pusat/Pemerintah Daerah;2,5;3;1,5;2020
+18;Tingkat Kematangan Penggunaan Sistem Penghubung Layanan Instansi Pusat/Pemerintah Daerah;2,5;3;1,5;2020
+19;Tingkat Kematangan Pelaksanaan Tim Koordinasi SPBE Instansi Pusat/Pemerintah Daerah;2,5;4;2;2020
+20;Tingkat Kematangan Kolaborasi Penerapan SPBE;2,5;4;2;2020
+21;Tingkat Kematangan Penerapan Manajemen Risiko SPBE;1,5;1;0,3;2020
+22;Tingkat Kematangan Penerapan Manajemen Keamanan Informasi;1,5;2;0,6;2020
+23;Tingkat Kematangan Penerapan Manajemen Data;1,5;1;0,3;2020
+24;Tingkat Kematangan Penerapan Manajemen Aset TIK;1,5;1;0,3;2020
+25;Tingkat Kematangan Penerapan Kompetensi Sumber Daya Manusia;1,5;2;0,6;2020
+26;Tingkat Kematangan Penerapan Manajemen Pengetahuan;1,5;1;0,3;2020
+27;Tingkat Kematangan Penerapan Manajemen Perubahan;1,5;1;0,3;2020
+28;Tingkat Kematangan Penerapan Manajemen Layanan SPBE;1,5;1;0,3;2020
+29;Tingkat Kematangan Pelaksanaan Audit Infrastruktur SPBE;1,5;1;0,3;2020
+30;Tingkat Kematangan Pelaksanaan Audit Aplikasi SPBE;1,5;1;0,3;2020
+31;Tingkat Kematangan Pelaksanaan Audit Keamanan SPBE;1,5;2;0,6;2020
+32;Tingkat Kematangan Layanan Perencanaan;2,75;4;2,2;2020
+33;Tingkat Kematangan Layanan Penganggaran;2,75;4;2,2;2020
+34;Tingkat Kematangan Layanan Keuangan;2,75;4;2,2;2020
+35;Tingkat Kematangan Layanan Pengadaan Barang dan Jasa;2,75;4;2,2;2020
+36;Tingkat Kematangan Layanan Kepegawaian;2,75;4;2,2;2020
+37;Tingkat Kematangan Layanan Kearsipan Dinamis;2,75;3;1,65;2020
+38;Tingkat Kematangan Layanan Pengelolaan Barang Milik Negara/Daerah;2,75;4;2,2;2020
+39;Tingkat Kematangan Layanan Pengawasan Internal Pemerintah;2,75;3;1,65;2020
+40;Tingkat Kematangan Layanan Akuntabilitas Kinerja Organisasi;2,75;5;2,75;2020
+41;Tingkat Kematangan Layanan Kinerja Pegawai;2,75;5;2,75;2020
+42;Tingkat Kematangan Layanan Pengaduan Pelayanan Publik;3;4;2,4;2020
+43;Tingkat Kematangan Layanan Data Terbuka;3;4;2,4;2020
+44;Tingkat Kematangan Jaringan Dokumentasi dan Informasi Hukum (JDIH);3;2;1,2;2020
+45;Tingkat Kematangan Layanan Publik Sektor 1;3;5;3;2020
+46;Tingkat Kematangan Layanan Publik Sektor 2;3;5;3;2020
+47;Tingkat Kematangan Layanan Publik Sektor 3;3;5;3;2020

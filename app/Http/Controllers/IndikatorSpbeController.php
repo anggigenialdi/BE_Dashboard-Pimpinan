@@ -8,6 +8,10 @@ use App\Models\IndexSpbePertahun;
 use App\Models\MasterIndikatorSpbe;
 use Illuminate\Http\Request;
 
+use App\Imports\IndeksImport;
+use App\Models\IndeksSpbe;
+use Maatwebsite\Excel\Facades\Excel;
+
 class IndikatorSpbeController extends Controller
 {
 
@@ -185,7 +189,7 @@ class IndikatorSpbeController extends Controller
     {
         try {
             $indexSpbe = IndexSpbe::where('tahun', $tahun)->OrderBy('id', 'ASC')->get();
-            
+
 
             if (!$indexSpbe) {
                 return response()->json([
@@ -249,7 +253,7 @@ class IndikatorSpbeController extends Controller
             ], 409);
         }
     }
-    
+
     public function getIndexSpbe(Request $request)
     {
         try {
@@ -293,7 +297,7 @@ class IndikatorSpbeController extends Controller
     public function getAllMasterDomain(Request $request)
     {
         try {
-            $dataMaster=  MasterIndikatorSpbe::OrderBy('id', 'ASC')->get();
+            $dataMaster =  MasterIndikatorSpbe::OrderBy('id', 'ASC')->get();
 
             return response()->json([
                 'success' => true,
@@ -367,11 +371,11 @@ class IndikatorSpbeController extends Controller
             $no = 0;
             foreach ($getOldData as $key) {
                 $no++;
-                    $newArr['id'] = $key->id;
-                    $newArr['id_indikator'] = $key->id_indikator;
-                    $newArr['tahun'] = $key->tahun;
+                $newArr['id'] = $key->id;
+                $newArr['id_indikator'] = $key->id_indikator;
+                $newArr['tahun'] = $key->tahun;
                 array_push($saveData, $newArr);
-            };     
+            };
             $updateData = IndexSpbe::where('id', $key->id);
 
             $updateData->update([
@@ -387,12 +391,12 @@ class IndikatorSpbeController extends Controller
             };
 
             //rumus: ( (skala_nilai/5) * bobot)
-            $dataIndex = (( request('skala_nilai') / 5) * $key->bobot);
+            $dataIndex = ((request('skala_nilai') / 5) * $key->bobot);
 
             $updateData->update([
                 'index_nilai' => $dataIndex,
             ]);
-            
+
             //get tahun
             $newArr = [];
             $saveData = [];
@@ -468,7 +472,7 @@ class IndikatorSpbeController extends Controller
     {
         try {
             $allDataIndex = IndexSpbe::OrderBy('id', 'ASC')->get();
-                    
+
 
             return response()->json([
                 'success' => true,
@@ -482,4 +486,20 @@ class IndikatorSpbeController extends Controller
             ], 409);
         }
     }
+
+
+    public function import(Request $request)
+    {
+        $this->validate($request, [
+            'file'  => 'required',
+        ]);
+
+            Excel::import(new IndeksImport, request()->file('file'));
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Import Success',
+        ], 200);
+    }
+
 }
