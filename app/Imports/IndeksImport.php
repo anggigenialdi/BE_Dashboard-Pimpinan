@@ -15,9 +15,9 @@ class IndeksImport implements ToModel, WithHeadingRow
      */
     public function model(array $row)
     {
-        if( !IndeksSpbe::where('nomor_indikator', '=', $row['nomor_indikator'])->exists() ) {
+        if( !IndeksSpbe::where('nomor_indikator', request('nomor_indikator'))->exists() ) {
 
-            return new IndeksSpbe(
+            return new IndeksSpbe(  
                 [
                     'nomor_indikator'   => ($row['nomor_indikator']),
                     'nama_indikator'    => ($row['nama_indikator']),

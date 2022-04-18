@@ -9,6 +9,7 @@ use App\Models\MasterIndikatorSpbe;
 use Illuminate\Http\Request;
 
 use App\Imports\IndeksImport;
+use App\Imports\MasterIndikatorSpbeImport;
 use App\Models\IndeksSpbe;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -214,7 +215,7 @@ class IndikatorSpbeController extends Controller
     public function getAllNilaiIndexPertahun(Request $request)
     {
         try {
-            $dataNilai = IndexSpbePertahun::OrderBy('id', 'DESC')->get();
+            $dataNilai = IndexSpbePertahun::OrderBy('tahun', 'ASC')->get();
 
             return response()->json([
                 'success' => true,
@@ -494,7 +495,44 @@ class IndikatorSpbeController extends Controller
             'file'  => 'required',
         ]);
 
-            Excel::import(new IndeksImport, request()->file('file'));
+        Excel::import(new IndeksImport, request()->file('file'));
+
+        $newData = IndeksSpbe::get();
+
+        $dataTahun = [];
+        $getTahun = [];
+        foreach ($newData as $key) {
+            $dataTahun['tahun'] = $key->tahun;
+            array_push($getTahun, $dataTahun);
+        };
+
+        $newDatas = IndeksSpbe::whereIn('tahun', $getTahun)->get();
+
+        $totalIndex = 0;
+        foreach ($newDatas as $key) {
+            $totalIndex = ($totalIndex + $key->index);
+        }
+        
+
+        $totalBobot = 0;
+        foreach ($newDatas as $key) {
+            $totalBobot = ($totalBobot + $key->bobot);
+        }
+
+        $nilaiIndex = (($totalIndex / $totalBobot) * 5);
+        // dd($nilaiIndex);
+
+        $saveIndexPertahun = IndexSpbePertahun::where('tahun', $key->tahun)->first();
+
+        if ($saveIndexPertahun !== null) {
+            $saveIndexPertahun->update(['hasil_index' => $nilaiIndex]);
+        } else {
+            $saveIndexPertahun = IndexSpbePertahun::create([
+                'tahun' => $key->tahun,
+                'hasil_index' => $nilaiIndex,
+            ]);
+        }
+
 
         return response()->json([
             'success' => true,
@@ -502,4 +540,17 @@ class IndikatorSpbeController extends Controller
         ], 200);
     }
 
+    public function importMasterIndikatorSpbe(Request $request)
+    {
+        $this->validate($request, [
+            'file'  => 'required',
+        ]);
+
+        Excel::import(new MasterIndikatorSpbeImport, request()->file('file'));
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Import Success',
+        ], 200);
+    }
 }
