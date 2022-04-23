@@ -495,6 +495,7 @@ class IndikatorSpbeController extends Controller
             'file'  => 'required',
         ]);
 
+        
         Excel::import(new IndeksImport, request()->file('file'));
 
         $newData = IndeksSpbe::get();

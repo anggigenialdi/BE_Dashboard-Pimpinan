@@ -82,6 +82,24 @@ $router->group(['prefix' => 'api/v1'], function () use ($router) {
     $router->get('master-data-menara-telekomunikasi/', 'MasterDataMenaraTelekomunikasiController@cariMasterDataMenara');
 
 
+    //Master Skpd
+    $router->post('master-skpd', 'MasterSkpdController@addMasterSkpd');
+
+
+    //Master Skpd
+    $router->post('kebutuhan-data-pendukung/create', 'MasterSmartCityController@addKebutuhanDataPendukung');
+    $router->get('kebutuhan-data-pendukung', 'MasterSmartCityController@getAllKebutuhanDataPendukung');
+    $router->get('kebutuhan-data-pendukung/{id}', 'MasterSmartCityController@getByIdKebutuhanDataPendukung');
+    $router->put('kebutuhan-data-pendukung/{id}', 'MasterSmartCityController@updatedKebutuhanDataPendukung');
+    $router->delete('kebutuhan-data-pendukung/{id}', 'MasterSmartCityController@deleteKebutuhanDataPendukung');
+
+    $router->get('kuisioner-smart-city', 'MasterSmartCityController@getAllKuisionerSmartCity');
+    $router->post('kuisioner-smart-city/create', 'MasterSmartCityController@addKuisionerSmartCity');
+
+
+
+
+
 
 
 
