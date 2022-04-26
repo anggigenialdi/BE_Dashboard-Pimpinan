@@ -179,6 +179,9 @@ class MasterSmartCityController extends Controller
             $no = 0;
             foreach ($getKuisioner as $key) {
                 $no++;
+                $newArr['id_skpd'] = $key->id_skpd;
+                $newArr['deskripsi'] = $key->deskripsi;
+                $newArr['iso'] = $key->iso;
                 $newArr['tahun'] = $key->tahun;
                 $newArr['keterangan_tahun'] = $key->keterangan_tahun;
                 $newArr['ketersediaan'] = $key->ketersediaan;
@@ -186,7 +189,7 @@ class MasterSmartCityController extends Controller
                 $newArr['keterangan'] = $key->keterangan;
                 array_push($saveData, $newArr);
             };
-            dd($saveData);
+            // dd($saveData);
 
 
 
@@ -214,7 +217,7 @@ class MasterSmartCityController extends Controller
         try {
             //code...
             //Cek Duplicate data
-            $duplicate = KuisionerSmartCity::where('tahun', $request->input('tahun'))->first();
+            $duplicate = KuisionerSmartCity::where('id', $request->input('id'))->first();
 
             if ($duplicate) {
                 return response()->json([
