@@ -27,11 +27,11 @@ $router->group(['prefix' => 'api/v1'], function () use ($router) {
 
     $router->post('register', 'AuthController@register');
     $router->post('login', 'AuthController@login');
-    $router->post('user-login', 'AuthController@usersLogin');
-    $router->get('vaksin/terkini', 'AuthController@vaksinTerkini');
-    $router->post('agenda/kegiatan', 'AuthController@agendaKegiatan');
-    $router->get('cuaca', 'AuthController@cuaca');
-    $router->get('users', 'AuthController@users');
+    $router->post('user-login', 'IntegrasiController@usersLogin');
+    $router->get('vaksin/terkini', 'IntegrasiController@vaksinTerkini');
+    $router->post('agenda/kegiatan', 'IntegrasiController@agendaKegiatan');
+    $router->get('cuaca', 'IntegrasiController@cuaca');
+    $router->get('users', 'IntegrasiController@users');
 
     //Indikator spbe nama dan bobot
     $router->post('add-master-indikator-spbe', 'IndikatorSpbeController@addMasterIndikatorSpbe');

@@ -18,10 +18,13 @@ class TableAppUser extends Migration
             $table->bigInteger('id_role')->nullable();
             $table->bigInteger('id_skpd')->nullable();
             $table->bigInteger('id_unit_kerja')->nullable();
-            $table->string('nama');
-            $table->integer('nip')->nullable();
+            $table->string('nama')->nullable();
+            $table->string('nama_jabatan')->nullable();
+            $table->string('nip')->nullable();
+            $table->string('nik')->nullable();
             $table->string('pangkat')->nullable();
-            $table->string('telpon')->nullable();
+            $table->string('telp')->nullable();
+            $table->string('ttd_image')->nullable();
             $table->string('email');
             $table->string('password');
             $table->string('foto')->nullable();
@@ -33,9 +36,9 @@ class TableAppUser extends Migration
             $table->string('aktif')->nullable();
             $table->integer('cuti')->nullable();
             $table->string('dibuat_oleh')->nullable();
-            $table->datetime('dibuat_pada')->nullable();
+            $table->string('dibuat_pada')->nullable();
             $table->string('diubah_oleh')->nullable();
-            $table->datetime('diubah_pada')->nullable();
+            $table->string('diubah_pada')->nullable();
 
             $table->timestamps();
         });
