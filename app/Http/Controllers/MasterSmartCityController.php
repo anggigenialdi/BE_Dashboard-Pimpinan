@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\KebutuhanDataPendukung;
-use App\Models\KuisionerSmartCity;
+use App\Models\NilaiKuisionerSmartCity;
 use Illuminate\Http\Request;
 use Ramsey\Uuid\Uuid;
 
@@ -21,7 +21,7 @@ class MasterSmartCityController extends Controller
         try {
             //code...
             //Cek Duplicate data
-            $duplicate = KuisionerSmartCity::where('tahun', $request->input('tahun'))->first();
+            $duplicate = NilaiKuisionerSmartCity::where('tahun', $request->input('tahun'))->first();
 
             if ($duplicate) {
                 return response()->json([
@@ -31,7 +31,7 @@ class MasterSmartCityController extends Controller
             } else {
 
 
-                $masterData = new KuisionerSmartCity;
+                $masterData = new NilaiKuisionerSmartCity;
                 $masterData->id_skpd = $request->input('id_skpd');
                 $masterData->iso = $request->input('iso');
                 $masterData->deskripsi = $request->input('deskripsi');
@@ -169,10 +169,10 @@ class MasterSmartCityController extends Controller
         }
     }
 
-    public function getAllKuisionerSmartCity(Request $request)
+    public function getAllNilaiKuisionerSmartCity(Request $request)
     {
         try {
-            $getKuisioner = KuisionerSmartCity::get();
+            $getKuisioner = NilaiKuisionerSmartCity::get();
 
             $newArr = [];
             $saveData = [];
@@ -206,7 +206,7 @@ class MasterSmartCityController extends Controller
         }
     }
 
-    public function addKuisionerSmartCity(Request $request)
+    public function addNilaiKuisionerSmartCity(Request $request)
     {
         //validate incoming request 
         // $this->validate($request, [
@@ -217,7 +217,7 @@ class MasterSmartCityController extends Controller
         try {
             //code...
             //Cek Duplicate data
-            $duplicate = KuisionerSmartCity::where('id', $request->input('id'))->first();
+            $duplicate = NilaiKuisionerSmartCity::where('id', $request->input('id'))->first();
 
             if ($duplicate) {
                 return response()->json([
@@ -227,7 +227,7 @@ class MasterSmartCityController extends Controller
             } else {
 
 
-                $masterData = new KuisionerSmartCity;
+                $masterData = new NilaiKuisionerSmartCity;
                 $masterData->id_skpd = $request->input('id_skpd');
                 $masterData->iso = $request->input('iso');
                 $masterData->deskripsi = $request->input('deskripsi');

@@ -16,6 +16,6 @@ class KebutuhanDataPendukung extends Model
     ];
 
     public function kuisioner(){
-        return $this->hasMany(KuisionerSmartCity::class, 'id_kebutuhan_data_pendukung');
+        return $this->hasMany(NilaiKuisionerSmartCity::class, 'id_kebutuhan_data_pendukung');
     }
 }

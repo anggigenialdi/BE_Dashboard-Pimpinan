@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class TableKuisionerSmartCity extends Migration
+class TableNilaiKuisionerSmartCity extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class TableKuisionerSmartCity extends Migration
      */
     public function up()
     {
-        Schema::create('kuisioner_smart_city', function (Blueprint $table) {
+        Schema::create('nilai_kuisioner_smart_city', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('id_skpd');
-            $table->string('uuid')->nullable();
-            $table->integer('iso');
-            $table->string('deskripsi');
+            $table->string('id_kuisioner')->nullable();
             $table->integer('tahun');
             $table->string('keterangan_tahun');
             $table->string('ketersediaan');
@@ -35,6 +33,6 @@ class TableKuisionerSmartCity extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kuisioner_smart_city');
+        Schema::dropIfExists('nilai_kuisioner_smart_city');
     }
 }

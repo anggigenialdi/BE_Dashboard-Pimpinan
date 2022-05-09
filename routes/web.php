@@ -96,8 +96,8 @@ $router->group(['prefix' => 'api/v1'], function () use ($router) {
     $router->put('kebutuhan-data-pendukung/{id}', 'MasterSmartCityController@updatedKebutuhanDataPendukung');
     $router->delete('kebutuhan-data-pendukung/{id}', 'MasterSmartCityController@deleteKebutuhanDataPendukung');
 
-    $router->get('kuisioner-smart-city', 'MasterSmartCityController@getAllKuisionerSmartCity');
-    $router->post('kuisioner-smart-city/create', 'MasterSmartCityController@addKuisionerSmartCity');
+    $router->get('kuisioner-smart-city', 'MasterSmartCityController@getAllNilaiKuisionerSmartCity');
+    $router->post('kuisioner-smart-city/create', 'MasterSmartCityController@addNilaiKuisionerSmartCity');
 
 
 
