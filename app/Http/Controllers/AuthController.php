@@ -77,6 +77,7 @@ class AuthController extends Controller
                 'id' => $user->id,
                 'nama' => $user->nama,
                 'email' => $user->email,
+                'role' => $user->role,
             ];
 
             if (Hash::check($request->password, $user->password)) {

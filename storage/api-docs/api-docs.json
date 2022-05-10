@@ -1592,6 +1592,294 @@
                     }
                 }
             }
+        },
+        "api/v1/kuisioner-smart-city/create": {
+            "post": {
+                "tags": [
+                    "Smart City"
+                ],
+                "summary": "Smart City",
+                "description": "api/v1/kuisioner-smart-city/create",
+                "operationId": "smartCity",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "id_skpd",
+                                    "kuisioner",
+                                    "iso"
+                                ],
+                                "properties": {
+                                    "id_skpd": {
+                                        "type": "integer"
+                                    },
+                                    "kuisioner": {
+                                        "type": "string",
+                                        "format": "password"
+                                    },
+                                    "iso": {
+                                        "type": "integer",
+                                        "format": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Login Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Login Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "api/v1/nilai-kuisioner-smart-city/create": {
+            "post": {
+                "tags": [
+                    "Smart City"
+                ],
+                "summary": "Nilai Smart City",
+                "description": "api/v1/nilai-kuisioner-smart-city/create",
+                "operationId": "smartCityNilai",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "id_skpd",
+                                    "id_kuisioner",
+                                    "tahun",
+                                    "keterangan_tahun",
+                                    "ketersediaan",
+                                    "unit_penyedia_data",
+                                    "keterangan"
+                                ],
+                                "properties": {
+                                    "id_skpd": {
+                                        "type": "integer"
+                                    },
+                                    "id_kuisioner": {
+                                        "type": "integer",
+                                        "format": "integer"
+                                    },
+                                    "tahun": {
+                                        "type": "integer",
+                                        "format": "integer"
+                                    },
+                                    "keterangan_tahun": {
+                                        "type": "integer",
+                                        "format": "integer"
+                                    },
+                                    "ketersediaan": {
+                                        "type": "string",
+                                        "format": "string"
+                                    },
+                                    "unit_penyedia_data": {
+                                        "type": "integer",
+                                        "format": "integer"
+                                    },
+                                    "keterangan": {
+                                        "type": "string",
+                                        "format": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Login Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Login Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/v1/kuisioner-smart-city": {
+            "get": {
+                "tags": [
+                    "Smart City"
+                ],
+                "summary": "Get Data Kuisioner",
+                "description": "/api/v1/kuisioner-smart-city",
+                "operationId": "getkuisioner",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/v1/nilai-kuisioner-smart-city": {
+            "get": {
+                "tags": [
+                    "Smart City"
+                ],
+                "summary": "Get Data Nilai Kuisioner",
+                "description": "/api/v1/nilai-kuisioner-smart-city",
+                "operationId": "getnilaikuisioner",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/v1/kuisioner-smart-city/{id_skpd}": {
+            "get": {
+                "tags": [
+                    "Smart City"
+                ],
+                "summary": "Get by skpd",
+                "description": "/api/v1/kuisioner-smart-city/{id_skpd}",
+                "operationId": "GetKuisioner",
+                "parameters": [
+                    {
+                        "name": "id_skpd",
+                        "in": "path",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/v1/nilai-kuisioner-smart-city/{id_skpd}": {
+            "get": {
+                "tags": [
+                    "Smart City"
+                ],
+                "summary": "Get nilai by skpd",
+                "description": "/api/v1/nilai-kuisioner-smart-city/{id_skpd}",
+                "operationId": "GetKuisionerNilai",
+                "parameters": [
+                    {
+                        "name": "id_skpd",
+                        "in": "path",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
         }
     }
 }

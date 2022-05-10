@@ -1139,5 +1139,202 @@ class Controller extends BaseController
 
 
 
+    /**
+     * @OA\Post(
+     * path="api/v1/kuisioner-smart-city/create",
+     * operationId="smartCity",
+     * tags={"Smart City"},
+     * summary="Smart City",
+     * description="api/v1/kuisioner-smart-city/create",
+     *     @OA\RequestBody(
+     *         @OA\JsonContent(),
+     *         @OA\MediaType(
+     *            mediaType="multipart/form-data",
+     *            @OA\Schema(
+     *               type="object",
+     *               required={"id_skpd", "kuisioner", "iso"},
+     *               @OA\Property(property="id_skpd", type="integer"),
+     *               @OA\Property(property="kuisioner", type="string", format="password"),
+     *               @OA\Property(property="iso", type="integer", format="integer"),
+     *            ),
+     *        ),
+     *    ),
+     *      @OA\Response(
+     *          response=201,
+     *          description="Login Successfully",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Login Successfully",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=422,
+     *          description="Unprocessable Entity",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(response=400, description="Bad request"),
+     *      @OA\Response(response=404, description="Resource Not Found"),
+     * )
+     */
+
+
+
+    /**
+     * @OA\Post(
+     * path="api/v1/nilai-kuisioner-smart-city/create",
+     * operationId="smartCityNilai",
+     * tags={"Smart City"},
+     * summary="Nilai Smart City",
+     * description="api/v1/nilai-kuisioner-smart-city/create",
+     *     @OA\RequestBody(
+     *         @OA\JsonContent(),
+     *         @OA\MediaType(
+     *            mediaType="multipart/form-data",
+     *            @OA\Schema(
+     *               type="object",
+     *               required={"id_skpd", "id_kuisioner", "tahun", "keterangan_tahun", "ketersediaan", "unit_penyedia_data", "keterangan"},
+     *               @OA\Property(property="id_skpd", type="integer"),
+     *               @OA\Property(property="id_kuisioner", type="integer", format="integer"),
+     *               @OA\Property(property="tahun", type="integer", format="integer"),
+     *               @OA\Property(property="keterangan_tahun", type="integer", format="integer"),
+     *               @OA\Property(property="ketersediaan", type="string", format="string"),
+     *               @OA\Property(property="unit_penyedia_data", type="integer", format="integer"),
+     *               @OA\Property(property="keterangan", type="string", format="string"),
+     *            ),
+     *        ),
+     *    ),
+     *      @OA\Response(
+     *          response=201,
+     *          description="Login Successfully",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Login Successfully",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=422,
+     *          description="Unprocessable Entity",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(response=400, description="Bad request"),
+     *      @OA\Response(response=404, description="Resource Not Found"),
+     * )
+     */
+
+    
+    /**
+     * @OA\Get(
+     *      path="/api/v1/kuisioner-smart-city",
+     *      operationId="getkuisioner",
+     *      tags={"Smart City"},
+     *      summary="Get Data Kuisioner",
+     *      description="/api/v1/kuisioner-smart-city",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *     )
+     */
+
+    
+    /**
+     * @OA\Get(
+     *      path="/api/v1/nilai-kuisioner-smart-city",
+     *      operationId="getnilaikuisioner",
+     *      tags={"Smart City"},
+     *      summary="Get Data Nilai Kuisioner",
+     *      description="/api/v1/nilai-kuisioner-smart-city",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *     )
+     */
+
+    /**
+     * @OA\Get(
+     *      path="/api/v1/kuisioner-smart-city/{id_skpd}",
+     *      operationId="GetKuisioner",
+     *      tags={"Smart City"},
+     *      summary="Get by skpd",
+     *      description="/api/v1/kuisioner-smart-city/{id_skpd}",
+     *      @OA\Parameter(
+     *      name="id_skpd",
+     *       in="path",
+     *       required=false,
+     *       @OA\Schema(
+     *            type="integer"
+     *       )
+     *    ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *     )
+     */
+
+    /**
+     * @OA\Get(
+     *      path="/api/v1/nilai-kuisioner-smart-city/{id_skpd}",
+     *      operationId="GetKuisionerNilai",
+     *      tags={"Smart City"},
+     *      summary="Get nilai by skpd",
+     *      description="/api/v1/nilai-kuisioner-smart-city/{id_skpd}",
+     *      @OA\Parameter(
+     *      name="id_skpd",
+     *       in="path",
+     *       required=false,
+     *       @OA\Schema(
+     *            type="integer"
+     *       )
+     *    ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *     )
+     */
+
+
 
 }
