@@ -1056,7 +1056,7 @@ class Controller extends BaseController
      * @OA\Get(
      *      path="/api/v1/vaksin/terkini",
      *      operationId="Vaksin",
-     *      tags={"Vaksin"},
+     *      tags={"Integrasi"},
      *      summary="Get Vaksin",
      *      description="/api/v1/vaksin/terkini",
      *      @OA\Response(
@@ -1078,9 +1078,9 @@ class Controller extends BaseController
     /**
      * @OA\Get(
      *      path="/api/v1/covid",
-     *      operationId="Vaksin",
-     *      tags={"Vaksin"},
-     *      summary="Get Vaksin",
+     *      operationId="Covid",
+     *      tags={"Integrasi"},
+     *      summary="Get Covid",
      *      description="/api/v1/covid",
      *      @OA\Response(
      *          response=200,

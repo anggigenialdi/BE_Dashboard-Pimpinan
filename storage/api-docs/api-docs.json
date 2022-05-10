@@ -1482,7 +1482,7 @@
         "/api/v1/vaksin/terkini": {
             "get": {
                 "tags": [
-                    "Vaksin"
+                    "Integrasi"
                 ],
                 "summary": "Get Vaksin",
                 "description": "/api/v1/vaksin/terkini",
@@ -1508,11 +1508,11 @@
         "/api/v1/covid": {
             "get": {
                 "tags": [
-                    "Vaksin"
+                    "Integrasi"
                 ],
-                "summary": "Get Vaksin",
+                "summary": "Get Covid",
                 "description": "/api/v1/covid",
-                "operationId": "Vaksin",
+                "operationId": "Covid",
                 "responses": {
                     "200": {
                         "description": "Successful operation",
