@@ -15,7 +15,7 @@ class TableAppUser extends Migration
     {
         Schema::create('app_user', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('id_role')->nullable();
+            $table->unsignedBigInteger('id_role')->nullable();
             $table->bigInteger('id_skpd')->nullable();
             $table->bigInteger('id_unit_kerja')->nullable();
             $table->string('nama')->nullable();
@@ -41,6 +41,12 @@ class TableAppUser extends Migration
             $table->string('diubah_pada')->nullable();
 
             $table->timestamps();
+        });
+
+        Schema::table('app_user', function(Blueprint $kolom){
+            $kolom->foreign('id_role')
+            ->references('id')
+            ->on('master_role');
         });
     }
 

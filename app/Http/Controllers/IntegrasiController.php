@@ -100,6 +100,7 @@ class IntegrasiController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'GET',
         ));
+        header("Access-Control-Allow-Origin: *");
 
         $response = curl_exec($curl);
 

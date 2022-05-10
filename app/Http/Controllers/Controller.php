@@ -1099,5 +1099,45 @@ class Controller extends BaseController
      */
 
 
+    /**
+     * @OA\Post(
+     * path="/api/v1/master-role",
+     * operationId="masterRole",
+     * tags={"Master Role"},
+     * summary="Add Role",
+     * description="/api/v1/master-role",
+     *     @OA\RequestBody(
+     *         @OA\JsonContent(),
+     *         @OA\MediaType(
+     *            mediaType="multipart/form-data",
+     *            @OA\Schema(
+     *               type="object",
+     *               required={"nama"},
+     *               @OA\Property(property="nama", type="string"),
+     *            ),
+     *        ),
+     *    ),
+     *      @OA\Response(
+     *          response=201,
+     *          description="Login Successfully",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Login Successfully",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=422,
+     *          description="Unprocessable Entity",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(response=400, description="Bad request"),
+     *      @OA\Response(response=404, description="Resource Not Found"),
+     * )
+     */
+
+
+
 
 }

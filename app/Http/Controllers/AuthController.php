@@ -25,6 +25,7 @@ class AuthController extends Controller
             $user = new AppUser;
             $user->nama     = $request->input('nama');
             $user->email    = $request->input('email');
+            $user->id_role    = $request->input('id_role');
             $plainPassword  = $request->input('password');
             $user->password = app('hash')->make($plainPassword);
 

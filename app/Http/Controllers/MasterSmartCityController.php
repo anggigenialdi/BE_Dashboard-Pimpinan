@@ -468,4 +468,31 @@ class MasterSmartCityController extends Controller
             ], 409);
         }
     }
+
+    public function deleteMasterKuisionerSmartCity(Request $request, $id)
+    {
+
+        try {
+            $deleteData = MasterKuisionerSmartCity::where('id', $id)->first();
+
+            if (!$deleteData) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Data tidak ada',
+                ], 404);
+            } else {
+                $deleteData->delete();
+
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Data terhapus',
+                ], 200);
+            }
+        } catch (\Throwable $th) {
+            return response()->json([
+                'success' => false,
+                'message' => $th
+            ], 409);
+        }
+    }
 }
