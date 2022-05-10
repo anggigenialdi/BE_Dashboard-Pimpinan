@@ -1052,6 +1052,52 @@ class Controller extends BaseController
 
     //END MASTER DATA MENARA
 
+    /**
+     * @OA\Get(
+     *      path="/api/v1/vaksin/terkini",
+     *      operationId="Vaksin",
+     *      tags={"Vaksin"},
+     *      summary="Get Vaksin",
+     *      description="/api/v1/vaksin/terkini",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *     )
+     */
+
+    /**
+     * @OA\Get(
+     *      path="/api/v1/covid",
+     *      operationId="Vaksin",
+     *      tags={"Vaksin"},
+     *      summary="Get Vaksin",
+     *      description="/api/v1/covid",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *     )
+     */
+
 
 
 }

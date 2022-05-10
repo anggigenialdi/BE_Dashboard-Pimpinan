@@ -32,6 +32,8 @@ $router->group(['prefix' => 'api/v1'], function () use ($router) {
     $router->post('agenda/kegiatan', 'IntegrasiController@agendaKegiatan');
     $router->get('cuaca', 'IntegrasiController@cuaca');
     $router->get('users', 'IntegrasiController@users');
+    $router->get('covid', 'IntegrasiController@covid');
+
 
     //Indikator spbe nama dan bobot
     $router->post('add-master-indikator-spbe', 'IndikatorSpbeController@addMasterIndikatorSpbe');
