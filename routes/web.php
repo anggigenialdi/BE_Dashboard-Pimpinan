@@ -102,10 +102,12 @@ $router->group(['prefix' => 'api/v1'], function () use ($router) {
     $router->post('kuisioner-smart-city/create', 'MasterSmartCityController@addMasterKuisionerSmartCity');
     $router->get('kuisioner-smart-city', 'MasterSmartCityController@getAllMasterKuisionerSmartCity');
     $router->get('kuisioner-smart-city/{id_skpd}', 'MasterSmartCityController@getIdMasterKuisionerSmartCity');
-    $router->put('kuisioner/{id}', 'MasterSmartCityController@updateMasterKuisionerSmartCity');
+    $router->put('kuisioner-smart-city/{id}', 'MasterSmartCityController@updateMasterKuisionerSmartCity');
 
     $router->post('nilai-kuisioner-smart-city/create', 'MasterSmartCityController@addNilaiKuisionerSmartCity');
     $router->get('nilai-kuisioner-smart-city', 'MasterSmartCityController@getAllNilaiKuisionerSmartCity');
     $router->get('nilai-kuisioner-smart-city/{id_skpd}', 'MasterSmartCityController@getIdNilaiKuisionerSmartCity');
+    $router->put('nilai-kuisioner-smart-city/{id}', 'MasterSmartCityController@updateNilaiKuisionerSmartCity');
+
 
 });

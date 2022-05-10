@@ -392,7 +392,7 @@ class MasterSmartCityController extends Controller
             $no = 1;
             foreach ($dataNilai as $key) {
                 $newArr['no'] = $no++;
-                $newArr['id_skpd'] = $key->masterSkpd->nama;
+                $newArr['id_skpd'] = $key->masterSkpd->id;
                 $newArr['skpd'] = $key->masterSkpd->nama;
                 $newArr['kuisioner'] = $key->masterKuisioner->kuisioner;
                 $newArr['iso'] = $key->masterKuisioner->iso;
@@ -417,6 +417,50 @@ class MasterSmartCityController extends Controller
                     'data' =>  $saveData
                 ], 200);
             }
+        } catch (\Throwable $th) {
+            return response()->json([
+                'success' => false,
+                'message' => $th
+            ], 409);
+        }
+    }
+
+    public function updateNilaiKuisionerSmartCity(Request $request, $id)
+    {
+
+        try {
+            $updateData = NilaiKuisionerSmartCity::where('id', $id);
+
+            $updateDatas = NilaiKuisionerSmartCity::where('id', $id)->get();
+
+            $simpanData = [];
+
+            foreach ($updateDatas as $key) {
+                $simpanData['id_skpd'] = $key->id_skpd;
+                $simpanData['id_kuisioner'] = $key->id_kuisioner;
+                $simpanData['tahun'] = $key->tahun;
+                $simpanData['keterangan_tahun'] = $key->keterangan_tahun;
+                $simpanData['ketersediaan'] = $key->ketersediaan;
+                $simpanData['unit_penyedia_date'] = $key->unit_penyedia_date;
+                $simpanData['keterangan'] = $key->keterangan;
+                array_push($simpanData);
+            };
+
+            $updateData->update([
+                'id_skpd' => request('id_skpd') ?? $key->id_skpd,
+                'id_kuisioner' => request('id_kuisioner') ?? $key->id_kuisioner,
+                'tahun' => request('tahun') ?? $key->tahun,
+                'keterangan_tahun' => request('keterangan_tahun') ?? $key->keterangan_tahun,
+                'ketersediaan' => request('ketersediaan') ?? $key->ketersediaan,
+                'unit_penyedia_data' => request('unit_penyedia_data') ?? $key->unit_penyedia_data,
+                'keterangan' => request('keterangan') ?? $key->keterangan,
+            ]);
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Updata Data Berhasil',
+                'data' =>  $request->all(),
+            ], 201);
         } catch (\Throwable $th) {
             return response()->json([
                 'success' => false,
