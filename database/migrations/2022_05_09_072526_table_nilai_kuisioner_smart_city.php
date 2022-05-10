@@ -25,11 +25,11 @@ class TableNilaiKuisionerSmartCity extends Migration
             $table->timestamps();
         });
 
-        // Schema::table('nilai_kuisioner_smart_city', function(Blueprint $kolom){
-        //     $kolom->foreign('id_skpd')
-        //     ->references('id')
-        //     ->on('master_skpd');
-        // });
+        Schema::table('nilai_kuisioner_smart_city', function(Blueprint $kolom){
+            $kolom->foreign('id_skpd')
+            ->references('id')
+            ->on('master_skpd');
+        });
 
         Schema::table('nilai_kuisioner_smart_city', function(Blueprint $kolom){
             $kolom->foreign('id_kuisioner')
@@ -37,11 +37,11 @@ class TableNilaiKuisionerSmartCity extends Migration
             ->on('master_kuisioner_smart_city');
         });
 
-        // Schema::table('nilai_kuisioner_smart_city', function(Blueprint $kolom){
-        //     $kolom->foreign('unit_penyedia_data')
-        //     ->references('id')
-        //     ->on('master_skpd');
-        // });
+        Schema::table('nilai_kuisioner_smart_city', function(Blueprint $kolom){
+            $kolom->foreign('unit_penyedia_data')
+            ->references('id')
+            ->on('master_skpd');
+        });
 
     }
 

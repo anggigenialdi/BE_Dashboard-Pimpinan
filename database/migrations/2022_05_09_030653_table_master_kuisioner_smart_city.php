@@ -21,11 +21,11 @@ class TableMasterKuisionerSmartCity extends Migration
             $table->timestamps();
         });
 
-        // Schema::table('master_kuisioner_smart_city', function(Blueprint $kolom){
-        //     $kolom->foreign('id_skpd')
-        //     ->references('id')
-        //     ->on('master_skpd');
-        // });
+        Schema::table('master_kuisioner_smart_city', function(Blueprint $kolom){
+            $kolom->foreign('id_skpd')
+            ->references('id')
+            ->on('master_skpd');
+        });
     }
 
     /**
