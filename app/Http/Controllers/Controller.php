@@ -1154,7 +1154,7 @@ class Controller extends BaseController
      *               type="object",
      *               required={"id_skpd", "kuisioner", "iso"},
      *               @OA\Property(property="id_skpd", type="integer"),
-     *               @OA\Property(property="kuisioner", type="string", format="password"),
+     *               @OA\Property(property="kuisioner", type="string", format="string"),
      *               @OA\Property(property="iso", type="integer", format="integer"),
      *            ),
      *        ),

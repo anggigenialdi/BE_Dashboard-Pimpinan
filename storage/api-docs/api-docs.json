@@ -1616,7 +1616,7 @@
                                     },
                                     "kuisioner": {
                                         "type": "string",
-                                        "format": "password"
+                                        "format": "string"
                                     },
                                     "iso": {
                                         "type": "integer",
