@@ -13,7 +13,7 @@ class TableMasterSkpd extends Migration
      */
     public function up()
     {
-        Schema::create('master_skpd', function (Blueprint $table) {
+        Schema::create('master_skpd_', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('id_parent');
             $table->string('kode_skpd');            
