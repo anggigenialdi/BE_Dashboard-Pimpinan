@@ -10,7 +10,7 @@ class Controller extends BaseController
 
     /**
      * @OA\Info(
-     *   title="API Dashboard Pimpinan",
+     *   title="/API Dashboard Pimpinan",
      *   version="1.0",
      *   description="",
      *   @OA\Contact(
@@ -176,7 +176,7 @@ class Controller extends BaseController
      * operationId="Master Indikator Spbe",
      * tags={"Master Indikator SPBE"},
      * summary="Add Master Indikator Spbe",
-     * description="api/v1/add-master-indikator-spbe",
+     * description="/api/v1/add-master-indikator-spbe",
      *     @OA\RequestBody(
      *         @OA\JsonContent(),
      *         @OA\MediaType(
@@ -1141,11 +1141,11 @@ class Controller extends BaseController
 
     /**
      * @OA\Post(
-     * path="api/v1/kuisioner-smart-city/create",
+     * path="/api/v1/kuisioner-smart-city/create",
      * operationId="smartCity",
      * tags={"Smart City"},
      * summary="Smart City",
-     * description="api/v1/kuisioner-smart-city/create",
+     * description="/api/v1/kuisioner-smart-city/create",
      *     @OA\RequestBody(
      *         @OA\JsonContent(),
      *         @OA\MediaType(
@@ -1183,11 +1183,11 @@ class Controller extends BaseController
 
     /**
      * @OA\Post(
-     * path="api/v1/nilai-kuisioner-smart-city/create",
+     * path="/api/v1/nilai-kuisioner-smart-city/create",
      * operationId="smartCityNilai",
      * tags={"Smart City"},
      * summary="Nilai Smart City",
-     * description="api/v1/nilai-kuisioner-smart-city/create",
+     * description="/api/v1/nilai-kuisioner-smart-city/create",
      *     @OA\RequestBody(
      *         @OA\JsonContent(),
      *         @OA\MediaType(

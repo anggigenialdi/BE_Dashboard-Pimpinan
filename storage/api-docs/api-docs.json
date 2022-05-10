@@ -1,7 +1,7 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "API Dashboard Pimpinan",
+        "title": "/API Dashboard Pimpinan",
         "description": "",
         "contact": {
             "name": "Developer",
@@ -252,7 +252,7 @@
                     "Master Indikator SPBE"
                 ],
                 "summary": "Add Master Indikator Spbe",
-                "description": "api/v1/add-master-indikator-spbe",
+                "description": "/api/v1/add-master-indikator-spbe",
                 "operationId": "Master Indikator Spbe",
                 "requestBody": {
                     "content": {
@@ -1593,13 +1593,13 @@
                 }
             }
         },
-        "api/v1/kuisioner-smart-city/create": {
+        "/api/v1/kuisioner-smart-city/create": {
             "post": {
                 "tags": [
                     "Smart City"
                 ],
                 "summary": "Smart City",
-                "description": "api/v1/kuisioner-smart-city/create",
+                "description": "/api/v1/kuisioner-smart-city/create",
                 "operationId": "smartCity",
                 "requestBody": {
                     "content": {
@@ -1665,13 +1665,13 @@
                 }
             }
         },
-        "api/v1/nilai-kuisioner-smart-city/create": {
+        "/api/v1/nilai-kuisioner-smart-city/create": {
             "post": {
                 "tags": [
                     "Smart City"
                 ],
                 "summary": "Nilai Smart City",
-                "description": "api/v1/nilai-kuisioner-smart-city/create",
+                "description": "/api/v1/nilai-kuisioner-smart-city/create",
                 "operationId": "smartCityNilai",
                 "requestBody": {
                     "content": {
