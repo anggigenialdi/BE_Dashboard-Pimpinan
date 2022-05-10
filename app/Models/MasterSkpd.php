@@ -13,4 +13,6 @@ class MasterSkpd extends Model
         'id_parent',
     ];
 
+    
+
 }
