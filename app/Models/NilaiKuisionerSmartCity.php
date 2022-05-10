@@ -11,7 +11,7 @@ class NilaiKuisionerSmartCity extends Model
 
     protected $fillable = [
         'id_skpd',
-        'deskripsi',
+        'id_kuisioner',
         'tahun',
         'deskripsi_tahun',
         'ketersediaan',
@@ -22,5 +22,13 @@ class NilaiKuisionerSmartCity extends Model
     public function kebutuhanDataPendukung()
     {
         return $this->belongsTo(KebutuhanDataPendukung::class);
+    }
+
+    public function masterSkpd(){
+        return $this->belongsTo('App\Models\MasterSkpd','id_skpd', 'id');        
+    }
+
+    public function masterKuisioner(){
+        return $this->belongsTo('App\Models\MasterKuisionerSmartCity','id_kuisioner', 'id');        
     }
 }

@@ -86,7 +86,8 @@ $router->group(['prefix' => 'api/v1'], function () use ($router) {
 
 
     //Master Skpd
-    $router->post('master-skpd', 'MasterSkpdController@addMasterSkpd');
+    $router->get('master-skpd', 'MasterSkpdController@getAllMasterSkpd');
+    $router->get('master-skpd/{id}', 'MasterSkpdController@getIdMasterSkpd');
 
 
     //Master Skpd
@@ -96,17 +97,13 @@ $router->group(['prefix' => 'api/v1'], function () use ($router) {
     $router->put('kebutuhan-data-pendukung/{id}', 'MasterSmartCityController@updatedKebutuhanDataPendukung');
     $router->delete('kebutuhan-data-pendukung/{id}', 'MasterSmartCityController@deleteKebutuhanDataPendukung');
 
-    $router->get('kuisioner-smart-city', 'MasterSmartCityController@getAllNilaiKuisionerSmartCity');
-    $router->post('kuisioner-smart-city/create', 'MasterSmartCityController@addNilaiKuisionerSmartCity');
+    $router->post('kuisioner-smart-city/create', 'MasterSmartCityController@addMasterKuisionerSmartCity');
+    $router->get('kuisioner-smart-city', 'MasterSmartCityController@getAllMasterKuisionerSmartCity');
+    $router->get('kuisioner-smart-city/{id_skpd}', 'MasterSmartCityController@getIdMasterKuisionerSmartCity');
+    $router->put('kuisioner/{id}', 'MasterSmartCityController@updateMasterKuisionerSmartCity');
 
-
-
-
-
-
-
-
-
-
+    $router->post('nilai-kuisioner-smart-city/create', 'MasterSmartCityController@addNilaiKuisionerSmartCity');
+    $router->get('nilai-kuisioner-smart-city', 'MasterSmartCityController@getAllNilaiKuisionerSmartCity');
+    $router->get('nilai-kuisioner-smart-city/{id_skpd}', 'MasterSmartCityController@getIdNilaiKuisionerSmartCity');
 
 });

@@ -13,9 +13,24 @@ class TableMasterSkpd extends Migration
      */
     public function up()
     {
-        Schema::create('master_skpd', function (Blueprint $table) {
+        Schema::create('master_skpd_', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('nama_skpd');            
+            $table->integer('id_parent');
+            $table->string('kode_skpd');            
+            $table->string('nama');            
+            $table->string('alias');            
+            $table->string('email');            
+            $table->string('telp');            
+            $table->string('faks');            
+            $table->string('alamat');            
+            $table->string('logo');            
+            $table->string('watermark');            
+            $table->string('kop_setda');            
+            $table->string('aktif');            
+            $table->string('dibuat_pada');            
+            $table->string('dibuat_oleh');            
+            $table->string('diubah_pada');            
+            $table->string('diubah_oleh');            
             $table->timestamps();
         });
     }
@@ -27,6 +42,6 @@ class TableMasterSkpd extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('master_skpd');
+        Schema::dropIfExists('master_skpd_');
     }
 }

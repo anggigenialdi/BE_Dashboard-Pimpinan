@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\KebutuhanDataPendukung;
+use App\Models\MasterKuisionerSmartCity;
 use App\Models\NilaiKuisionerSmartCity;
 use Illuminate\Http\Request;
 use Ramsey\Uuid\Uuid;
@@ -176,12 +177,12 @@ class MasterSmartCityController extends Controller
 
             $newArr = [];
             $saveData = [];
-            $no = 0;
+            $no = 1;
             foreach ($getKuisioner as $key) {
-                $no++;
-                $newArr['id_skpd'] = $key->id_skpd;
-                $newArr['deskripsi'] = $key->deskripsi;
-                $newArr['iso'] = $key->iso;
+
+                $newArr['no'] = $no++;
+                $newArr['id_skpd'] = $key->masterSkpd->nama;
+                $newArr['id_kuisioner'] = $key->masterKuisioner->kuisioner;
                 $newArr['tahun'] = $key->tahun;
                 $newArr['keterangan_tahun'] = $key->keterangan_tahun;
                 $newArr['ketersediaan'] = $key->ketersediaan;
@@ -208,16 +209,43 @@ class MasterSmartCityController extends Controller
 
     public function addNilaiKuisionerSmartCity(Request $request)
     {
-        //validate incoming request 
-        // $this->validate($request, [
-        //     'id_skpd'  => 'required|string',
-        //     'iso' => 'required|integer',
-        //     'deskripsi' => 'required|string',
-        // ]);
+
+        try {
+
+            $masterData = new NilaiKuisionerSmartCity;
+            $masterData->id_kuisioner = $request->input('id_kuisioner');
+            $masterData->id_skpd = $request->input('id_skpd');
+            $masterData->tahun = $request->input('tahun');
+            $masterData->keterangan_tahun = $request->input('keterangan_tahun');
+            $masterData->ketersediaan = $request->input('ketersediaan');
+            $masterData->unit_penyedia_data = $request->input('unit_penyedia_data');
+            $masterData->keterangan = $request->input('keterangan');
+
+            // dd($masterData);
+
+            $masterData->save();
+
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Input Data Berhasil',
+                'data'    => $masterData,
+            ], 201);
+        } catch (\Throwable $th) {
+            //return error message
+            return response()->json([
+                'success' => false,
+                'message' => $th
+            ], 409);
+        }
+    }
+
+    public function addMasterKuisionerSmartCity(Request $request)
+    {
         try {
             //code...
             //Cek Duplicate data
-            $duplicate = NilaiKuisionerSmartCity::where('id', $request->input('id'))->first();
+            $duplicate = MasterKuisionerSmartCity::where('iso', $request->input('iso'))->first();
 
             if ($duplicate) {
                 return response()->json([
@@ -226,17 +254,10 @@ class MasterSmartCityController extends Controller
                 ], 425);
             } else {
 
-
-                $masterData = new NilaiKuisionerSmartCity;
+                $masterData = new MasterKuisionerSmartCity;
+                $masterData->kuisioner = $request->input('kuisioner');
                 $masterData->id_skpd = $request->input('id_skpd');
                 $masterData->iso = $request->input('iso');
-                $masterData->deskripsi = $request->input('deskripsi');
-                $masterData->tahun = $request->input('tahun');
-                $masterData->keterangan_tahun = $request->input('keterangan_tahun');
-                $masterData->ketersediaan = $request->input('ketersediaan');
-                $masterData->unit_penyedia_data = $request->input('unit_penyedia_data');
-                $masterData->keterangan = $request->input('keterangan');
-                // $masterData->uuid = Uuid::uuid4()->getHex();
 
                 // dd($masterData);
 
@@ -251,6 +272,152 @@ class MasterSmartCityController extends Controller
             }
         } catch (\Throwable $th) {
             //return error message
+            return response()->json([
+                'success' => false,
+                'message' => $th
+            ], 409);
+        }
+    }
+
+
+    public function getAllMasterKuisionerSmartCity(Request $request)
+    {
+        try {
+
+            $dataKuisioner = MasterKuisionerSmartCity::get();
+
+            $newArr = [];
+            $saveData = [];
+            $no = 1;
+            foreach ($dataKuisioner as $key) {
+                $newArr['no'] = $no++;
+                $newArr['id_skpd'] = $key->id_skpd;
+                $newArr['kuisioner'] = $key->kuisioner;
+                $newArr['iso'] = $key->iso;
+                $newArr['skpd'] = $key->masterSkpd->nama;
+
+                array_push($saveData, $newArr);
+            };
+
+            if (!$dataKuisioner) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Data tidak ada',
+                ], 404);
+            } else {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Master Data Kuisioner Smart City',
+                    'data' =>  $saveData
+                ], 200);
+            }
+        } catch (\Throwable $th) {
+            return response()->json([
+                'success' => false,
+                'message' => $th
+            ], 409);
+        }
+    }
+    public function getIdMasterKuisionerSmartCity(Request $request, $id_skpd)
+    {
+        try {
+
+            $dataKuisioner = MasterKuisionerSmartCity::where('id_skpd', $id_skpd)->get();
+
+
+            if (!$dataKuisioner) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Data tidak ada',
+                ], 404);
+            } else {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Master Data Kuisioner Smart City By SKPD',
+                    'data' =>  $dataKuisioner
+                ], 200);
+            }
+        } catch (\Throwable $th) {
+            return response()->json([
+                'success' => false,
+                'message' => $th
+            ], 409);
+        }
+    }
+
+    public function updateMasterKuisionerSmartCity(Request $request, $id)
+    {
+
+        try {
+            $updateData = MasterKuisionerSmartCity::where('id', $id);
+
+            $updateDatas = MasterKuisionerSmartCity::where('id', $id)->get();
+
+            $simpanData = [];
+
+            foreach ($updateDatas as $key) {
+                $simpanData['id_skpd'] = $key->id_skpd;
+                $simpanData['iso'] = $key->iso;
+                $simpanData['kuisioner'] = $key->kuisioner;
+                array_push($simpanData);
+            };
+
+            $updateData->update([
+                'id_skpd' => request('id_skpd') ?? $key->id_skpd,
+                'iso' => request('iso') ?? $key->iso,
+                'kuisioner' => request('kuisioner') ?? $key->kuisioner,
+            ]);
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Updata Data Berhasil',
+                'data' =>  $request->all(),
+            ], 201);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'success' => false,
+                'message' => $th
+            ], 409);
+        }
+    }
+
+    public function getIdNilaiKuisionerSmartCity(Request $request, $id_skpd)
+    {
+        try {
+
+            $dataNilai = NilaiKuisionerSmartCity::where('id_skpd', $id_skpd)->get();
+
+            $newArr = [];
+            $saveData = [];
+            $no = 1;
+            foreach ($dataNilai as $key) {
+                $newArr['no'] = $no++;
+                $newArr['id_skpd'] = $key->masterSkpd->nama;
+                $newArr['skpd'] = $key->masterSkpd->nama;
+                $newArr['kuisioner'] = $key->masterKuisioner->kuisioner;
+                $newArr['iso'] = $key->masterKuisioner->iso;
+                $newArr['tahun'] = $key->tahun;
+                $newArr['keterangan_tahun'] = $key->keterangan_tahun;
+                $newArr['ketersediaan'] = $key->ketersediaan ;
+                $newArr['unit_penyedia_data'] = $key->masterSkpd->nama;
+                $newArr['keterangan'] = $key->keterangan;
+
+                array_push($saveData, $newArr);
+            };
+
+            if (!$dataNilai) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Data tidak ada',
+                ], 404);
+            } else {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Master Data Nilai Kuisioner Smart City',
+                    'data' =>  $saveData
+                ], 200);
+            }
+        } catch (\Throwable $th) {
             return response()->json([
                 'success' => false,
                 'message' => $th

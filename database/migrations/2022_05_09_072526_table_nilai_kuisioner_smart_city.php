@@ -16,14 +16,33 @@ class TableNilaiKuisionerSmartCity extends Migration
         Schema::create('nilai_kuisioner_smart_city', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('id_skpd');
-            $table->string('id_kuisioner')->nullable();
+            $table->unsignedBigInteger('id_kuisioner')->nullable();
             $table->integer('tahun');
             $table->string('keterangan_tahun');
             $table->string('ketersediaan');
-            $table->string('unit_penyedia_data');
+            $table->integer('unit_penyedia_data');
             $table->string('keterangan');
             $table->timestamps();
         });
+
+        Schema::table('nilai_kuisioner_smart_city', function(Blueprint $kolom){
+            $kolom->foreign('id_skpd')
+            ->references('id')
+            ->on('master_skpd');
+        });
+
+        Schema::table('nilai_kuisioner_smart_city', function(Blueprint $kolom){
+            $kolom->foreign('id_kuisioner')
+            ->references('id')
+            ->on('master_kuisioner_smart_city');
+        });
+
+        Schema::table('nilai_kuisioner_smart_city', function(Blueprint $kolom){
+            $kolom->foreign('unit_penyedia_data')
+            ->references('id')
+            ->on('master_skpd');
+        });
+
     }
 
     /**
