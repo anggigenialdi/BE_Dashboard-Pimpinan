@@ -30,4 +30,22 @@ class MasterRoleController extends Controller
             ], 409);
         }
     }
+
+    public function getAllMasterRole(Request $request)
+    {
+        try {
+
+            $skpd = MasterRole::orderBy('id', 'ASC')->get();
+            return response()->json([
+                'success' => true,
+                'message' => 'Master Skpd',
+                'data' =>  $skpd,
+            ], 200);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'success' => false,
+                'message' => $th
+            ], 409);
+        }
+    }
 }

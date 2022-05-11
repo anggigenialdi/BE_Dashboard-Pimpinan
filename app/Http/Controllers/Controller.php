@@ -1336,5 +1336,30 @@ class Controller extends BaseController
      */
 
 
+    
+    /**
+     * @OA\Get(
+     *      path="/api/v1/master-role",
+     *      operationId="getAllMasterRole",
+     *      tags={"Master Role"},
+     *      summary="Get Data Role",
+     *      description="/api/v1/master-role",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\JsonContent()
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *     )
+     */
+
+
 
 }

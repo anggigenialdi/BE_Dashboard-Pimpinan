@@ -112,6 +112,7 @@ $router->group(['prefix' => 'api/v1'], function () use ($router) {
 
     //Master Role
     $router->post('master-role', 'MasterRoleController@addMasterRole');
+    $router->get('master-role', 'MasterRoleController@getAllMasterRole');
 
 
 
